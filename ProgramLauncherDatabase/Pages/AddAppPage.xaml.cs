@@ -51,6 +51,7 @@ namespace ProgramLauncherDatabase.Pages
             AddAppToDB();
         }
 
+
         private void ExploreBtn_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();

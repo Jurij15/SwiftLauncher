@@ -48,10 +48,6 @@
             </ui:NavigationStore.Items>
             <ui:NavigationStore.Footer>
                 <ui:NavigationItem
-                    Content="Settings"
-                    Icon="Settings20"
-                    PageTag="SettingsPage"/>
-                <ui:NavigationItem
                     Content="About"
                     Icon="ContactCard20"
                     PageTag="AboutTab"/>

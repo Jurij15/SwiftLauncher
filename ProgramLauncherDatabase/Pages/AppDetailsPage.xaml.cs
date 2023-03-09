@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProgramLauncherDatabase.Database;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
 using System.Drawing;
@@ -31,11 +32,21 @@ namespace ProgramLauncherDatabase.Pages
             InitializeComponent();
 
             SetAppDetails();
+            SetAppEditValues();
 
             DispatcherTimer timer = new DispatcherTimer();  
             timer.Interval = TimeSpan.FromMilliseconds(500);
             timer.Tick += timer_tick;
             timer.Start();
+        }
+
+        void SetAppEditValues()
+        {
+            AppNameBoxEdit.Text = CurrentAppDefinitions.AppName;
+            AppPathBoxEdit.Text = CurrentAppDefinitions.AppExecutablePath;
+            AppNotesBoxEdit.Text = CurrentAppDefinitions.AppNotes;
+            AppCategoryBoxEdit.Text = CurrentAppDefinitions.AppCategory;
+            LaunchArgumentsBoxEdit.Text = CurrentAppDefinitions.AppLaunchArguents;
         }
 
         void SetAppIcon()
@@ -50,10 +61,13 @@ namespace ProgramLauncherDatabase.Pages
 
         void SetAppDetails()
         {
+            DBReader reader = new DBReader();
+            AppIDBlock.Text = reader.GetAppIDByName(CurrentAppDefinitions.AppName);
             AppNameBlock.Text = CurrentAppDefinitions.AppName;
             AppPathBlock.Text = CurrentAppDefinitions.AppExecutablePath;
             AppNotesBox.Text = CurrentAppDefinitions.AppNotes;
             AppCategoryBadge.Content = CurrentAppDefinitions.AppCategory;
+            AppLaunchArgsBox.Text = CurrentAppDefinitions.AppLaunchArguents;
 
             SetAppIcon();
         }
@@ -66,6 +80,23 @@ namespace ProgramLauncherDatabase.Pages
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
+            Config.GlobalFrame.Navigate(new AllAppsPage());
+        }
+
+        private void ExploreBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            openFileDialog.Filter = ".EXE Files (*.exe)|*.exe|All files (*.*)|*.*";
+            openFileDialog.ShowDialog();
+            openFileDialog.Multiselect = false;
+
+            AppPathBoxEdit.Text = openFileDialog.FileName;
+        }
+
+        private void UpdateDBBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DBUpdater updater = new DBUpdater();
+            updater.UpdateApp(AppIDBlock.Text, AppNameBoxEdit.Text, AppPathBoxEdit.Text, AppCategoryBoxEdit.Text, AppNotesBoxEdit.Text, LaunchArgumentsBoxEdit.Text);
             Config.GlobalFrame.Navigate(new AllAppsPage());
         }
     }

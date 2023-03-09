@@ -7,74 +7,129 @@
       mc:Ignorable="d" 
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       d:DesignHeight="450" d:DesignWidth="800"
+           Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       Title="AppDetailsPage">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <ui:Card x:Name="AppNameCard" Margin="8,8,8,4" Grid.Row="1">
-            <Grid>
-                <Image x:Name="AppImage" HorizontalAlignment="Left" VerticalAlignment="Stretch" MaxHeight="28" MaxWidth="28"/>
-                <TextBlock x:Name="AppNameBlock" Text="AppName" HorizontalAlignment="Left" FontSize="24" FontWeight="DemiBold" Margin="34,0,0,18"/>
-                <TextBlock x:Name="AppPathBlock" Text="AppPath" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="34,12,12,0" FontSize="12"/>
-                <ui:Button x:Name="LaunchAppBtn" Content="Launch" Icon="Play32" HorizontalAlignment="Right" Appearance="Primary"/>
-            </Grid>
-        </ui:Card>
-        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <ui:Card x:Name="AppNotesCard" Margin="8,4,8,4" Grid.Row="1">
-                    <DockPanel LastChildFill="True">
-                        <TextBlock Text="App Description" FontWeight="Medium" FontSize="12" DockPanel.Dock="Top" Margin="0,0,0,8"/>
-                        <TextBlock DockPanel.Dock="Top" x:Name="AppNotesBox" FontSize="18"/>
-                    </DockPanel>
-                </ui:Card>
-                <ui:Card x:Name="AppCategoryCard" Margin="8,4,8,4" Grid.Row="2">
-                    <DockPanel LastChildFill="True">
-                        <TextBlock Text="App Category" FontWeight="Medium" FontSize="12" DockPanel.Dock="Top" Margin="0,0,0,8"/>
-                        <ui:Badge x:Name="AppCategoryBadge" Content="AppCategory" Appearance="Secondary" DockPanel.Dock="Top" MaxHeight="240" MaxWidth="240" HorizontalAlignment="Left"/>
-                    </DockPanel>
-                </ui:Card>
-                <ui:CardExpander x:Name="MoreOptionsExpander" Grid.Row="4" Margin="8,4,8,4">
-                    <ui:CardExpander.Header>
-                        <TextBlock Text="Launch Options" FontWeight="Bold"/>
-                    </ui:CardExpander.Header>
-                    <ui:CardExpander.Content>
-                        <StackPanel>
-                            <ui:InfoBar Title="Message" Message="Changes here will only apply until you leave the page" Severity="Informational" IsOpen="True" IsClosable="False" Margin="4,4,4,4"/>
-                            <ui:CardControl x:Name="LaunchArgumentsControl" Margin="4,4,4,4">
-                                <ui:CardControl.Header>
-                                    <TextBlock Text="Launch Arguments"/>
-                                </ui:CardControl.Header>
-                            </ui:CardControl>
-                        </StackPanel>
-                    </ui:CardExpander.Content>
-                </ui:CardExpander>
-                <ui:CardExpander x:Name="EditAppExpander" Margin="8,4,8,4" Grid.Row="6">
-                    <ui:CardExpander.Header>
-                        <StackPanel>
-                            <TextBlock Text="Edit App" FontWeight="Bold"/>
-                        </StackPanel>
-                    </ui:CardExpander.Header>
-                </ui:CardExpander>
-            </Grid>
-        </ScrollViewer>
-        <StackPanel Grid.Row="4" Margin="4,4,4,4">
-            <ui:Button x:Name="BackBtn" Content="Back" Appearance="Transparent" Icon="ArrowLeft24" Click="BackBtn_Click"/>
-        </StackPanel>
-    </Grid>
+    <ui:Card>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ui:Card x:Name="AppNameCard" Margin="8,8,8,4" Grid.Row="1">
+                <Grid>
+                    <Image x:Name="AppImage" HorizontalAlignment="Left" VerticalAlignment="Stretch" MaxHeight="28" MaxWidth="28"/>
+                    <TextBlock x:Name="AppNameBlock" Text="AppName" HorizontalAlignment="Left" FontSize="24" FontWeight="DemiBold" Margin="34,0,0,18"/>
+                    <TextBlock x:Name="AppPathBlock" Text="AppPath" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="34,12,12,0" FontSize="12"/>
+                    <ui:Button x:Name="LaunchAppBtn" Content="Launch" Icon="Play32" HorizontalAlignment="Right" Appearance="Primary"/>
+                </Grid>
+            </ui:Card>
+            <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ui:Card x:Name="AppNotesCard" Margin="8,4,8,4" Grid.Row="1">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock Text="App Description" FontWeight="Medium" FontSize="12" DockPanel.Dock="Top" Margin="0,0,0,8"/>
+                            <TextBlock DockPanel.Dock="Top" x:Name="AppNotesBox" FontSize="18"/>
+                            <TextBlock x:Name="AppIDBlock" FontSize="12" Foreground="DimGray" FontWeight="Light"/>
+                        </DockPanel>
+                    </ui:Card>
+                    <ui:Card x:Name="AppCategoryCard" Margin="8,4,8,4" Grid.Row="2">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock Text="App Category" FontWeight="Medium" FontSize="12" DockPanel.Dock="Top" Margin="0,0,0,8"/>
+                            <ui:Badge x:Name="AppCategoryBadge" Content="AppCategory" Appearance="Secondary" DockPanel.Dock="Top" MaxHeight="240" MaxWidth="240" HorizontalAlignment="Left"/>
+                        </DockPanel>
+                    </ui:Card>
+                    <ui:CardExpander x:Name="MoreOptionsExpander" Grid.Row="4" Margin="8,4,8,4">
+                        <ui:CardExpander.Header>
+                            <TextBlock Text="Launch Options" FontWeight="Bold"/>
+                        </ui:CardExpander.Header>
+                        <ui:CardExpander.Content>
+                            <StackPanel>
+                                <ui:InfoBar Title="Message" Message="Changes here will only apply until you leave the page" Severity="Informational" IsOpen="True" IsClosable="False" Margin="4,4,4,4"/>
+                                <ui:CardControl x:Name="LaunchArgumentsControl" Margin="4,4,4,4">
+                                    <ui:CardControl.Header>
+                                        <TextBlock Text="Launch Arguments"/>
+                                    </ui:CardControl.Header>
+                                    <ui:TextBox x:Name="AppLaunchArgsBox"/>
+                                </ui:CardControl>
+                            </StackPanel>
+                        </ui:CardExpander.Content>
+                    </ui:CardExpander>
+                    <ui:CardExpander x:Name="EditAppExpander" Margin="8,4,8,4" Grid.Row="6">
+                        <ui:CardExpander.Header>
+                            <StackPanel>
+                                <TextBlock Text="Edit App" FontWeight="Bold"/>
+                            </StackPanel>
+                        </ui:CardExpander.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <ui:InfoBar Message="Editing will close this page!" IsOpen="True" IsClosable="False" Grid.Row="1" Margin="8,4,8,4"/>
+                            <TextBlock Text="Application Name" FontSize="14" Grid.Row="2" Margin="8,8,8,4"/>
+                            <ui:TextBox PlaceholderEnabled="True" PlaceholderText="Name" Grid.Row="3" Margin="8,4,8,8" x:Name="AppNameBoxEdit"/>
+
+                            <TextBlock Text="Executable Path" FontSize="14" Grid.Row="4" Margin="8,8,8,4"/>
+                            <ui:TextBox PlaceholderEnabled="True" PlaceholderText="Path" Grid.Row="5" Margin="8,4,110,8" x:Name="AppPathBoxEdit"/>
+                            <ui:Button Content="Explore" Icon="Folder24" x:Name="ExploreBtn" Grid.Row="5" Margin="8,4,8,8" HorizontalAlignment="Right" Click="ExploreBtn_Click"/>
+
+                            <TextBlock Text="Application Category" FontSize="14" Grid.Row="6" Margin="8,8,8,4"/>
+                            <ui:TextBox PlaceholderEnabled="True" PlaceholderText="Category" Grid.Row="7" Margin="8,4,8,8" x:Name="AppCategoryBoxEdit"/>
+
+                            <TextBlock Text="Application Notes" FontSize="14" Grid.Row="8" Margin="8,8,8,4"/>
+                            <ui:TextBox PlaceholderEnabled="True" PlaceholderText="Notes" Grid.Row="9" Margin="8,0,8,8" MinLines="4" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" x:Name="AppNotesBoxEdit"/>
+
+                            <ui:CardExpander x:Name="AditionalSettingsExpander" Margin="8,8,8,8" Grid.Row="10">
+                                <ui:CardExpander.Header>
+                                    <StackPanel>
+                                        <TextBlock Text="Aditional Settings" FontWeight="DemiBold"/>
+                                        <TextBlock Text="Launch arguments and more"/>
+                                    </StackPanel>
+                                </ui:CardExpander.Header>
+                                <ui:CardControl>
+                                    <ui:CardControl.Header>
+                                        <StackPanel>
+                                            <TextBlock Text="Launch Arguments" FontWeight="DemiBold"/>
+                                            <TextBlock Text="Arguments that will be used upon launching the application"/>
+                                        </StackPanel>
+                                    </ui:CardControl.Header>
+                                    <ui:TextBox x:Name="LaunchArgumentsBoxEdit" PlaceholderEnabled="True" PlaceholderText="Launch Arguments"/>
+                                </ui:CardControl>
+                            </ui:CardExpander>
+
+                            <ui:Button x:Name="UpdateDBBtn" Click="UpdateDBBtn_Click" Content="Update" Icon="ArrowUp24" Appearance="Primary" Margin="8,4,8,4" Grid.Row="13" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </ui:CardExpander>
+                </Grid>
+            </ScrollViewer>
+            <StackPanel Grid.Row="4" Margin="4,4,4,4">
+                <ui:Button x:Name="BackBtn" Content="Back" Appearance="Transparent" Icon="ArrowLeft24" Click="BackBtn_Click"/>
+            </StackPanel>
+        </Grid>
+    </ui:Card>
 </ui:UiPage>
