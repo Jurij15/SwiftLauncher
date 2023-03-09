@@ -25,6 +25,8 @@ namespace ProgramLauncherDatabase
 
         public static bool bShouldRefreshAllContacts = false;
 
+        public static string CurrentID = string.Empty;
+
         #region Funcs
         public static void InitDBConnection()
         {

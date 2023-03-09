@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
 
 namespace ProgramLauncherDatabase.Pages
 {
@@ -114,8 +115,27 @@ namespace ProgramLauncherDatabase.Pages
         }
         #endregion
 
+        string FigureOutAppName(Wpf.Ui.Controls.CardAction UiElement)
+        {
+            string RetValue = string.Empty;
+            StackPanel content = (StackPanel)UiElement.Content;
+            foreach (var item in content.Children)
+            {
+                if (item.GetType() == typeof(TextBlock))
+                {
+                    TextBlock textBlock = (TextBlock)item;
+                    if (textBlock.Name == "AppNameBox")
+                    {
+                        RetValue = textBlock.Text;
+                    }
+                }
+            }
+            return RetValue;
+        }
+
         void AddCardsForEveryApp()
         {
+            RootWrapPanel.Children.Clear();
             foreach (var id in Config.AllAppsIDsList)
             {
                 DBReader reader = new DBReader();
@@ -123,10 +143,17 @@ namespace ProgramLauncherDatabase.Pages
             }
         }
 
+        void FreeArrays()
+        {
+            Config.AllAppsIDsList.Clear();
+            Config.AllAppsNamesList.Clear();
+        }
+
         public AllAppsPage()
         {
             InitializeComponent();
             DBReader reader = new DBReader();
+            FreeArrays();
             reader.AddAllAppIDsToArray();
             reader.AddAllAppNamesToArray();
             AddCardsForEveryApp();
@@ -139,7 +166,18 @@ namespace ProgramLauncherDatabase.Pages
 
         private void CardClicked_Handler(object sender, RoutedEventArgs e)
         {
-            //todo figure out the app name
+            DBReader reader = new DBReader();
+            string AppName = FigureOutAppName((Wpf.Ui.Controls.CardAction)sender);
+            string AppID = reader.GetAppIDByName(AppName);
+            
+            //set app properties
+            CurrentAppDefinitions.AppName = AppName;
+            CurrentAppDefinitions.AppExecutablePath = reader.GetAppExecutablePathByID(AppID);
+            CurrentAppDefinitions.AppNotes = reader.GetAppNotesByID(AppID);
+            CurrentAppDefinitions.AppCategory = reader.GetAppCategotyByID(AppID);
+            CurrentAppDefinitions.AppLaunchArguents = reader.GetAppLaunchArgumentsByID(AppID);
+
+            Config.GlobalFrame.Navigate(new AppDetailsPage());
         }
     }
 }

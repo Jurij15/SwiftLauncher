@@ -90,5 +90,33 @@ namespace ProgramLauncherDatabase.Database
 
             return ReturnValue;
         }
+
+        public string GetAppLaunchArgumentsByID(string ID)
+        {
+            string ReturnValue = "";
+            string Command = "SELECT AppLaunchArguments FROM App WHERE ID ==" + ID;
+            SQLiteCommand SelectCommand = new SQLiteCommand(Command, Config.ESQLiteConnection);
+            SQLiteDataReader reader = SelectCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                ReturnValue = reader.GetString(0);
+            }
+
+            return ReturnValue;
+        }
+
+        public string GetAppIDByName(string Name)
+        {
+            string ReturnValue = "";
+            string Command = "SELECT ID FROM App WHERE AppName =='" + Name+"';";
+            SQLiteCommand SelectCommand = new SQLiteCommand(Command, Config.ESQLiteConnection);
+            SQLiteDataReader reader = SelectCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                ReturnValue = reader.GetInt32(0).ToString();
+            }
+
+            return ReturnValue;
+        }
     }
 }
