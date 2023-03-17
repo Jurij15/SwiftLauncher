@@ -87,6 +87,7 @@ namespace ProgramLauncherDatabase.Pages
 
             NewCard.Margin = new Thickness(2, 2, 2, 2);
 
+            //TODO update this so its actually dynamic
             if (OpenedColumnsInRow == 0)
             {
                 OpenedRows++;

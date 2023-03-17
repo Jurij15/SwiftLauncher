@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Diagnostics;
 
 namespace ProgramLauncherDatabase.Pages
 {
@@ -69,6 +70,11 @@ namespace ProgramLauncherDatabase.Pages
             AppCategoryBadge.Content = CurrentAppDefinitions.AppCategory;
             AppLaunchArgsBox.Text = CurrentAppDefinitions.AppLaunchArguents;
 
+            if (Config.AllAppsIDsList.Count == 1)
+            {
+                RemoveAppBtn.IsEnabled = false;
+            }
+
             SetAppIcon();
         }
 
@@ -97,6 +103,25 @@ namespace ProgramLauncherDatabase.Pages
         {
             DBUpdater updater = new DBUpdater();
             updater.UpdateApp(AppIDBlock.Text, AppNameBoxEdit.Text, AppPathBoxEdit.Text, AppCategoryBoxEdit.Text, AppNotesBoxEdit.Text, LaunchArgumentsBoxEdit.Text);
+            Config.GlobalFrame.Navigate(new AllAppsPage());
+        }
+
+        private void LaunchAppBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string launchArgs = CurrentAppDefinitions.AppLaunchArguents;
+            if (!string.IsNullOrEmpty(launchArgs))
+            {
+                Process.Start(AppPathBlock.Text, launchArgs);
+            }
+            else
+            {
+                Process.Start(AppPathBlock.Text);
+            }
+        }
+
+        private void RemoveAppBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DBRemover.RemoveAppFromDatabaseByID(AppIDBlock.Text);
             Config.GlobalFrame.Navigate(new AllAppsPage());
         }
     }

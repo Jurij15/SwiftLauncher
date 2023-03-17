@@ -24,7 +24,7 @@
                 <Image x:Name="AppImage" HorizontalAlignment="Left" VerticalAlignment="Stretch" MaxHeight="28" MaxWidth="28"/>
                 <TextBlock x:Name="AppNameBlock" Text="AppName" HorizontalAlignment="Left" FontSize="24" FontWeight="DemiBold" Margin="34,0,0,18"/>
                 <TextBlock x:Name="AppPathBlock" Text="AppPath" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="34,12,12,0" FontSize="12"/>
-                <ui:Button x:Name="LaunchAppBtn" Content="Launch" Icon="Play32" HorizontalAlignment="Right" Appearance="Primary"/>
+                <ui:Button x:Name="LaunchAppBtn" Content="Launch" Icon="Play32" HorizontalAlignment="Right" Appearance="Primary" Click="LaunchAppBtn_Click"/>
             </Grid>
         </ui:Card>
         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
@@ -40,7 +40,7 @@
                 <ui:Card x:Name="AppNotesCard" Margin="8,4,8,4" Grid.Row="1">
                     <DockPanel LastChildFill="True">
                         <TextBlock Text="App Description" FontWeight="Medium" FontSize="12" DockPanel.Dock="Top" Margin="0,0,0,8"/>
-                        <TextBlock DockPanel.Dock="Top" x:Name="AppNotesBox" FontSize="18"/>
+                        <TextBlock DockPanel.Dock="Top" x:Name="AppNotesBox" TextWrapping="WrapWithOverflow" FontSize="18"/>
                         <TextBlock x:Name="AppIDBlock" FontSize="12" Foreground="DimGray" FontWeight="Light"/>
                     </DockPanel>
                 </ui:Card>
@@ -50,7 +50,7 @@
                         <ui:Badge x:Name="AppCategoryBadge" Content="AppCategory" Appearance="Secondary" DockPanel.Dock="Top" MaxHeight="240" MaxWidth="240" HorizontalAlignment="Left"/>
                     </DockPanel>
                 </ui:Card>
-                <ui:CardExpander x:Name="MoreOptionsExpander" Grid.Row="4" Margin="8,4,8,4">
+                <ui:CardExpander x:Name="MoreOptionsExpander" Grid.Row="4" Margin="8,4,8,4"  Visibility="Collapsed">
                     <ui:CardExpander.Header>
                         <TextBlock Text="Launch Options" FontWeight="Bold"/>
                     </ui:CardExpander.Header>
@@ -121,6 +121,7 @@
                         </ui:CardExpander>
 
                         <ui:Button x:Name="UpdateDBBtn" Click="UpdateDBBtn_Click" Content="Update" Icon="ArrowUp24" Appearance="Primary" Margin="8,4,8,4" Grid.Row="13" HorizontalAlignment="Right"/>
+                        <ui:Button x:Name="RemoveAppBtn" Content="Remove App" Icon="Delete32" IconFilled="True" Margin="8,4,8,4" Grid.Row="13" Appearance="Danger" Click="RemoveAppBtn_Click"/>
                     </Grid>
                 </ui:CardExpander>
             </Grid>

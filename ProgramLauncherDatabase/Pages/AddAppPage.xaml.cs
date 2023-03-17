@@ -39,7 +39,7 @@ namespace ProgramLauncherDatabase.Pages
             await creator.CreateAppAsync(AppName, AppPath, AppCategory, AppNotes, AppLaunchArguments);
             CreatingPanel.Visibility = Visibility.Collapsed;
 
-            Config.GlobalNavigation.Navigate(typeof(AllAppsPage));
+            Config.GlobalFrame.Navigate(new AllAppsPage());
         }
         public AddAppPage()
         {

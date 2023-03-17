@@ -12,6 +12,8 @@
              ExtendsContentIntoTitleBar="True"
              WindowBackdropType="Mica"
              WindowStartupLocation="CenterScreen"
+             
+             Closing="UiWindow_Closing"
         Title="Sulfur Launcher" Height="611" Width="1005">
     <Grid>
         <Grid.RowDefinitions>
@@ -23,7 +25,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ui:TitleBar Title="Sulfur Launcher" Background="Transparent" Grid.Row="1"/>
+        <ui:TitleBar Title="Sulfur Launcher" Background="Transparent" Grid.Row="1" Icon="../icons/ic_launcher.png"/>
         <ui:NavigationStore
             x:Name="MainWindowNavStore"
             Grid.Row="2"
@@ -43,6 +45,7 @@
                 <ui:NavigationItem
                     Content="All Apps"
                     Icon="AppFolder20"
+                    Cache="False"
                     PageType="{x:Type page:AllAppsPage}"
                     />
             </ui:NavigationStore.Items>
@@ -59,7 +62,7 @@
                     Click="ThemeButtonNavigation_Click"/>
             </ui:NavigationStore.Footer>
         </ui:NavigationStore>
-        <Border Grid.Row="2" Background="Transparent" Margin="70,2,2,2">
+        <Border Grid.Row="2" Background="{DynamicResource ControlFillColorDefaultBrush}" Margin="70,2,2,2" CornerRadius="8,0,0,0">
             <Frame x:Name="RootFrame" Grid.Row="2" Margin="0,0,0,0"/>
         </Border>
     </Grid>
