@@ -22,29 +22,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid x:Name="RootWrapPanel" Grid.Row="5" Margin="8,8,8,8">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-        </Grid>
-        <ui:TextBox PlaceholderEnabled="True" PlaceholderText="Search" Margin="8,8,8,8" Grid.Row="2"/>
-        <ui:CardExpander x:Name="OptionsExpander" Margin="8,8,8,8" Grid.Row="3">
+        <WrapPanel x:Name="RootWrapPanel" Grid.Row="5" Margin="8,2,8,2"/>
+        <ui:AutoSuggestBox PlaceholderEnabled="True" PlaceholderText="Search" Margin="8,8,8,4" Grid.Row="2"/>
+        <ui:CardExpander x:Name="OptionsExpander" Margin="8,4,8,4" Grid.Row="3">
             <ui:CardExpander.Header>
                 <StackPanel>
                     <TextBlock Text="Options" FontWeight="Medium"/>

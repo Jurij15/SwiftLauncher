@@ -23,8 +23,28 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Welcome Back" Grid.Row="1" Margin="8,8,8,8" FontWeight="DemiBold" FontSize="28"/>
-            <TextBlock Text="Recently opened apps" Margin="8,8,8,8" FontWeight="Medium" FontSize="14" Grid.Row="2"/>
+            <Border Margin="8,8,8,8" CornerRadius="8" Grid.Row="0">
+                <Border.Background>
+                    <ImageBrush ImageSource="/Pages/pexels-johannes-plenio-1110656.jpg"                     
+                                    RenderOptions.BitmapScalingMode="HighQuality"
+                    Stretch="UniformToFill" />
+                </Border.Background>
+                <Border CornerRadius="8">
+                    <Border.Background>
+                        <RadialGradientBrush>
+                            <GradientStop Offset="0" Color="#1F000000" />
+                            <GradientStop Offset="1" Color="#4F000000" />
+                        </RadialGradientBrush>
+                    </Border.Background>
+                    <Grid>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <TextBlock Text="Sulfur Launcher" FontWeight="Medium" FontSize="36" Margin="48,50,50,4" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
+                            <TextBlock Text="A simple program launcher" FontSize="28" HorizontalAlignment="Left" Margin="48,4,50,50" VerticalAlignment="Center" Foreground="#B7FFFFFF"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Border>
+            <TextBlock Text="Quick Launch" Margin="8,8,8,8" FontWeight="Medium" FontSize="14" Grid.Row="2"/>
             <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="8,8,8,8">
                 <!--Max of 5 apps here-->
                 <ui:CardAction x:Name="TemplateCard1" Click="TemplateCard1_Click">

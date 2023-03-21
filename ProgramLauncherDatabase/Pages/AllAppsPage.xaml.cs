@@ -25,22 +25,6 @@ namespace ProgramLauncherDatabase.Pages
     {
         #region Cards and rows, columns
         //this is my solution for adding in cards dynammically 
-
-        int OpenedRows = 0;
-        int MaxRows = 0;
-        int OpenedColumnsInRow = 0;
-        public void AddMoreRows()
-        {
-            RowDefinition rd = new RowDefinition();
-            RowDefinition rd2 = new RowDefinition();
-            RowDefinition rd3 = new RowDefinition();
-            RowDefinition rd4 = new RowDefinition();
-            RootWrapPanel.RowDefinitions.Add(rd);
-            RootWrapPanel.RowDefinitions.Add(rd2);
-            RootWrapPanel.RowDefinitions.Add(rd3);
-            RootWrapPanel.RowDefinitions.Add(rd4);
-            MaxRows += 4;
-        }
         void CreateCard(string AccountName, string AppCategory, string AppPath)
         {
             Wpf.Ui.Controls.CardAction NewCard = new Wpf.Ui.Controls.CardAction();
@@ -61,6 +45,11 @@ namespace ProgramLauncherDatabase.Pages
                 icon.Visibility = Visibility.Collapsed;
                 img.Visibility = Visibility.Visible;
                 img.Source = Imaging.CreateBitmapSourceFromHIcon(icn.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+
+                img.Height = 50;
+                img.Width = 70;
+
+                RenderOptions.SetBitmapScalingMode(img, BitmapScalingMode.Fant);
             }
             else
             {
@@ -87,31 +76,9 @@ namespace ProgramLauncherDatabase.Pages
 
             NewCard.Margin = new Thickness(2, 2, 2, 2);
 
-            //TODO update this so its actually dynamic
-            if (OpenedColumnsInRow == 0)
-            {
-                OpenedRows++;
-                AddMoreRows();
-                OpenedColumnsInRow++;
-                Grid.SetColumn(NewCard, 0);
-            }
-            else if (OpenedColumnsInRow == 1)
-            {
-                OpenedColumnsInRow++;
-                Grid.SetColumn(NewCard, 1);
-            }
-            else if (OpenedColumnsInRow == 2)
-            {
-                OpenedColumnsInRow++;
-                Grid.SetColumn(NewCard, 2);
-            }
-            else if (OpenedColumnsInRow == 3)
-            {
-                OpenedColumnsInRow++;
-                Grid.SetColumn(NewCard, 3);
-                OpenedColumnsInRow = 0;
-            }
-            Grid.SetRow(NewCard, OpenedRows);
+            //NewCard.Height = 120;
+            //NewCard.Width = 120;
+
             RootWrapPanel.Children.Add(NewCard);
         }
         #endregion

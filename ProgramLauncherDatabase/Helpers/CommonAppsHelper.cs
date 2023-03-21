@@ -14,7 +14,7 @@ namespace ProgramLauncherDatabase.Helpers
         public async static void CheckForCommonAppsAndAddThemToDatabase()
         {
             Config.InitDBConnection();
-            string msedgeLoc = @"C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\";
+            string msedgeLoc = @"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
             string chromeLoc = @"C:\Program Files\Google\Chrome\Application\chrome.exe";
             string firefoxLoc = @"C:\\Program Files\\Mozilla Firefox\\firefox.exe";
             string notepadppLoc = @"C:\\Program Files\\Notepad++\\notepad++.exe";

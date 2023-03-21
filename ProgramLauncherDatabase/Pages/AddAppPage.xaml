@@ -58,9 +58,11 @@
                     <ui:TextBox x:Name="LaunchArgumentsBox" PlaceholderEnabled="True" PlaceholderText="Launch Arguments"/>
                 </ui:CardControl>
             </ui:CardExpander>
-            
+
             <ui:Button Content="Add" Icon="Add24" Appearance="Primary" Grid.Row="12" Margin="4,4,4,4" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="AddAppBtn" Click="AddAppBtn_Click"/>
 
+            <ui:Button Content="Cancel" Icon="ArrowLeft24" Appearance="Transparent" Grid.Row="12" Margin="4,4,4,4" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="backBtn" Click="backBtn_Click" />
+            
             <StackPanel x:Name="CreatingPanel" Orientation="Horizontal" Margin="8,8,8,8" Grid.Row="11" Visibility="Collapsed">
                 <ui:ProgressRing IsIndeterminate="True" HorizontalAlignment="Right"/>
                 <TextBlock Text="Adding App..." FontSize="20" VerticalAlignment="Center" Margin="2,2,2,2"/>

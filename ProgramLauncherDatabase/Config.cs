@@ -15,7 +15,7 @@ namespace ProgramLauncherDatabase
         public static bool bIsConnectedToDB = false;
         public static string SQLiteConnectionPath = "Data Source=LauncherDatabase.db;Version=3;";
 
-        public static NavigationStore GlobalNavigation;
+        public static NavigationCompact GlobalNavigation;
         public static Frame GlobalFrame;
 
         public static List<string> AllAppsIDsList = new List<string>();
