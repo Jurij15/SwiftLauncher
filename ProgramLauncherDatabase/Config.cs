@@ -27,6 +27,8 @@ namespace ProgramLauncherDatabase
 
         public static string CurrentID = string.Empty;
 
+        public static double VersionDouble = 0.5;
+
         #region Funcs
         public static void InitDBConnection()
         {

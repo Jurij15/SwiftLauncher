@@ -20,13 +20,15 @@ namespace ProgramLauncherDatabase
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Wpf.Ui.Controls.UiWindow
-    {
+    { 
         public MainWindow()
         {
             InitializeComponent();
             Config.InitDBConnection();
             Config.GlobalNavigation = MainWindowNavStore;
             Config.GlobalFrame = RootFrame;
+
+            Wpf.Ui.Appearance.Watcher.Watch(this, Wpf.Ui.Appearance.BackgroundType.Mica, true);
         }
 
         private void ThemeButtonNavigation_Click(object sender, RoutedEventArgs e)

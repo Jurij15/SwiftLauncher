@@ -59,7 +59,9 @@
                 <ui:NavigationItem
                     Content="About"
                     Icon="ContactCard20"
-                    PageTag="AboutTab"/>
+                    PageTag="AboutTab"
+                    PageType="{x:Type page:AboutPage}"
+                    />
                 <ui:NavigationSeparator/>
                 <ui:NavigationItem
                     x:Name="ThemeButtonNavigation"

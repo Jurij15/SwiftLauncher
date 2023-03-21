@@ -75,6 +75,7 @@ namespace ProgramLauncherDatabase.Pages
             NewCard.Click += CardClicked_Handler;
 
             NewCard.Margin = new Thickness(2, 2, 2, 2);
+            NewCard.IsChevronVisible = false;
 
             //NewCard.Height = 120;
             //NewCard.Width = 120;
