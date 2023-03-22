@@ -38,7 +38,7 @@
             HorizontalAlignment="Left"
             TransitionType="FadeInWithSlide"
             Precache="False"
-            TransitionDuration="90"
+            TransitionDuration="140"
             SelectedPageIndex="0"
             Frame="{Binding ElementName=RootFrame}"
             >

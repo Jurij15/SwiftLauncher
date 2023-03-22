@@ -1,0 +1,59 @@
+﻿<ui:UiWindow x:Class="Installer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Installer"
+        mc:Ignorable="d"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        Title="Sulfur Launcher Installer" Height="486" Width="800"
+             ResizeMode="NoResize"
+                                  Background="Transparent"
+             ExtendsContentIntoTitleBar="True"
+             WindowBackdropType="Mica"
+             WindowStartupLocation="CenterScreen"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="12,12,12,12">
+            <TextBlock Text="Sulfur Launcher" FontSize="36" FontWeight="DemiBold"/>
+            <TextBlock Text="Installer" Foreground="LightGray" FontSize="22" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <ui:InfoBar Title=".NET 7 Not Installed" Message="Please install .NET 7 Desktop Runtime to proceed!" Margin="12,12,12,12" Severity="Error" IsOpen="False" Grid.Row="2" IsClosable="False" x:Name="DotNetUnsupportedInfo">
+            <ui:InfoBar.Content>
+                <ui:Hyperlink x:Name="DotNetLink" Content="Download"/>
+            </ui:InfoBar.Content>
+        </ui:InfoBar>
+
+        <ui:InfoBar Title="Ready To Install" Message="Your system is compatible and ready to install!" Margin="12,12,12,12" Severity="Success" IsOpen="True" Grid.Row="2" IsClosable="False" x:Name="SupportedBar"/>
+
+        <TextBlock Text="Install Location" FontWeight="Medium" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,24,8,8" Visibility="Collapsed"/>
+        <ui:TextBox PlaceholderText="Install Location" Margin="16,0,95,0" Grid.Row="3" x:Name="InstallLocBox"/>
+        <ui:Button Content="Expore" Icon="Folder20" Grid.Row="3" HorizontalAlignment="Right"/>
+
+        <StackPanel Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="16,16,16,16">
+            <CheckBox Content="Create Desktop Shortcut" x:Name="CreateDesktopShortcutCheckBox"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="16,16,16,16" Orientation="Horizontal" Visibility="Hidden">
+            <ui:ProgressRing IsIndeterminate="True"/>
+            <TextBlock Text="Installing..." HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Margin="4,4,4,4"/>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="8" Orientation="Horizontal" Margin="0,10,0,0" IsEnabled="True">
+            <ui:Button Content="Install" x:Name="InstallBtn" VerticalAlignment="Bottom" Height="67" Width="193" Margin="4,4,4,4"/>
+            <ui:Button Content="Cancel" x:Name="CancelBtn" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="67" Width="193" Margin="4,4,4,4" Click="CancelBtn_Click"/>
+        </StackPanel>
+    </Grid>
+</ui:UiWindow>

@@ -27,6 +27,7 @@ namespace ProgramLauncherDatabase.Pages
     public partial class AppDetailsPage : Wpf.Ui.Controls.UiPage
     {
         System.Drawing.Icon icn = null;
+        DispatcherTimer t;
 
         public AppDetailsPage()
         {
@@ -39,6 +40,7 @@ namespace ProgramLauncherDatabase.Pages
             timer.Interval = TimeSpan.FromMilliseconds(500);
             timer.Tick += timer_tick;
             timer.Start();
+            t = timer;
         }
 
         void SetAppEditValues()
@@ -123,6 +125,11 @@ namespace ProgramLauncherDatabase.Pages
         {
             DBRemover.RemoveAppFromDatabaseByID(AppIDBlock.Text);
             Config.GlobalFrame.Navigate(new AllAppsPage());
+        }
+
+        private void UiPage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            t.Stop();
         }
     }
 

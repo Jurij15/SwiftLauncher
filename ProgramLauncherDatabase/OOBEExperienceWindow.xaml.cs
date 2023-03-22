@@ -54,19 +54,10 @@ namespace ProgramLauncherDatabase
                 betterMainWindow.ShowActivated = true;
                 betterMainWindow.ShowInTaskbar = true;
             }
-            else if (!Settings.bIsFirstTimeUse())
+            else
             {
                 await PutTaskDelayWelcomeBack();
                 //Settings.SettingsValues.bShouldShowWelcomeBackWindow = false;
-                LScreen.EndInit();
-                this.Hide();
-                MainWindow betterMainWindow = new MainWindow();
-                betterMainWindow.Show();
-                betterMainWindow.ShowActivated = true;
-                betterMainWindow.ShowInTaskbar = true;
-            }
-            else
-            {
                 LScreen.EndInit();
                 this.Hide();
                 MainWindow betterMainWindow = new MainWindow();
