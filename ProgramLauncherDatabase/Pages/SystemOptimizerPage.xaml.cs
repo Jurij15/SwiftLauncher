@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SulfurLauncher.Pages
 {
     /// <summary>
-    /// Interaction logic for AppEditPage.xaml
+    /// Interaction logic for SystemOptimizerPage.xaml
     /// </summary>
-    public partial class AppEditPage : Page
+    public partial class SystemOptimizerPage : Wpf.Ui.Controls.UiPage
     {
-        public AppEditPage()
+        public SystemOptimizerPage()
         {
             InitializeComponent();
         }

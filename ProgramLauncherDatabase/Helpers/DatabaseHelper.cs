@@ -1,4 +1,4 @@
-﻿using ProgramLauncherDatabase.Database;
+﻿using SulfurLauncher.Database;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 
-namespace ProgramLauncherDatabase.Helpers
+namespace SulfurLauncher.Helpers
 {
     public class DatabaseHelper
     {

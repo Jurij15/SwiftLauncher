@@ -1,12 +1,13 @@
-﻿using ProgramLauncherDatabase.Helpers;
+﻿using SulfurLauncher.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
-namespace ProgramLauncherDatabase.Database
+namespace SulfurLauncher.Database
 {
     public class DBReader
     {
@@ -30,6 +31,31 @@ namespace ProgramLauncherDatabase.Database
             while (reader.Read())
             {
                 Config.AllAppsNamesList.Add(Convert.ToString(reader["AppName"]));
+            }
+        }
+
+        //games
+        public void AddAllGamesIDsToArray()
+        {
+            string Name = "Games";
+            string Command = "SELECT ID FROM App WHERE AppCategory =='" + Name + "';";
+            SQLiteCommand SelectCommand = new SQLiteCommand(Command, Config.ESQLiteConnection);
+            SQLiteDataReader reader = SelectCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                Config.AllGamesIDsList.Add(Convert.ToString(reader["ID"]));
+            }
+        }
+
+        public void AddAllGamesNamesToArray()
+        {
+            string Name = "Games";
+            string Command = "SELECT AppName FROM App WHERE AppCategory =='" + Name + "';";
+            SQLiteCommand SelectCommand = new SQLiteCommand(Command, Config.ESQLiteConnection);
+            SQLiteDataReader reader = SelectCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                Config.AllGamesNamesList.Add(Convert.ToString(reader["AppName"]));
             }
         }
 

@@ -14,17 +14,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml.Serialization;
 
 namespace SulfurLauncher.Pages
 {
     /// <summary>
-    /// Interaction logic for AllAppsPage.xaml
+    /// Interaction logic for GamesPage.xaml
     /// </summary>
-    public partial class AllAppsPage : Wpf.Ui.Controls.UiPage
+    public partial class GamesPage : Wpf.Ui.Controls.UiPage
     {
-        #region Cards and rows, columns
-        //this is my solution for adding in cards dynammically 
+        public GamesPage()
+        {
+            InitializeComponent();
+            DBReader reader = new DBReader();
+            FreeArrays();
+            reader.AddAllGamesIDsToArray();
+            reader.AddAllGamesNamesToArray();
+            AddCardsForEveryApp();
+        }
+
         void CreateCard(string AccountName, string AppCategory, string AppPath)
         {
             Wpf.Ui.Controls.CardAction NewCard = new Wpf.Ui.Controls.CardAction();
@@ -82,7 +89,6 @@ namespace SulfurLauncher.Pages
 
             RootWrapPanel.Children.Add(NewCard);
         }
-        #endregion
 
         string FigureOutAppName(Wpf.Ui.Controls.CardAction UiElement)
         {
@@ -105,7 +111,7 @@ namespace SulfurLauncher.Pages
         void AddCardsForEveryApp()
         {
             RootWrapPanel.Children.Clear();
-            foreach (var id in Config.AllAppsIDsList)
+            foreach (var id in Config.AllGamesIDsList)
             {
                 DBReader reader = new DBReader();
                 CreateCard(reader.GetAppNameByID(id), reader.GetAppCategotyByID(id), reader.GetAppExecutablePathByID(id));
@@ -114,18 +120,8 @@ namespace SulfurLauncher.Pages
 
         void FreeArrays()
         {
-            Config.AllAppsIDsList.Clear();
-            Config.AllAppsNamesList.Clear();
-        }
-
-        public AllAppsPage()
-        {
-            InitializeComponent();
-            DBReader reader = new DBReader();
-            FreeArrays();
-            reader.AddAllAppIDsToArray();
-            reader.AddAllAppNamesToArray();
-            AddCardsForEveryApp();
+            Config.AllGamesIDsList.Clear();
+            Config.AllGamesNamesList.Clear();
         }
 
         private void AddAppCard_Click(object sender, RoutedEventArgs e)
@@ -138,7 +134,7 @@ namespace SulfurLauncher.Pages
             DBReader reader = new DBReader();
             string AppName = FigureOutAppName((Wpf.Ui.Controls.CardAction)sender);
             string AppID = reader.GetAppIDByName(AppName);
-            
+
             //set app properties
             CurrentAppDefinitions.AppName = AppName;
             CurrentAppDefinitions.AppExecutablePath = reader.GetAppExecutablePathByID(AppID);

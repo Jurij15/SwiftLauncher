@@ -1,11 +1,11 @@
-﻿<ui:UiWindow x:Class="ProgramLauncherDatabase.MainWindow"
+﻿<ui:UiWindow x:Class="SulfurLauncher.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProgramLauncherDatabase"
+        xmlns:local="clr-namespace:SulfurLauncher"
         mc:Ignorable="d"
-        xmlns:page="clr-namespace:ProgramLauncherDatabase.Pages"
+        xmlns:page="clr-namespace:SulfurLauncher.Pages"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              
                           Background="Transparent"
@@ -58,12 +58,12 @@
                     Content="Games"
                     Icon="Games20"
                     Cache="False"
-                    PageType="{x:Type page:AboutPage}"/>
+                    PageType="{x:Type page:GamesPage}"/>
                 <ui:NavigationItem
-                    Content="System Booster"
+                    Content="System Optimizer"
                     Icon="TopSpeed20"
                     Cache="False"
-                    PageType="{x:Type page:AboutPage}"/>
+                    PageType="{x:Type page:SystemOptimizerPage}"/>
             </ui:NavigationCompact.Items>
             <ui:NavigationCompact.Footer>
                 <ui:NavigationItem

@@ -1,4 +1,4 @@
-﻿using ProgramLauncherDatabase.Database;
+﻿using SulfurLauncher.Database;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
@@ -19,7 +19,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Diagnostics;
 
-namespace ProgramLauncherDatabase.Pages
+namespace SulfurLauncher.Pages
 {
     /// <summary>
     /// Interaction logic for AppDetailsPage.xaml

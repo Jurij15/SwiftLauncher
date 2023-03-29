@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualBasic;
-using ProgramLauncherDatabase.Helpers;
+using SulfurLauncher.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
@@ -15,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ProgramLauncherDatabase
+namespace SulfurLauncher
 {
     /// <summary>
     /// Interaction logic for OOBEExperienceWindow.xaml

@@ -1,5 +1,5 @@
-﻿using ProgramLauncherDatabase.Database;
-using ProgramLauncherDatabase.Helpers;
+﻿using SulfurLauncher.Database;
+using SulfurLauncher.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProgramLauncherDatabase.Pages
+namespace SulfurLauncher.Pages
 {
     /// <summary>
     /// Interaction logic for AddAppPage.xaml

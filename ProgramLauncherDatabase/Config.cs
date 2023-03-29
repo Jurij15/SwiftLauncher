@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using Wpf.Ui.Controls;
 
-namespace ProgramLauncherDatabase
+namespace SulfurLauncher
 {
     public class Config
     {
@@ -20,6 +20,9 @@ namespace ProgramLauncherDatabase
 
         public static List<string> AllAppsIDsList = new List<string>();
         public static List<string> AllAppsNamesList = new List<string>();
+
+        public static List<string> AllGamesIDsList = new List<string>();
+        public static List<string> AllGamesNamesList = new List<string>();
 
         public static string CurrentlySelectedAppID = string.Empty;
 

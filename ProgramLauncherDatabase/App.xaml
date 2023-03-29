@@ -1,7 +1,7 @@
-﻿<Application x:Class="ProgramLauncherDatabase.App"
+﻿<Application x:Class="SulfurLauncher.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ProgramLauncherDatabase"
+             xmlns:local="clr-namespace:SulfurLauncher"
              StartupUri="OOBEExperienceWindow.xaml"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
     <Application.Resources>

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using ProgramLauncherDatabase.Database;
+using SulfurLauncher.Database;
 using System.Runtime.CompilerServices;
 
-namespace ProgramLauncherDatabase.Helpers
+namespace SulfurLauncher.Helpers
 {
     public class CommonAppsHelper
     {

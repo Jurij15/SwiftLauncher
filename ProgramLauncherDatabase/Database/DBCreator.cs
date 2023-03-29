@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgramLauncherDatabase.Database
+namespace SulfurLauncher.Database
 {
     public class DBCreator
     {

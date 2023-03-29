@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgramLauncherDatabase.Database
+namespace SulfurLauncher.Database
 {
     public class DBUpdater
     {

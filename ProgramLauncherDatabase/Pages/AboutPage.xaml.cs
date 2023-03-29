@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProgramLauncherDatabase.Pages
+namespace SulfurLauncher.Pages
 {
     /// <summary>
     /// Interaction logic for AboutPage.xaml
