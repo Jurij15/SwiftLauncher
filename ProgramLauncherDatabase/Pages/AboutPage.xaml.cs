@@ -26,5 +26,15 @@ namespace ProgramLauncherDatabase.Pages
 
             AppVerBox.Text = Config.VersionDouble.ToString();
         }
+
+        private void DarkTheme_Checked(object sender, RoutedEventArgs e)
+        {
+            Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Dark);
+        }
+
+        private void LightTheme_Checked(object sender, RoutedEventArgs e)
+        {
+            Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Light);
+        }
     }
 }

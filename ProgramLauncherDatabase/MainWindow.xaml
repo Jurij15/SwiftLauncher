@@ -49,21 +49,31 @@
                     PageType="{x:Type page:HomePage}"
                     />
                 <ui:NavigationItem
-                    Content="All Apps"
+                    Content="Apps"
                     Icon="AppFolder20"
                     Cache="False"
                     PageType="{x:Type page:AllAppsPage}"
                     />
+                <ui:NavigationItem
+                    Content="Games"
+                    Icon="Games20"
+                    Cache="False"
+                    PageType="{x:Type page:AboutPage}"/>
+                <ui:NavigationItem
+                    Content="System Booster"
+                    Icon="TopSpeed20"
+                    Cache="False"
+                    PageType="{x:Type page:AboutPage}"/>
             </ui:NavigationCompact.Items>
             <ui:NavigationCompact.Footer>
                 <ui:NavigationItem
-                    Content="About"
-                    Icon="ContactCard20"
-                    PageTag="AboutTab"
+                    Content="Settings"
+                    Icon="Settings20"
+                    PageTag="SettingsPage"
                     PageType="{x:Type page:AboutPage}"
                     />
-                <ui:NavigationSeparator/>
-                <ui:NavigationItem
+                <ui:NavigationSeparator Visibility="Collapsed"/>
+                <ui:NavigationItem Visibility="Collapsed"
                     x:Name="ThemeButtonNavigation"
                     Content="Theme"
                     Icon="DarkTheme20"

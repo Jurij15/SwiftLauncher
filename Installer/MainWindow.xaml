@@ -36,7 +36,7 @@
             </ui:InfoBar.Content>
         </ui:InfoBar>
 
-        <ui:InfoBar Title="Ready To Install" Message="Your system is compatible and ready to install!" Margin="12,12,12,12" Severity="Success" IsOpen="True" Grid.Row="2" IsClosable="False" x:Name="SupportedBar"/>
+        <ui:InfoBar Title="Ready To Install" Message="Your system is compatible and ready to install!" Margin="12,12,12,12" Severity="Success" IsOpen="False" Grid.Row="2" IsClosable="False" x:Name="SupportedBar"/>
 
         <TextBlock Text="Install Location" FontWeight="Medium" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,24,8,8" Visibility="Collapsed"/>
         <ui:TextBox PlaceholderText="Install Location" Margin="16,0,95,0" Grid.Row="3" x:Name="InstallLocBox"/>
