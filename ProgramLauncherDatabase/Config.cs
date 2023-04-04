@@ -17,6 +17,7 @@ namespace SulfurLauncher
 
         public static NavigationCompact GlobalNavigation;
         public static Frame GlobalFrame;
+        public static Dialog BulkAddDialog;
 
         public static List<string> AllAppsIDsList = new List<string>();
         public static List<string> AllAppsNamesList = new List<string>();
@@ -43,6 +44,12 @@ namespace SulfurLauncher
         {
             ESQLiteConnection.Close();
             bIsConnectedToDB = false;
+        }
+
+        public static void RestartApp()
+        {
+            System.Windows.Forms.Application.Restart();
+            System.Windows.Application.Current.Shutdown();
         }
         #endregion
     }

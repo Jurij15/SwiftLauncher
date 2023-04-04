@@ -24,6 +24,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -83,5 +85,18 @@
         <Border Grid.Column="1" Grid.Row="2" Background="{DynamicResource ControlFillColorDefaultBrush}" CornerRadius="8,0,0,0">
             <Frame x:Name="RootFrame" Grid.Row="2" Margin="0,0,0,0"/>
         </Border>
+        <ui:Dialog x:Name="BulkAddDialog" Grid.ColumnSpan="2" Grid.RowSpan="9"
+                   ButtonLeftAppearance="Primary"
+                   ButtonLeftClick="BulkAddDialog_ButtonLeftClick"
+                   ButtonLeftName="Add and restart"
+                   
+                   ButtonRightAppearance="Secondary"
+                   ButtonRightClick="BulkAddDialog_ButtonRightClick"
+                   ButtonRightName="Cancel"
+                   >
+            <StackPanel>
+                <TextBlock Text="Bulk Add" FontWeight="DemiBold" FontSize="20"/>
+            </StackPanel>
+        </ui:Dialog>
     </Grid>
 </ui:UiWindow>

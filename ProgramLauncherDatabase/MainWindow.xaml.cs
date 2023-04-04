@@ -1,6 +1,7 @@
 ﻿using SulfurLauncher.Database;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,7 @@ namespace SulfurLauncher
             Config.InitDBConnection();
             Config.GlobalNavigation = MainWindowNavStore;
             Config.GlobalFrame = RootFrame;
+            Config.BulkAddDialog = BulkAddDialog;
 
             Wpf.Ui.Appearance.Watcher.Watch(this, Wpf.Ui.Appearance.BackgroundType.Mica, true);
         }
@@ -46,6 +48,17 @@ namespace SulfurLauncher
         private void UiWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void BulkAddDialog_ButtonLeftClick(object sender, RoutedEventArgs e)
+        {
+            //add all apps before restarting
+            Config.RestartApp();
+        }
+
+        private void BulkAddDialog_ButtonRightClick(object sender, RoutedEventArgs e)
+        {
+            BulkAddDialog.Hide();
         }
     }
 }

@@ -22,7 +22,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <WrapPanel x:Name="RootWrapPanel" Grid.Row="5" Margin="8,2,8,2"/>
+        <ScrollViewer  Grid.Row="5" VerticalScrollBarVisibility="Visible">
+            <WrapPanel x:Name="RootWrapPanel" Margin="8,2,8,2"/>
+        </ScrollViewer>
         <ui:AutoSuggestBox PlaceholderEnabled="True" PlaceholderText="Search" Margin="8,8,8,4" Grid.Row="2"/>
         <ui:CardExpander x:Name="OptionsExpander" Margin="8,4,8,4" Grid.Row="3">
             <ui:CardExpander.Header>
@@ -31,12 +33,21 @@
                     <TextBlock Text="Aditional options for apps"/>
                 </StackPanel>
             </ui:CardExpander.Header>
-            <ui:CardAction x:Name="AddAppCard" Click="AddAppCard_Click">
-                <StackPanel>
-                    <TextBlock Text="Add new App" FontSize="14" FontWeight="DemiBold"/>
-                    <TextBlock Text="Add a new app to the database"/>
-                </StackPanel>
-            </ui:CardAction>
+            <StackPanel>
+                <ui:CardAction x:Name="AddAppCard" Click="AddAppCard_Click" Margin="4,4,4,4">
+                    <StackPanel>
+                        <TextBlock Text="Add new App" FontSize="14" FontWeight="DemiBold"/>
+                        <TextBlock Text="Add a new app to the database"/>
+                    </StackPanel>
+                </ui:CardAction>
+
+                <ui:CardAction x:Name="BulkAddApps" Click="BulkAddApps_Click" Margin="4,0,4,0">
+                    <StackPanel>
+                        <TextBlock Text="Bulk add apps" FontSize="14" FontWeight="DemiBold"/>
+                        <TextBlock Text="Add more apps at once to the database"/>
+                    </StackPanel>
+                </ui:CardAction>
+            </StackPanel>
         </ui:CardExpander>
     </Grid>
 </ui:UiPage>
