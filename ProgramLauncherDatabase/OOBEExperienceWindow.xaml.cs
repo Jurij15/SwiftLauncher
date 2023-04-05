@@ -77,7 +77,7 @@ namespace SulfurLauncher
             }
             else
             {
-                await PutTaskDelayWelcomeBack();
+                //await PutTaskDelayWelcomeBack();
                 //Settings.SettingsValues.bShouldShowWelcomeBackWindow = false;
                 LScreen.EndInit();
                 //this.Hide();
