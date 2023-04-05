@@ -25,7 +25,7 @@
             </Grid.RowDefinitions>
             <Border Margin="8,8,8,8" CornerRadius="8" Grid.Row="0">
                 <Border.Background>
-                    <ImageBrush ImageSource="/Pages/pexels-johannes-plenio-1110656.jpg"                     
+                    <ImageBrush ImageSource="/Pages/image2.jpg"                     
                                     RenderOptions.BitmapScalingMode="HighQuality"
                     Stretch="UniformToFill" />
                 </Border.Background>
@@ -38,7 +38,7 @@
                     </Border.Background>
                     <Grid>
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
-                            <TextBlock Text="Sulfur Launcher" FontWeight="Medium" FontSize="36" Margin="48,50,50,4" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
+                            <TextBlock Text="SwiftLauncher" FontWeight="Medium" FontSize="36" Margin="48,50,50,4" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
                             <TextBlock Text="A simple program launcher" FontSize="28" HorizontalAlignment="Left" Margin="48,4,50,50" VerticalAlignment="Center" Foreground="#B7FFFFFF"/>
                         </StackPanel>
                     </Grid>

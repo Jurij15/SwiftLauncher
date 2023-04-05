@@ -13,7 +13,7 @@
              WindowStartupLocation="CenterScreen"
              
              Closing="UiWindow_Closing" Initialized="UiWindow_Initialized"
-        Title="Sulfur Launcher" Height="611" Width="1005">
+        Title="SwiftLauncher" Height="611" Width="1005">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -30,7 +30,7 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ui:TitleBar Title="Sulfur Launcher" Background="Transparent" Grid.Row="1" Icon="../icons/ic_launcher.png"  MinimizeToTray="True" ShowHelp="True" HelpClicked="TitleBar_HelpClicked" MinimizeClicked="TitleBar_MinimizeClicked"    
+        <ui:TitleBar Title="SwiftLauncher" Background="Transparent" Grid.Row="1" Icon="../icons/ic_launcher.png"  MinimizeToTray="True" ShowHelp="True" HelpClicked="TitleBar_HelpClicked" MinimizeClicked="TitleBar_MinimizeClicked"    
             Grid.ColumnSpan="3">
             <ui:TitleBar.Tray>
                 <ui:NotifyIcon x:Name="TaskBarIcon" FocusOnLeftClick="False" MenuOnRightClick="True">

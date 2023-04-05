@@ -86,6 +86,7 @@ namespace SulfurLauncher
             QuickLauncherWindow test = new QuickLauncherWindow();
             this.Owner = null;
             test.Owner = null;
+            this.Hide();
             //MessageBox.Show("showing");
             test.Show();
         }

@@ -21,28 +21,38 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Settings" FontWeight="DemiBold" FontSize="34" Margin="14,14,14,14"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
 
-        <ui:Card Grid.Row="2" Margin="8,0,8,8">
-            <StackPanel>
-                <TextBlock Text="Personalization" FontSize="18" FontWeight="Medium"/>
-                <TextBlock Text="Theme" Margin="2,2,2,2"/>
-                <RadioButton x:Name="LightTheme" Margin="2,2,2,2" Content="Light" Checked="LightTheme_Checked"/>
-                <RadioButton x:Name="DarkTheme" Margin="2,2,2,2" Content="Dark" Checked="DarkTheme_Checked"/>
-            </StackPanel>
-        </ui:Card>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <TextBlock Text="Settings" FontWeight="DemiBold" FontSize="34" Margin="14,14,14,14"/>
 
-        <ui:Card x:Name="QuickLauncherSettingsCard" Grid.Row="3" Margin="8,0,8,0">
-            <StackPanel>
-                <TextBlock Text="Quick Launcher Custumization" FontSize="18" FontWeight="Medium"/>
-            </StackPanel>
-        </ui:Card>
-        
+            <ui:Card Grid.Row="2" Margin="8,0,8,8">
+                <StackPanel>
+                    <TextBlock Text="Personalization" FontSize="18" FontWeight="Medium"/>
+                    <TextBlock Text="Theme" Margin="2,2,2,2"/>
+                    <RadioButton x:Name="LightTheme" Margin="2,2,2,2" Content="Light" Checked="LightTheme_Checked"/>
+                    <RadioButton x:Name="DarkTheme" Margin="2,2,2,2" Content="Dark" Checked="DarkTheme_Checked"/>
+                </StackPanel>
+            </ui:Card>
+
+            <ui:Card x:Name="QuickLauncherSettingsCard" Grid.Row="3" Margin="8,0,8,0">
+                <StackPanel>
+                    <TextBlock Text="Quick Launcher Custumization" FontSize="18" FontWeight="Medium"/>
+                </StackPanel>
+            </ui:Card>
+        </StackPanel>
+
         <!--About Stuff-->
-        <TextBlock Text="About Sulfur Launcher" FontWeight="Medium" FontSize="24" Margin="8,8,8,0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="5"/>
-        <ui:InfoBar x:Name="UnderDevInfoBar" Title="Under Development" Message="This is a development build. Issues are expected." Severity="Informational" Grid.Row="4" Margin="8,8,8,8" IsOpen="True" IsClosable="False"/>
+        <StackPanel Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Margin="0,14,0,0">
+            <TextBlock Text="About SwiftLauncher" FontWeight="SemiBold" FontSize="21" Margin="8,8,8,0" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="5"/>
 
-        <TextBlock Text="App Version: " Grid.Row="6" HorizontalAlignment="Left" Margin="8,8,8,8" FontSize="18"/>
-        <TextBlock x:Name="AppVerBox" Grid.Row="6" Margin="120,8,8,8" FontSize="18" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" Margin="8,8,8,8">
+                <TextBlock Text="App Version: " Grid.Row="6" HorizontalAlignment="Left" Margin="0,8,8,8" FontSize="16"/>
+                <TextBlock x:Name="AppVerBox" Grid.Row="6" Margin="0,8,8,8" FontSize="16" FontWeight="Bold"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </ui:UiPage>

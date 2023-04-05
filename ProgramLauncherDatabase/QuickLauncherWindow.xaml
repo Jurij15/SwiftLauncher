@@ -8,9 +8,11 @@
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                                   Background="Transparent"
              ExtendsContentIntoTitleBar="True"
-             WindowBackdropType="Mica"
-             WindowStartupLocation="CenterScreen" Closing="UiWindow_Closing"
-        Title="QuickLauncherWindow" Height="450" Width="800">
+             WindowBackdropType="Tabbed"
+        WindowState="Normal"
+        Closing="UiWindow_Closing"
+             MaxHeight="77"
+        Title="QuickLauncherWindow" Height="77" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -19,7 +21,17 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ui:TitleBar x:Name="QuickTitleBar" Visibility="Visible" Title="TEst">
+        <ui:TitleBar x:Name="QuickTitleBar" Visibility="Collapsed" Title="TEst">
         </ui:TitleBar>
+        <WrapPanel x:Name="AppsPanel" HorizontalAlignment="Left" Orientation="Horizontal" Grid.Column="0" Grid.Row="4"/>
+        <Menu Margin="4,4,4,4" HorizontalAlignment="Right" Grid.Row="3">
+            <ui:MenuItem Margin="2,2,2,2">
+                <MenuItem.Header>
+                    <ui:SymbolIcon Symbol="MoreVertical28"/>
+                </MenuItem.Header>
+                <ui:MenuItem x:Name="ReturnBack" Header="Return to normal view" SymbolIcon="WindowNew20" Click="ReturnBack_Click"/>
+                <ui:MenuItem x:Name="ExitCompletely" Header="Quit" SymbolIcon="ArrowExit20" Click="ExitCompletely_Click"/>
+            </ui:MenuItem>
+        </Menu>
     </Grid>
 </ui:UiWindow>

@@ -10,7 +10,15 @@
 
   <ItemGroup>
     <None Remove="icons\ic_launcher.png" />
+    <None Remove="icons\image2.jpg" />
+    <None Remove="icons\image3.jpg" />
+    <None Remove="Pages\image2.jpg" />
+    <None Remove="Pages\image3.jpg" />
     <None Remove="Pages\pexels-johannes-plenio-1110656.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icons\image3.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +28,9 @@
 
   <ItemGroup>
     <Resource Include="icons\ic_launcher.png" />
+    <Resource Include="icons\image2.jpg" />
+    <Resource Include="Pages\image2.jpg" />
+    <Resource Include="Pages\image3.jpg" />
     <Resource Include="Pages\pexels-johannes-plenio-1110656.jpg" />
   </ItemGroup>
 

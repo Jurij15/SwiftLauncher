@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Diagnostics;
+using SulfurLauncher.Helpers;
 
 namespace SulfurLauncher.Pages
 {
@@ -35,12 +36,28 @@ namespace SulfurLauncher.Pages
 
             SetAppDetails();
             SetAppEditValues();
+            SetQuickLaunchCheck();
 
             DispatcherTimer timer = new DispatcherTimer();  
             timer.Interval = TimeSpan.FromMilliseconds(500);
             timer.Tick += timer_tick;
             timer.Start();
             t = timer;
+        }
+
+        void SetQuickLaunchCheck()
+        {
+            foreach (var id in Settings.GetAllQuickLaunchAppIDS())
+            {
+                if (id == AppIDBlock.Text)
+                {
+                    ShowInQuickLauncherCheck.IsChecked = true;
+                }
+                else
+                {
+                    ShowInQuickLauncherCheck.IsChecked = false;
+                }
+            }
         }
 
         void SetAppEditValues()
@@ -134,12 +151,12 @@ namespace SulfurLauncher.Pages
 
         private void ShowInQuickLauncherCheck_Checked(object sender, RoutedEventArgs e)
         {
-
+            Settings.AddNewQuickLaunchApp(AppIDBlock.Text);
         }
 
         private void ShowInQuickLauncherCheck_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            Settings.RemoveAppFromQuickLaunch(AppIDBlock.Text);
         }
     }
 
