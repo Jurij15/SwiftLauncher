@@ -26,5 +26,17 @@ namespace SulfurLauncher.Helpers
             Directory.CreateDirectory("Config/");
             File.Create(RecentAppsConfig);
         }
+
+        public static void FilterLaunchArguments()
+        {
+            string[] args = Environment.GetCommandLineArgs();
+            foreach (string arg in args)
+            {
+                if (arg == "-DoShowQuickLauncherOnly")
+                {
+                    //Config.bOnlyStartQuickLauncher = true;
+                }
+            }
+        }
     }
 }

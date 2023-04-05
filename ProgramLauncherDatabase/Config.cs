@@ -18,6 +18,7 @@ namespace SulfurLauncher
         public static NavigationCompact GlobalNavigation;
         public static Frame GlobalFrame;
         public static Dialog BulkAddDialog;
+        public static UiWindow MainWindow;
 
         public static List<string> AllAppsIDsList = new List<string>();
         public static List<string> AllAppsNamesList = new List<string>();
@@ -30,6 +31,7 @@ namespace SulfurLauncher
         public static bool bShouldRefreshAllContacts = false;
 
         public static string CurrentID = string.Empty;
+        public static bool bOnlyStartQuickLauncher = false;
 
         public static double VersionDouble = 0.5;
 

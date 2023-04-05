@@ -22,6 +22,7 @@ namespace SulfurLauncher
     /// </summary>
     public partial class OOBEExperienceWindow : Wpf.Ui.Controls.UiWindow
     {
+        public bool bDroppedOOBE = false;
         async Task PutTaskDelayWelcomeFirstTime()
         {
             await Task.Delay(2500);
@@ -49,22 +50,62 @@ namespace SulfurLauncher
                 //RestartApp();
                 LScreen.EndInit();
                 this.Hide();
+                //this.Close();
                 MainWindow betterMainWindow = new MainWindow();
                 betterMainWindow.Show();
                 betterMainWindow.ShowActivated = true;
                 betterMainWindow.ShowInTaskbar = true;
+
+                this.Visibility = Visibility.Hidden;
+                bDroppedOOBE = true;
+            }
+            else if (Config.bOnlyStartQuickLauncher) ///this will be read from a config file
+            {
+                LScreen.EndInit();
+                //this.Hide();
+                MainWindow betterMainWindow = new MainWindow();
+                betterMainWindow.Show();
+                betterMainWindow.ShowActivated = true;
+                betterMainWindow.ShowInTaskbar = true;
+
+                betterMainWindow.Hide();
+                QuickLauncherWindow quickLauncherWindow = new QuickLauncherWindow();
+                quickLauncherWindow.Show();
+                this.Hide();
+
+                bDroppedOOBE = true;
             }
             else
             {
                 await PutTaskDelayWelcomeBack();
                 //Settings.SettingsValues.bShouldShowWelcomeBackWindow = false;
                 LScreen.EndInit();
-                this.Hide();
+                //this.Hide();
                 MainWindow betterMainWindow = new MainWindow();
+                betterMainWindow.Owner = null;
                 betterMainWindow.Show();
                 betterMainWindow.ShowActivated = true;
                 betterMainWindow.ShowInTaskbar = true;
+
+                this.Hide();
+
+                bDroppedOOBE = true;
+                //this.Close();
             }
+        }
+
+        private void UiWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (bDroppedOOBE)
+            {
+                this.Hide();
+                this.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void UiWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //Application.Current.Shutdown();
         }
     }
 }

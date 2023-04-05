@@ -7,13 +7,12 @@
         mc:Ignorable="d"
         xmlns:page="clr-namespace:SulfurLauncher.Pages"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-             
                           Background="Transparent"
              ExtendsContentIntoTitleBar="True"
              WindowBackdropType="Mica"
              WindowStartupLocation="CenterScreen"
              
-             Closing="UiWindow_Closing"
+             Closing="UiWindow_Closing" Initialized="UiWindow_Initialized"
         Title="Sulfur Launcher" Height="611" Width="1005">
     <Grid>
         <Grid.RowDefinitions>
@@ -31,8 +30,19 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ui:TitleBar Title="Sulfur Launcher" Background="Transparent" Grid.Row="1" Icon="../icons/ic_launcher.png"             
-            Grid.ColumnSpan="3"/>
+        <ui:TitleBar Title="Sulfur Launcher" Background="Transparent" Grid.Row="1" Icon="../icons/ic_launcher.png"  MinimizeToTray="True" ShowHelp="True" HelpClicked="TitleBar_HelpClicked"      
+            Grid.ColumnSpan="3">
+            <ui:TitleBar.Tray>
+                <ui:NotifyIcon x:Name="TaskBarIcon" FocusOnLeftClick="False" MenuOnRightClick="True">
+                    <ui:NotifyIcon.Menu>
+                        <ContextMenu>
+                            <ui:MenuItem Header="Show QuickLauncher" SymbolIcon="ResizeSmall20" x:Name="ShowQuickLauncherMenuItem"/>
+                            <ui:MenuItem Header="Show MainWindow" SymbolIcon="ResizeLarge20" x:Name="ShowMainWindowMenuItem"/>
+                        </ContextMenu>
+                    </ui:NotifyIcon.Menu>
+                </ui:NotifyIcon>
+            </ui:TitleBar.Tray>
+        </ui:TitleBar>
         <ui:NavigationCompact
             x:Name="MainWindowNavStore"
             Grid.Row="2"

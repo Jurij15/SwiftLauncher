@@ -77,7 +77,7 @@ namespace SulfurLauncher.Pages
             DirectLaunchBtn.VerticalAlignment = VerticalAlignment.Bottom;
             DirectLaunchBtn.HorizontalAlignment = HorizontalAlignment.Center;
             DirectLaunchBtn.Click += DirectLaunch_Click;
-            DirectLaunchBtn.Margin = new Thickness(4, 4, 4, 4);
+            DirectLaunchBtn.Margin = new Thickness(4, 4, 4, 0);
 
             cardHeaderPanel.Children.Add(img);
             cardHeaderPanel.Children.Add(icon);
@@ -95,6 +95,7 @@ namespace SulfurLauncher.Pages
             //NewCard.Height = 120;
             //NewCard.Width = 120;
 
+            //RootWrapPanel.Children.Add(NewCard);
             RootWrapPanel.Children.Add(NewCard);
         }
         #endregion

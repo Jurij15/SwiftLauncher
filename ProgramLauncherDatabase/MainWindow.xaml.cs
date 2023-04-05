@@ -1,4 +1,5 @@
 ﻿using SulfurLauncher.Database;
+using SulfurLauncher.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -21,15 +22,19 @@ namespace SulfurLauncher
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Wpf.Ui.Controls.UiWindow
-    { 
+    {
         public MainWindow()
         {
             InitializeComponent();
+
+            //OnStartup();
+
             Config.InitDBConnection();
             Config.GlobalNavigation = MainWindowNavStore;
             Config.GlobalFrame = RootFrame;
             Config.BulkAddDialog = BulkAddDialog;
-
+            Config.MainWindow = this;
+            MessageBox.Show("here");
             Wpf.Ui.Appearance.Watcher.Watch(this, Wpf.Ui.Appearance.BackgroundType.Mica, true);
         }
 
@@ -59,6 +64,26 @@ namespace SulfurLauncher
         private void BulkAddDialog_ButtonRightClick(object sender, RoutedEventArgs e)
         {
             BulkAddDialog.Hide();
+        }
+
+        private void UiWindow_Initialized(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TitleBar_HelpClicked(object sender, RoutedEventArgs e)
+        {
+            QuickLauncherWindow test = new QuickLauncherWindow();
+            this.Owner = null;
+            test.Owner = null;
+            //MessageBox.Show("showing");
+            test.Show();
+            this.Hide();
+        }
+
+        public void ChangeNotifyWindowState()
+        {
+
         }
     }
 }

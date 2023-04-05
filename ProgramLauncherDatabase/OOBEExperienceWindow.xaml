@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SulfurLauncher"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
-             
+             IsVisibleChanged="UiWindow_IsVisibleChanged" IsEnabled="False" Closing="UiWindow_Closing"
                                        Background="Transparent"
              ExtendsContentIntoTitleBar="True"
              WindowBackdropType="Mica"
