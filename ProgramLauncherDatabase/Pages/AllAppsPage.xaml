@@ -10,7 +10,7 @@
       Title="AllAppsPage">
 
     <ScrollViewer>
-        <Grid>
+        <Grid Margin="12,2,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -23,6 +23,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
+            <TextBlock Margin="8,8,8,8" Grid.Row="1" Text="All Apps" FontSize="28" FontWeight="DemiBold"/>
             <ScrollViewer  Grid.Row="5">
                 <WrapPanel x:Name="RootWrapPanel" Margin="8,2,8,2"/>
             </ScrollViewer>

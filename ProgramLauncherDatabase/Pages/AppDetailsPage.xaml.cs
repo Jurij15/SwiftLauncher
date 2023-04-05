@@ -131,6 +131,16 @@ namespace SulfurLauncher.Pages
         {
             t.Stop();
         }
+
+        private void ShowInQuickLauncherCheck_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ShowInQuickLauncherCheck_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
     public static class CurrentAppDefinitions

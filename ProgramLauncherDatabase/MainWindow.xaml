@@ -30,7 +30,7 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ui:TitleBar Title="Sulfur Launcher" Background="Transparent" Grid.Row="1" Icon="../icons/ic_launcher.png"  MinimizeToTray="True" ShowHelp="True" HelpClicked="TitleBar_HelpClicked"      
+        <ui:TitleBar Title="Sulfur Launcher" Background="Transparent" Grid.Row="1" Icon="../icons/ic_launcher.png"  MinimizeToTray="True" ShowHelp="True" HelpClicked="TitleBar_HelpClicked" MinimizeClicked="TitleBar_MinimizeClicked"    
             Grid.ColumnSpan="3">
             <ui:TitleBar.Tray>
                 <ui:NotifyIcon x:Name="TaskBarIcon" FocusOnLeftClick="False" MenuOnRightClick="True">

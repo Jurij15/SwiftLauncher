@@ -34,7 +34,7 @@ namespace SulfurLauncher
             Config.GlobalFrame = RootFrame;
             Config.BulkAddDialog = BulkAddDialog;
             Config.MainWindow = this;
-            MessageBox.Show("here");
+
             Wpf.Ui.Appearance.Watcher.Watch(this, Wpf.Ui.Appearance.BackgroundType.Mica, true);
         }
 
@@ -68,7 +68,7 @@ namespace SulfurLauncher
 
         private void UiWindow_Initialized(object sender, EventArgs e)
         {
-
+            //MessageBox.Show("here");
         }
 
         private void TitleBar_HelpClicked(object sender, RoutedEventArgs e)
@@ -81,9 +81,13 @@ namespace SulfurLauncher
             this.Hide();
         }
 
-        public void ChangeNotifyWindowState()
+        private void TitleBar_MinimizeClicked(object sender, RoutedEventArgs e)
         {
-
+            QuickLauncherWindow test = new QuickLauncherWindow();
+            this.Owner = null;
+            test.Owner = null;
+            //MessageBox.Show("showing");
+            test.Show();
         }
     }
 }

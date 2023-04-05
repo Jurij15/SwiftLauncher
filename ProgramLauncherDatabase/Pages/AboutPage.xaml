@@ -21,12 +21,20 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ui:Card Grid.Row="1" Margin="8,8,8,8">
+        <TextBlock Text="Settings" FontWeight="DemiBold" FontSize="34" Margin="14,14,14,14"/>
+
+        <ui:Card Grid.Row="2" Margin="8,0,8,8">
             <StackPanel>
                 <TextBlock Text="Personalization" FontSize="18" FontWeight="Medium"/>
                 <TextBlock Text="Theme" Margin="2,2,2,2"/>
                 <RadioButton x:Name="LightTheme" Margin="2,2,2,2" Content="Light" Checked="LightTheme_Checked"/>
                 <RadioButton x:Name="DarkTheme" Margin="2,2,2,2" Content="Dark" Checked="DarkTheme_Checked"/>
+            </StackPanel>
+        </ui:Card>
+
+        <ui:Card x:Name="QuickLauncherSettingsCard" Grid.Row="3" Margin="8,0,8,0">
+            <StackPanel>
+                <TextBlock Text="Quick Launcher Custumization" FontSize="18" FontWeight="Medium"/>
             </StackPanel>
         </ui:Card>
         

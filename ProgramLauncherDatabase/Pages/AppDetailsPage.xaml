@@ -128,8 +128,9 @@
                     </ui:CardExpander>
                 </Grid>
             </ScrollViewer>
-            <StackPanel Grid.Row="4" Margin="4,4,4,4">
+            <StackPanel Grid.Row="4" Margin="4,4,4,4" Orientation="Horizontal">
                 <ui:Button x:Name="BackBtn" Content="Back" Appearance="Transparent" Icon="ArrowLeft24" Click="BackBtn_Click"/>
+                <CheckBox x:Name="ShowInQuickLauncherCheck" Checked="ShowInQuickLauncherCheck_Checked" Unchecked="ShowInQuickLauncherCheck_Unchecked" Content="Show in Quick Launcher" Margin="4,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </StackPanel>
         </Grid>
     </Grid>
