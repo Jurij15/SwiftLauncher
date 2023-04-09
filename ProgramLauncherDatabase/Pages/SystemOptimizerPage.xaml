@@ -26,12 +26,39 @@
 
         <ui:Card Grid.Row="1" Margin="4,4,4,4">
             <Grid>
-                <TextBlock Text="LastTimeCleanDate" x:Name="LastTimeCleanDateBlock" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,8,8" FontSize="22"/>
-                <ui:Button Appearance="Primary" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Clean Now"/>
+                <TextBlock Text="0 Things to optimize" x:Name="ThingsToOptimize" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,8,8" FontSize="22"/>
+                <ui:Button Appearance="Primary" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Optimize Now"/>
             </Grid>
         </ui:Card>
         <ScrollViewer Grid.Row="2">
-
+            <StackPanel>
+                <ui:CardExpander x:Name="FileOptimizations" Margin="4,2,4,2">
+                    <ui:CardExpander.Header>
+                        <StackPanel>
+                            <TextBlock Text="Common optimizations" FontWeight="Medium"/>
+                        </StackPanel>
+                    </ui:CardExpander.Header>
+                    <StackPanel>
+                        <ui:CardControl Header="Empty Recycle bin" Margin="2,2,2,2">
+                            <ToggleButton x:Name="EmptyRecycleBinCheck">
+                                <ui:SymbolIcon Symbol="Checkmark20"/>
+                            </ToggleButton>
+                        </ui:CardControl>
+                    </StackPanel>
+                </ui:CardExpander>
+                <ui:CardExpander x:Name="ChromeExpander" Margin="4,2,4,2">
+                    <ui:CardExpander.Header>
+                        <StackPanel>
+                            <TextBlock Text="Chrome optimizations" FontWeight="Medium"/>
+                        </StackPanel>
+                    </ui:CardExpander.Header>
+                    <ui:CardControl Header="Install uBlockOrigin">
+                        <ToggleButton x:Name="InstallublockOriginCheck">
+                            <ui:SymbolIcon Symbol="Checkmark20"/>
+                        </ToggleButton>
+                    </ui:CardControl>
+                </ui:CardExpander>
+            </StackPanel>
         </ScrollViewer>
     </Grid>
 </ui:UiPage>
