@@ -7,6 +7,9 @@
       mc:Ignorable="d" 
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
            Unloaded="UiPage_Unloaded"
+          ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+    ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       d:DesignHeight="450" d:DesignWidth="800"
            Background="{DynamicResource ApplicationBackgroundBrush}"
       Title="AppDetailsPage">

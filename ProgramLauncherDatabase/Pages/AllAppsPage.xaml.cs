@@ -146,7 +146,7 @@ namespace SulfurLauncher.Pages
 
         private void AddAppCard_Click(object sender, RoutedEventArgs e)
         {
-            Config.GlobalFrame.Navigate(new AddAppPage());
+            Config.GlobalNavigation.Navigate(typeof(AllAppsPage));
         }
 
         private void CardClicked_Handler(object sender, RoutedEventArgs e)
@@ -168,7 +168,7 @@ namespace SulfurLauncher.Pages
             CurrentAppDefinitions.AppCategory = reader.GetAppCategotyByID(AppID);
             CurrentAppDefinitions.AppLaunchArguents = reader.GetAppLaunchArgumentsByID(AppID);
 
-            Config.GlobalFrame.Navigate(new AppDetailsPage());
+            Config.GlobalNavigation.Navigate(typeof(AppDetailsPage));
         }
 
         private void DirectLaunch_Click(object sender, RoutedEventArgs e)

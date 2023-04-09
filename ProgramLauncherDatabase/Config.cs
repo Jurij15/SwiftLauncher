@@ -18,9 +18,10 @@ namespace SulfurLauncher
         public static string SQLiteConnectionPath = "Data Source=LauncherDatabase.db;Version=3;";
 
         public static NavigationView GlobalNavigation;
-        public static Frame GlobalFrame;
+        //public static Frame GlobalFrame;
         public static Dialog BulkAddDialog;
         public static FluentWindow MainWindow;
+        public static string NavHeaderText { get; set; }
 
         public static List<string> AllAppsIDsList = new List<string>();
         public static List<string> AllAppsNamesList = new List<string>();

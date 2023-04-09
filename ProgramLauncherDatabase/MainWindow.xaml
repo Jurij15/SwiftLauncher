@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SulfurLauncher"
         mc:Ignorable="d"
+                 xmlns:navigation="clr-namespace:Wpf.Ui.Controls.Navigation"
                  Closing="FluentWindow_Closing"
         xmlns:page="clr-namespace:SulfurLauncher.Pages"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
@@ -16,7 +17,7 @@
     WindowCornerPreference="Round"
                  Loaded="FluentWindow_Loaded"
     WindowStartupLocation="CenterScreen"
-        Title="SwiftLauncher" Height="650" Width="996">
+        Title="SwiftLauncher" Height="702" Width="1271">
     <Grid Margin="0,0,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -32,9 +33,10 @@
             PaneClosed="MainWindowNavStore_PaneClosed"
             OpenPaneLength="150"
             TabIndex="1"
-            PaneDisplayMode="LeftFluent"
             
-            
+            PaneDisplayMode="LeftMinimal"
+            AlwaysShowHeader="False"
+            SelectionChanged="MainWindowNavStore_SelectionChanged"
             >
             <ui:NavigationView.MenuItems>
                 <ui:NavigationViewItem
@@ -62,6 +64,12 @@
                 <ui:NavigationViewItem Visibility="Collapsed"
                     Content="System Optimizer"
                     TargetPageType="{x:Type page:SystemOptimizerPage}"/>
+                <ui:NavigationViewItem Visibility="Hidden"
+                    Content="System Optimizer"
+                    TargetPageType="{x:Type page:AddAppPage}"/>
+                <ui:NavigationViewItem Visibility="Hidden"
+                    Content="System Optimizer"
+                    TargetPageType="{x:Type page:AppDetailsPage}"/>
             </ui:NavigationView.MenuItems>
             <ui:NavigationView.FooterMenuItems>
                 <ui:NavigationViewItem

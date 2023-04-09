@@ -149,8 +149,8 @@ namespace SulfurLauncher
                 img.Visibility = Visibility.Visible;
                 img.Source = Imaging.CreateBitmapSourceFromHIcon(icn.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
 
-                img.Height = 30;
-                img.Width = 50;
+                img.Height = 70;
+                img.Width = 90;
 
                 RenderOptions.SetBitmapScalingMode(img, BitmapScalingMode.Fant);
             }

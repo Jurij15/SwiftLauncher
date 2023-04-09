@@ -6,6 +6,9 @@
       xmlns:local="clr-namespace:SulfurLauncher.Pages"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       mc:Ignorable="d" 
+          ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+    ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       d:DesignHeight="550" d:DesignWidth="850"
       Title="AddAppPage">
 

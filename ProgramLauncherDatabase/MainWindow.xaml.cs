@@ -36,7 +36,7 @@ namespace SulfurLauncher
             Config.BulkAddDialog = BulkAddDialog;
             Config.MainWindow = this;
 
-            Wpf.Ui.Appearance.Watcher.Watch(this, Wpf.Ui.Controls.Window.WindowBackdropType.Mica, true);
+            Wpf.Ui.Appearance.Watcher.Watch(this);
 
             Settings.FilterLaunchArguments();
 
@@ -108,6 +108,8 @@ namespace SulfurLauncher
                 //MessageBox.Show("showing");
                 test.Show();
             }
+
+
         }
 
         private void MainWindowNavStore_PaneClosed(object sender, RoutedEventArgs e)
@@ -136,6 +138,16 @@ namespace SulfurLauncher
         private void FluentWindow_Loaded(object sender, RoutedEventArgs e)
         {
             MainWindowNavStore.Navigate(typeof(HomePage));
+        }
+
+        private void MainWindowNavStore_PaneOpened(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("open pane");
+        }
+
+        private void MainWindowNavStore_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

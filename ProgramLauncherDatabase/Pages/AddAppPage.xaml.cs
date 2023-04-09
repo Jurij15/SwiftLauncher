@@ -39,11 +39,12 @@ namespace SulfurLauncher.Pages
             await creator.CreateAppAsync(AppName, AppPath, AppCategory, AppNotes, AppLaunchArguments);
             CreatingPanel.Visibility = Visibility.Collapsed;
 
-            Config.GlobalFrame.Navigate(new AllAppsPage());
+            Config.GlobalNavigation.Navigate(typeof(AllAppsPage));
         }
         public AddAppPage()
         {
             InitializeComponent();
+            backBtn.Visibility = Visibility.Collapsed;
         }
 
         private void AddAppBtn_Click(object sender, RoutedEventArgs e)

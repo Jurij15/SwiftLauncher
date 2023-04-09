@@ -5,6 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SulfurLauncher.Pages"
       mc:Ignorable="d" 
+          ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+    ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HomePage">
@@ -45,9 +48,9 @@
                 </Border>
             </Border>
             <TextBlock Text="Quick Launch" Margin="8,8,8,8" FontWeight="Medium" FontSize="14" Grid.Row="2"/>
-            <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="8,8,8,8">
+            <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="8,8,8,8" x:Name="AppsPanel">
                 <!--Max of 5 apps here-->
-                <ui:CardAction x:Name="TemplateCard1" Click="TemplateCard1_Click">
+                <ui:CardAction x:Name="TemplateCard1" Click="TemplateCard1_Click" Visibility="Collapsed">
                     <StackPanel Orientation="Vertical">
                         <ui:SymbolIcon Symbol="AppRecent24"/>
                         <TextBlock Text="App Name" FontSize="14"/>
