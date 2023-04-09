@@ -33,7 +33,7 @@ namespace SulfurLauncher
         public static string CurrentID = string.Empty;
         public static bool bOnlyStartQuickLauncher = false;
 
-        public static double VersionDouble = 0.5;
+        public static double VersionDouble = 0.6;
 
         #region Funcs
         public static void InitDBConnection()

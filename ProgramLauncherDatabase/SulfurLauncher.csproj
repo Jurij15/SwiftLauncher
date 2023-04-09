@@ -6,7 +6,16 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>True</UseWindowsForms>
+    <ApplicationIcon>icons\1024.ico</ApplicationIcon>
+    <PackageIcon>1024.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Builds\**" />
+    <EmbeddedResource Remove="Builds\**" />
+    <None Remove="Builds\**" />
+    <Page Remove="Builds\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Remove="icons\ic_launcher.png" />
@@ -15,6 +24,10 @@
     <None Remove="Pages\image2.jpg" />
     <None Remove="Pages\image3.jpg" />
     <None Remove="Pages\pexels-johannes-plenio-1110656.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icons\1024.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +48,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="icons\1024.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Update="LauncherDatabase.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
