@@ -1,5 +1,6 @@
 ﻿using SulfurLauncher.Database;
 using SulfurLauncher.Helpers;
+using SulfurLauncher.Pages;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -21,7 +22,7 @@ namespace SulfurLauncher
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Wpf.Ui.Controls.UiWindow
+    public partial class MainWindow : Wpf.Ui.Controls.Window.FluentWindow
     {
         public MainWindow()
         {
@@ -31,11 +32,11 @@ namespace SulfurLauncher
 
             Config.InitDBConnection();
             Config.GlobalNavigation = MainWindowNavStore;
-            Config.GlobalFrame = RootFrame;
+            //Config.GlobalFrame = RootFrame;
             Config.BulkAddDialog = BulkAddDialog;
             Config.MainWindow = this;
 
-            Wpf.Ui.Appearance.Watcher.Watch(this, Wpf.Ui.Appearance.BackgroundType.Mica, true);
+            Wpf.Ui.Appearance.Watcher.Watch(this);
 
             Settings.FilterLaunchArguments();
 
@@ -84,6 +85,7 @@ namespace SulfurLauncher
         {
             QuickLauncherWindow test = new QuickLauncherWindow(Settings.GetPosition());
             this.Owner = null;
+            Config.bIsQuickLauncherVisible = true;
             test.Owner = null;
             test.ShowInTaskbar = false;
             MWindowTitleBar.MinimizeToTray = true;
@@ -97,6 +99,7 @@ namespace SulfurLauncher
             if (Config.bOnlyStartQuickLauncher)
             {
                 QuickLauncherWindow test = new QuickLauncherWindow(Settings.GetPosition());
+                Config.bIsQuickLauncherVisible = true;
                 this.Owner = null;
                 test.Owner = null;
                 test.ShowInTaskbar = false;
@@ -105,6 +108,46 @@ namespace SulfurLauncher
                 //MessageBox.Show("showing");
                 test.Show();
             }
+
+
+        }
+
+        private void MainWindowNavStore_PaneClosed(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("closed pane");
+        }
+
+        private void FluentWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (Config.bIsQuickLauncherVisible)
+            {
+                e.Cancel = true;
+                return;
+            }
+            else
+            {
+                Application.Current.Shutdown();
+            }
+        }
+
+        private void MWindowTitleBar_CloseClicked(object sender, RoutedEventArgs e)
+        {
+            FluentWindow_Closing(null, null);
+        }
+
+        private void FluentWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainWindowNavStore.Navigate(typeof(HomePage));
+        }
+
+        private void MainWindowNavStore_PaneOpened(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("open pane");
+        }
+
+        private void MainWindowNavStore_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

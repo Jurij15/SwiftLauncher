@@ -169,7 +169,7 @@ namespace SulfurLauncher
 
             NewCard.Click += CardClicked_Handler;
 
-            NewCard.Margin = new Thickness(2,6,2,0);
+            NewCard.Margin = new Thickness(2,2,2,2);
             NewCard.IsChevronVisible = false;
 
             //NewCard.Height = 120;
@@ -190,6 +190,8 @@ namespace SulfurLauncher
             var preference = DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_ROUND;
 
             DwmSetWindowAttribute(hWnd, attribute, ref preference, sizeof(uint)); //rounded corners
+
+            //MessageBox.Show(AppsPanel.Width + QuickMenu.Width.ToString());
 
             if (Position == "TOP")
             {

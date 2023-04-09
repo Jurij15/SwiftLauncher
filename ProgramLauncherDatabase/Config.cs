@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Wpf.Ui.Controls;
+using Wpf.Ui.Controls.Navigation;
+using Wpf.Ui.Controls.Window;
 
 namespace SulfurLauncher
 {
@@ -15,10 +17,11 @@ namespace SulfurLauncher
         public static bool bIsConnectedToDB = false;
         public static string SQLiteConnectionPath = "Data Source=LauncherDatabase.db;Version=3;";
 
-        public static NavigationCompact GlobalNavigation;
-        public static Frame GlobalFrame;
+        public static NavigationView GlobalNavigation;
+        //public static Frame GlobalFrame;
         public static Dialog BulkAddDialog;
-        public static UiWindow MainWindow;
+        public static FluentWindow MainWindow;
+        public static string NavHeaderText { get; set; }
 
         public static List<string> AllAppsIDsList = new List<string>();
         public static List<string> AllAppsNamesList = new List<string>();
@@ -29,6 +32,8 @@ namespace SulfurLauncher
         public static string CurrentlySelectedAppID = string.Empty;
 
         public static bool bShouldRefreshAllContacts = false;
+
+        public static bool bIsQuickLauncherVisible { get; set; }
 
         public static string CurrentID = string.Empty;
         public static bool bOnlyStartQuickLauncher = false;

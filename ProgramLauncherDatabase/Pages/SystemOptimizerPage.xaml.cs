@@ -18,7 +18,7 @@ namespace SulfurLauncher.Pages
     /// <summary>
     /// Interaction logic for SystemOptimizerPage.xaml
     /// </summary>
-    public partial class SystemOptimizerPage : Wpf.Ui.Controls.UiPage
+    public partial class SystemOptimizerPage : Page
     {
         public SystemOptimizerPage()
         {

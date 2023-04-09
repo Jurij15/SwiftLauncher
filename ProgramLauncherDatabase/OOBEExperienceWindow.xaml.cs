@@ -20,7 +20,7 @@ namespace SulfurLauncher
     /// <summary>
     /// Interaction logic for OOBEExperienceWindow.xaml
     /// </summary>
-    public partial class OOBEExperienceWindow : Wpf.Ui.Controls.UiWindow
+    public partial class OOBEExperienceWindow : Wpf.Ui.Controls.Window.FluentWindow
     {
         public bool bDroppedOOBE = false;
         async Task PutTaskDelayWelcomeFirstTime()

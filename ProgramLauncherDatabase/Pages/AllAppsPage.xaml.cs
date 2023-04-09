@@ -24,7 +24,7 @@ namespace SulfurLauncher.Pages
     /// <summary>
     /// Interaction logic for AllAppsPage.xaml
     /// </summary>
-    public partial class AllAppsPage : Wpf.Ui.Controls.UiPage
+    public partial class AllAppsPage : Page
     {
         bool bShowAppDetails = true;
         #region Cards and rows, columns
@@ -71,7 +71,7 @@ namespace SulfurLauncher.Pages
             CategoryBox.Text = AppCategory;
             CategoryBox.FontSize = 12;
 
-            DirectLaunchBtn.Appearance = Wpf.Ui.Common.ControlAppearance.Primary;
+            DirectLaunchBtn.Appearance = Wpf.Ui.Controls.ControlAppearance.Primary;
             DirectLaunchBtn.Content = "Launch";
             DirectLaunchBtn.Name = StringsHelper.ReplaceDisallowedChars(AccountName);
             DirectLaunchBtn.VerticalAlignment = VerticalAlignment.Bottom;
@@ -146,7 +146,7 @@ namespace SulfurLauncher.Pages
 
         private void AddAppCard_Click(object sender, RoutedEventArgs e)
         {
-            Config.GlobalFrame.Navigate(new AddAppPage());
+            Config.GlobalNavigation.Navigate(typeof(AllAppsPage));
         }
 
         private void CardClicked_Handler(object sender, RoutedEventArgs e)
@@ -168,7 +168,7 @@ namespace SulfurLauncher.Pages
             CurrentAppDefinitions.AppCategory = reader.GetAppCategotyByID(AppID);
             CurrentAppDefinitions.AppLaunchArguents = reader.GetAppLaunchArgumentsByID(AppID);
 
-            Config.GlobalFrame.Navigate(new AppDetailsPage());
+            Config.GlobalNavigation.Navigate(typeof(AppDetailsPage));
         }
 
         private void DirectLaunch_Click(object sender, RoutedEventArgs e)

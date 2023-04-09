@@ -20,7 +20,7 @@ namespace SulfurLauncher.Pages
     /// <summary>
     /// Interaction logic for AddAppPage.xaml
     /// </summary>
-    public partial class AddAppPage : Wpf.Ui.Controls.UiPage
+    public partial class AddAppPage : Page
     {
         async void AddAppToDB()
         {
@@ -39,11 +39,12 @@ namespace SulfurLauncher.Pages
             await creator.CreateAppAsync(AppName, AppPath, AppCategory, AppNotes, AppLaunchArguments);
             CreatingPanel.Visibility = Visibility.Collapsed;
 
-            Config.GlobalFrame.Navigate(new AllAppsPage());
+            Config.GlobalNavigation.Navigate(typeof(AllAppsPage));
         }
         public AddAppPage()
         {
             InitializeComponent();
+            backBtn.Visibility = Visibility.Collapsed;
         }
 
         private void AddAppBtn_Click(object sender, RoutedEventArgs e)
@@ -64,7 +65,7 @@ namespace SulfurLauncher.Pages
 
         private void backBtn_Click(object sender, RoutedEventArgs e)
         {
-            Config.GlobalNavigation.NavigateBack();
+            //Config.GlobalNavigation.NavigateBack();
         }
     }
 }
