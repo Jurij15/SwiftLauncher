@@ -169,7 +169,7 @@ namespace SulfurLauncher
 
             NewCard.Click += CardClicked_Handler;
 
-            NewCard.Margin = new Thickness(4,4,4,4);
+            NewCard.Margin = new Thickness(2,6,2,0);
             NewCard.IsChevronVisible = false;
 
             //NewCard.Height = 120;

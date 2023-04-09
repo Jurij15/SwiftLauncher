@@ -30,7 +30,7 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ui:TitleBar Title="SwiftLauncher" Background="Transparent" Grid.Row="1" Icon="../icons/ic_launcher.png"  MinimizeToTray="True" ShowHelp="False" HelpClicked="TitleBar_HelpClicked" MinimizeClicked="TitleBar_MinimizeClicked"    
+        <ui:TitleBar Title="SwiftLauncher" x:Name="MWindowTitleBar" Background="Transparent" Grid.Row="1" Icon="../icons/ic_launcher.png"  MinimizeToTray="True" ShowHelp="False" HelpClicked="TitleBar_HelpClicked" MinimizeClicked="TitleBar_MinimizeClicked"    
             Grid.ColumnSpan="3">
             <ui:TitleBar.Tray>
                 <ui:NotifyIcon x:Name="TaskBarIcon" FocusOnLeftClick="False" MenuOnRightClick="True">
@@ -71,7 +71,7 @@
                     Icon="Games20"
                     Cache="False"
                     PageType="{x:Type page:GamesPage}"/>
-                <ui:NavigationItem
+                <ui:NavigationItem Visibility="Collapsed"
                     Content="System Optimizer"
                     Icon="TopSpeed20"
                     Cache="False"

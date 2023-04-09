@@ -39,6 +39,7 @@ namespace SulfurLauncher
 
             Settings.FilterLaunchArguments();
 
+            MWindowTitleBar.MinimizeToTray = true;
         }
 
         private void ThemeButtonNavigation_Click(object sender, RoutedEventArgs e)
@@ -85,6 +86,7 @@ namespace SulfurLauncher
             this.Owner = null;
             test.Owner = null;
             test.ShowInTaskbar = false;
+            MWindowTitleBar.MinimizeToTray = true;
             this.Hide();
             //MessageBox.Show("showing");
             test.Show();
@@ -98,6 +100,7 @@ namespace SulfurLauncher
                 this.Owner = null;
                 test.Owner = null;
                 test.ShowInTaskbar = false;
+                MWindowTitleBar.MinimizeToTray = true;
                 this.Hide();
                 //MessageBox.Show("showing");
                 test.Show();
