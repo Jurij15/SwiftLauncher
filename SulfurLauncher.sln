@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SulfurLauncher", "ProgramLa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Installer", "Installer\Installer.csproj", "{F90310FA-A73B-44C3-BCEB-226670036CE2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf.Ui", "Wpf.Ui\Wpf.Ui.csproj", "{0D5BDA05-9E5E-4815-B461-99E77740A4E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F90310FA-A73B-44C3-BCEB-226670036CE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F90310FA-A73B-44C3-BCEB-226670036CE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F90310FA-A73B-44C3-BCEB-226670036CE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D5BDA05-9E5E-4815-B461-99E77740A4E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D5BDA05-9E5E-4815-B461-99E77740A4E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D5BDA05-9E5E-4815-B461-99E77740A4E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D5BDA05-9E5E-4815-B461-99E77740A4E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
