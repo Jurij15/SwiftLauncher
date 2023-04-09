@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,17 +15,122 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SulfurLauncher
 {
     /// <summary>
     /// Interaction logic for QuickLauncherWindow.xaml
     /// </summary>
-    public partial class QuickLauncherWindow : Wpf.Ui.Controls.UiWindow
+    public partial class QuickLauncherWindow : Window
     {
+        #region WindowBlur And Runded Corners
+        [DllImport("user32.dll")]
+        internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
+
+        private uint _blurOpacity;
+        public double BlurOpacity
+        {
+            get { return _blurOpacity; }
+            set { _blurOpacity = (uint)value; EnableBlur(); }
+        }
+
+        private uint _blurBackgroundColor = 0x990000; /* BGR color format */
+        internal enum AccentState
+        {
+            ACCENT_DISABLED = 0,
+            ACCENT_ENABLE_GRADIENT = 1,
+            ACCENT_ENABLE_TRANSPARENTGRADIENT = 2,
+            ACCENT_ENABLE_BLURBEHIND = 3,
+            ACCENT_ENABLE_ACRYLICBLURBEHIND = 4,
+            ACCENT_INVALID_STATE = 5
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct AccentPolicy
+        {
+            public AccentState AccentState;
+            public uint AccentFlags;
+            public uint GradientColor;
+            public uint AnimationId;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct WindowCompositionAttributeData
+        {
+            public WindowCompositionAttribute Attribute;
+            public IntPtr Data;
+            public int SizeOfData;
+        }
+
+        internal enum WindowCompositionAttribute
+        {
+            // ...
+            WCA_ACCENT_POLICY = 19
+            // ...
+        }
+        internal void EnableBlur()
+        {
+            var windowHelper = new WindowInteropHelper(this);
+
+            var accent = new AccentPolicy();
+            accent.AccentState = AccentState.ACCENT_ENABLE_BLURBEHIND;
+            accent.GradientColor = (_blurOpacity << 24) | (_blurBackgroundColor & 0xFFFFFF);
+
+            var accentStructSize = Marshal.SizeOf(accent);
+
+            var accentPtr = Marshal.AllocHGlobal(accentStructSize);
+            Marshal.StructureToPtr(accent, accentPtr, false);
+
+            var data = new WindowCompositionAttributeData();
+            data.Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY;
+            data.SizeOfData = accentStructSize;
+            data.Data = accentPtr;
+
+            SetWindowCompositionAttribute(windowHelper.Handle, ref data);
+
+            Marshal.FreeHGlobal(accentPtr);
+        }
+
+        public enum DWMWINDOWATTRIBUTE
+
+        {
+
+            DWMWA_WINDOW_CORNER_PREFERENCE = 33
+
+        }
+
+
+
+        public enum DWM_WINDOW_CORNER_PREFERENCE
+
+        {
+
+            DWMWCP_DEFAULT = 1,
+
+            DWMWCP_DONOTROUND = 1,
+
+            DWMWCP_ROUND = 2,
+
+            DWMWCP_ROUNDSMALL = 1
+
+        }
+
+
+
+        [DllImport("dwmapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+
+        private static extern long DwmSetWindowAttribute(IntPtr hwnd,
+
+                                                         DWMWINDOWATTRIBUTE attribute,
+
+                                                         ref DWM_WINDOW_CORNER_PREFERENCE pvAttribute,
+
+                                                         uint cbAttribute);
+        #endregion
+        #region Card
         void CreateCard(string AccountName, string AppPath)
         {
             Wpf.Ui.Controls.CardAction NewCard = new Wpf.Ui.Controls.CardAction();
@@ -43,8 +149,8 @@ namespace SulfurLauncher
                 img.Visibility = Visibility.Visible;
                 img.Source = Imaging.CreateBitmapSourceFromHIcon(icn.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
 
-                img.Height = 70;
-                img.Width = 90;
+                img.Height = 30;
+                img.Width = 50;
 
                 RenderOptions.SetBitmapScalingMode(img, BitmapScalingMode.Fant);
             }
@@ -52,6 +158,9 @@ namespace SulfurLauncher
             tb.Text = AccountName;
             tb.FontWeight = FontWeights.SemiBold;
             tb.Name = "AppNameBox";
+
+            //img.Visibility = Visibility.Collapsed;
+            tb.Visibility = Visibility.Collapsed;
 
             cardHeaderPanel.Children.Add(img);
             cardHeaderPanel.Children.Add(tb);
@@ -69,18 +178,39 @@ namespace SulfurLauncher
             //RootWrapPanel.Children.Add(NewCard);
             AppsPanel.Children.Add(NewCard);
         }
-        public QuickLauncherWindow()
+        #endregion
+        public QuickLauncherWindow(string Position)
         {
             InitializeComponent();
-            this.Width = 640;
-            this.Height = 480;
 
-            // Set the window to be centered horizontally
-            this.Left = (SystemParameters.PrimaryScreenWidth - this.Width) / 2;
+            IntPtr hWnd = new WindowInteropHelper(GetWindow(this)).EnsureHandle();
 
-            // Set the window to be at the top of the screen
-            this.Top = 0;
-            //QuickTitleBar.MinimizeToTray = true;
+            var attribute = DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
+
+            var preference = DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_ROUND;
+
+            DwmSetWindowAttribute(hWnd, attribute, ref preference, sizeof(uint)); //rounded corners
+
+            if (Position == "TOP")
+            {
+                this.Left = (SystemParameters.PrimaryScreenWidth - this.Width) / 2;
+
+                this.Top = 10;
+            }
+            else if (Position == "BOTTOM")
+            {
+                this.Left = (SystemParameters.PrimaryScreenWidth - this.Width) / 2;
+
+                this.Top = SystemParameters.PrimaryScreenHeight - this.Height - 60;
+            }
+            else
+            {
+                this.Left = (SystemParameters.PrimaryScreenWidth - this.Width) / 2;
+
+                this.Top = 10;
+            }
+
+            QuickTitleBar.MinimizeToTray = true;
             CreateAppsForEveryApp();
         }
 
@@ -89,6 +219,7 @@ namespace SulfurLauncher
             DBReader Reader = new DBReader();
             foreach (var app in Settings.GetAllQuickLaunchAppIDS())
             {
+                if (string.IsNullOrWhiteSpace(app)) {  continue; }
                 CreateCard(Reader.GetAppNameByID(app), Reader.GetAppExecutablePathByID(app));
             }
         }
@@ -155,6 +286,16 @@ namespace SulfurLauncher
             {
                 Process.Start(AppPath);
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            EnableBlur();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            EnableBlur();
         }
     }
 }

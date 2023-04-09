@@ -53,10 +53,6 @@ namespace SulfurLauncher.Pages
                 {
                     ShowInQuickLauncherCheck.IsChecked = true;
                 }
-                else
-                {
-                    ShowInQuickLauncherCheck.IsChecked = false;
-                }
             }
         }
 

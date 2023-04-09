@@ -41,6 +41,11 @@
             <ui:Card x:Name="QuickLauncherSettingsCard" Grid.Row="3" Margin="8,0,8,0">
                 <StackPanel>
                     <TextBlock Text="Quick Launcher Custumization" FontSize="18" FontWeight="Medium"/>
+                    <TextBlock Text="Positioning" Margin="2,2,2,2"/>
+                    <StackPanel x:Name="QuickLauncherPositioningPanel">
+                        <RadioButton x:Name="TopPosition" Checked="TopPosition_Checked" Content="Top"/>
+                        <RadioButton x:Name="BottomPosition" Checked="BottomPosition_Checked" Content="Bottom"/>
+                    </StackPanel>
                 </StackPanel>
             </ui:Card>
         </StackPanel>

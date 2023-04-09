@@ -11,7 +11,7 @@
              ExtendsContentIntoTitleBar="True"
              WindowBackdropType="Mica"
              WindowStartupLocation="CenterScreen"
-             
+             Loaded="UiWindow_Loaded"
              Closing="UiWindow_Closing" Initialized="UiWindow_Initialized"
         Title="SwiftLauncher" Height="611" Width="1005">
     <Grid>
@@ -30,7 +30,7 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ui:TitleBar Title="SwiftLauncher" Background="Transparent" Grid.Row="1" Icon="../icons/ic_launcher.png"  MinimizeToTray="True" ShowHelp="True" HelpClicked="TitleBar_HelpClicked" MinimizeClicked="TitleBar_MinimizeClicked"    
+        <ui:TitleBar Title="SwiftLauncher" Background="Transparent" Grid.Row="1" Icon="../icons/ic_launcher.png"  MinimizeToTray="True" ShowHelp="False" HelpClicked="TitleBar_HelpClicked" MinimizeClicked="TitleBar_MinimizeClicked"    
             Grid.ColumnSpan="3">
             <ui:TitleBar.Tray>
                 <ui:NotifyIcon x:Name="TaskBarIcon" FocusOnLeftClick="False" MenuOnRightClick="True">

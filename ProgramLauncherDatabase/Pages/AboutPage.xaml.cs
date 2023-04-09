@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SulfurLauncher.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,20 @@ namespace SulfurLauncher.Pages
             InitializeComponent();
 
             AppVerBox.Text = Config.VersionDouble.ToString();
+
+            string QuickLauncherPOS = Settings.GetPosition();
+            if (QuickLauncherPOS == "TOP")
+            {
+                TopPosition.IsChecked = true;
+            }
+            else if(QuickLauncherPOS == "BOTTOM")
+            {
+                BottomPosition.IsChecked = true;
+            }
+            else
+            {
+                Settings.ChangePosition("TOP");
+            }
         }
 
         private void DarkTheme_Checked(object sender, RoutedEventArgs e)
@@ -35,6 +50,16 @@ namespace SulfurLauncher.Pages
         private void LightTheme_Checked(object sender, RoutedEventArgs e)
         {
             Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Light);
+        }
+
+        private void TopPosition_Checked(object sender, RoutedEventArgs e)
+        {
+            Settings.ChangePosition("TOP");
+        }
+
+        private void BottomPosition_Checked(object sender, RoutedEventArgs e)
+        {
+            Settings.ChangePosition("BOTTOM");
         }
     }
 }

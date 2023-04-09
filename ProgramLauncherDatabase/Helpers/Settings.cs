@@ -12,6 +12,7 @@ namespace SulfurLauncher.Helpers
     {
         public static string RecentAppsConfig = @"Config/RecentlyOpenedApps.txt";
         public static string QuickLaunchIDSConfig = @"Config/QuickLaunchAppIDS.txt";
+        public static string QuickLauncherPositioningConfig = @"Config/QuickLauncherPositioning";
         public static bool bIsFirstTimeUse()
         {
             bool RetVal = false;
@@ -28,6 +29,7 @@ namespace SulfurLauncher.Helpers
             Directory.CreateDirectory("Config/");
             File.Create(RecentAppsConfig);
             File.Create(QuickLaunchIDSConfig);
+            File.Create(QuickLauncherPositioningConfig);
         }
 
         public static void FilterLaunchArguments()
@@ -37,7 +39,7 @@ namespace SulfurLauncher.Helpers
             {
                 if (arg == "-DoShowQuickLauncherOnly")
                 {
-                    //Config.bOnlyStartQuickLauncher = true;
+                   Config.bOnlyStartQuickLauncher = true;
                 }
             }
         }
@@ -65,30 +67,38 @@ namespace SulfurLauncher.Helpers
         public static void RemoveAppFromQuickLaunch(string ID)
         {
             string filePath = QuickLaunchIDSConfig;
-            string lineToRemove = ID;
+            string wordToDelete = ID;
 
-            // Read the contents of the file
-            List<string> lines = new List<string>();
-            using (StreamReader reader = new StreamReader(filePath))
+            // Read the file into memory
+            string[] lines = File.ReadAllLines(filePath);
+
+            // Remove the word to delete from each line
+            for (int i = 0; i < lines.Length; i++)
             {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    lines.Add(line);
-                }
+                lines[i] = lines[i].Replace(wordToDelete, string.Empty);
             }
 
-            // Remove the desired line
-            lines.Remove(lineToRemove);
+            // Overwrite the file with the updated content
+            File.WriteAllLines(filePath, lines);
+        }
 
-            // Write the updated contents back to the file
-            using (StreamWriter writer = new StreamWriter(filePath))
+        public static void ChangePosition(string newPos)
+        {
+            File.Delete(QuickLauncherPositioningConfig);
+
+            using (StreamWriter sw = File.CreateText(QuickLauncherPositioningConfig))
             {
-                foreach (string line in lines)
-                {
-                    writer.WriteLine(line);
-                }
+                sw.Write(newPos);
+                sw.Close();
             }
+        }
+
+        public static string GetPosition() //TODO: MAKE THIS BE AN ENUM!
+        {
+            string RetVal = string.Empty;
+            RetVal = File.ReadAllText(QuickLauncherPositioningConfig);
+            
+            return RetVal;
         }
     }
 }

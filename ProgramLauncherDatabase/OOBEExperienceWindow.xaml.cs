@@ -59,22 +59,6 @@ namespace SulfurLauncher
                 this.Visibility = Visibility.Hidden;
                 bDroppedOOBE = true;
             }
-            else if (Config.bOnlyStartQuickLauncher) ///this will be read from a config file
-            {
-                LScreen.EndInit();
-                //this.Hide();
-                MainWindow betterMainWindow = new MainWindow();
-                betterMainWindow.Show();
-                betterMainWindow.ShowActivated = true;
-                betterMainWindow.ShowInTaskbar = true;
-
-                betterMainWindow.Hide();
-                QuickLauncherWindow quickLauncherWindow = new QuickLauncherWindow();
-                quickLauncherWindow.Show();
-                this.Hide();
-
-                bDroppedOOBE = true;
-            }
             else
             {
                 //await PutTaskDelayWelcomeBack();

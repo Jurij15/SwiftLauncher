@@ -36,6 +36,9 @@ namespace SulfurLauncher
             Config.MainWindow = this;
 
             Wpf.Ui.Appearance.Watcher.Watch(this, Wpf.Ui.Appearance.BackgroundType.Mica, true);
+
+            Settings.FilterLaunchArguments();
+
         }
 
         private void ThemeButtonNavigation_Click(object sender, RoutedEventArgs e)
@@ -73,22 +76,32 @@ namespace SulfurLauncher
 
         private void TitleBar_HelpClicked(object sender, RoutedEventArgs e)
         {
-            QuickLauncherWindow test = new QuickLauncherWindow();
-            this.Owner = null;
-            test.Owner = null;
-            //MessageBox.Show("showing");
-            test.Show();
-            this.Hide();
+            TitleBar_MinimizeClicked(null, null);
         }
 
         private void TitleBar_MinimizeClicked(object sender, RoutedEventArgs e)
         {
-            QuickLauncherWindow test = new QuickLauncherWindow();
+            QuickLauncherWindow test = new QuickLauncherWindow(Settings.GetPosition());
             this.Owner = null;
             test.Owner = null;
+            test.ShowInTaskbar = false;
             this.Hide();
             //MessageBox.Show("showing");
             test.Show();
+        }
+
+        private void UiWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Config.bOnlyStartQuickLauncher)
+            {
+                QuickLauncherWindow test = new QuickLauncherWindow(Settings.GetPosition());
+                this.Owner = null;
+                test.Owner = null;
+                test.ShowInTaskbar = false;
+                this.Hide();
+                //MessageBox.Show("showing");
+                test.Show();
+            }
         }
     }
 }
