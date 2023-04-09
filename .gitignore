@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /ProgramLauncherDatabase/Builds/0.6/DEV
+/ProgramLauncherDatabase/Builds/0.7
