@@ -64,7 +64,7 @@ namespace SulfurLauncher.Pages
 
         private void backBtn_Click(object sender, RoutedEventArgs e)
         {
-            Config.GlobalNavigation.NavigateBack();
+            //Config.GlobalNavigation.NavigateBack();
         }
     }
 }

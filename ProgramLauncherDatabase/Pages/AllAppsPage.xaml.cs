@@ -71,7 +71,7 @@ namespace SulfurLauncher.Pages
             CategoryBox.Text = AppCategory;
             CategoryBox.FontSize = 12;
 
-            DirectLaunchBtn.Appearance = Wpf.Ui.Common.ControlAppearance.Primary;
+            DirectLaunchBtn.Appearance = Wpf.Ui.Controls.ControlAppearance.Primary;
             DirectLaunchBtn.Content = "Launch";
             DirectLaunchBtn.Name = StringsHelper.ReplaceDisallowedChars(AccountName);
             DirectLaunchBtn.VerticalAlignment = VerticalAlignment.Bottom;

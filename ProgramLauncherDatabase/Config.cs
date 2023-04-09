@@ -32,6 +32,8 @@ namespace SulfurLauncher
 
         public static bool bShouldRefreshAllContacts = false;
 
+        public static bool bIsQuickLauncherVisible { get; set; }
+
         public static string CurrentID = string.Empty;
         public static bool bOnlyStartQuickLauncher = false;
 
