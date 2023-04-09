@@ -57,6 +57,14 @@ namespace SulfurLauncher.Helpers
 
         public static void AddNewQuickLaunchApp(string ID)
         {
+            foreach (var app in File.ReadAllLines(QuickLaunchIDSConfig))
+            {
+                if (app == ID)
+                {
+                    return;
+                    break;
+                }
+            }
             using(StreamWriter sw = File.AppendText(QuickLaunchIDSConfig))
             {
                 sw.WriteLine(ID);

@@ -49,6 +49,11 @@ namespace Installer
                 InstallLocBox.IsEnabled = false;
                 DotNetUnsupportedInfo.IsOpen = true;
             }
+            else
+            {
+                SupportedBar.IsEnabled = false;
+                SupportedBar.IsOpen = true;
+            }
         }
         public MainWindow()
         {

@@ -43,8 +43,8 @@ namespace SulfurLauncher.Pages
                 img.Visibility = Visibility.Visible;
                 img.Source = Imaging.CreateBitmapSourceFromHIcon(icn.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
 
-                img.Height = 30;
-                img.Width = 50;
+                img.Height = 40;
+                img.Width = 60;
 
                 RenderOptions.SetBitmapScalingMode(img, BitmapScalingMode.Fant);
             }

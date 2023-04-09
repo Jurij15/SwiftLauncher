@@ -17,7 +17,7 @@
     WindowCornerPreference="Round"
                  Loaded="FluentWindow_Loaded"
     WindowStartupLocation="CenterScreen"
-        Title="SwiftLauncher" Height="702" Width="1271">
+        Title="SwiftLauncher" Height="702" Width="1084">
     <Grid Margin="0,0,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -27,14 +27,14 @@
             x:Name="MainWindowNavStore"
             Grid.Row="1"
             TransitionType="FadeInWithSlide"
-            TransitionDuration="140"
+            
             IsPaneOpen="False"
             IsPaneToggleVisible="True"
             PaneClosed="MainWindowNavStore_PaneClosed"
             OpenPaneLength="150"
             TabIndex="1"
             
-            PaneDisplayMode="LeftMinimal"
+            PaneDisplayMode="LeftFluent"
             AlwaysShowHeader="False"
             SelectionChanged="MainWindowNavStore_SelectionChanged"
             >
