@@ -25,7 +25,7 @@ namespace SulfurLauncher.Pages
     /// <summary>
     /// Interaction logic for AppDetailsPage.xaml
     /// </summary>
-    public partial class AppDetailsPage : Wpf.Ui.Controls.UiPage
+    public partial class AppDetailsPage : Page
     {
         System.Drawing.Icon icn = null;
         DispatcherTimer t;

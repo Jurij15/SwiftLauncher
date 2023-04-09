@@ -20,7 +20,7 @@ namespace SulfurLauncher.Pages
     /// <summary>
     /// Interaction logic for GamesPage.xaml
     /// </summary>
-    public partial class GamesPage : Wpf.Ui.Controls.UiPage
+    public partial class GamesPage : Page
     {
         public GamesPage()
         {

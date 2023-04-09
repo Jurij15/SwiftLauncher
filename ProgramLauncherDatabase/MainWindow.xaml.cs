@@ -21,7 +21,7 @@ namespace SulfurLauncher
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Wpf.Ui.Controls.UiWindow
+    public partial class MainWindow : Wpf.Ui.Controls.Window.FluentWindow
     {
         public MainWindow()
         {

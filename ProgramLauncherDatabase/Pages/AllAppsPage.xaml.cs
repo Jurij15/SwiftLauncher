@@ -24,7 +24,7 @@ namespace SulfurLauncher.Pages
     /// <summary>
     /// Interaction logic for AllAppsPage.xaml
     /// </summary>
-    public partial class AllAppsPage : Wpf.Ui.Controls.UiPage
+    public partial class AllAppsPage : Page
     {
         bool bShowAppDetails = true;
         #region Cards and rows, columns

@@ -20,7 +20,7 @@ namespace SulfurLauncher.Pages
     /// <summary>
     /// Interaction logic for AddAppPage.xaml
     /// </summary>
-    public partial class AddAppPage : Wpf.Ui.Controls.UiPage
+    public partial class AddAppPage : Page
     {
         async void AddAppToDB()
         {

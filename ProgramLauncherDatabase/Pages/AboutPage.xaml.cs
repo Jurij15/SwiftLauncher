@@ -19,7 +19,7 @@ namespace SulfurLauncher.Pages
     /// <summary>
     /// Interaction logic for AboutPage.xaml
     /// </summary>
-    public partial class AboutPage : Wpf.Ui.Controls.UiPage
+    public partial class AboutPage : Page
     {
         public AboutPage()
         {
