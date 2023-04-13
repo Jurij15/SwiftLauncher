@@ -161,7 +161,6 @@ namespace SulfurLauncher
             tb.FontWeight = FontWeights.SemiBold;
             tb.Name = "AppNameBox";
 
-            //img.Visibility = Visibility.Collapsed;
             tb.Visibility = Visibility.Collapsed;
 
             cardHeaderPanel.Children.Add(img);
@@ -174,10 +173,6 @@ namespace SulfurLauncher
             NewCard.Margin = new Thickness(2,2,2,2);
             NewCard.IsChevronVisible = false;
 
-            //NewCard.Height = 120;
-            //NewCard.Width = 120;
-
-            //RootWrapPanel.Children.Add(NewCard);
             AppsPanel.Children.Add(NewCard);
         }
 
@@ -230,7 +225,6 @@ namespace SulfurLauncher
             else
             {
                 AppOpenBadge.Visibility = Visibility.Hidden;
-                //AppOpenBadge.Fill = new SolidColorBrush(Colors.Gray);
                 AppOpenBadge.Name = "ProcessStopped";
             }
 
@@ -238,7 +232,6 @@ namespace SulfurLauncher
             tb.FontWeight = FontWeights.SemiBold;
             tb.Name = "AppNameBox";
 
-            //img.Visibility = Visibility.Collapsed;
             tb.Visibility = Visibility.Collapsed;
 
             cardHeaderPanel.Children.Add(img);
@@ -253,10 +246,6 @@ namespace SulfurLauncher
             NewCard.Margin = new Thickness(2, 2, 2, 2);
             NewCard.IsChevronVisible = false;
 
-            //NewCard.Height = 120;
-            //NewCard.Width = 120;
-
-            //RootWrapPanel.Children.Add(NewCard);
             AppsTaskManagerPanel.Children.Add(NewCard);
         }
 
@@ -276,8 +265,6 @@ namespace SulfurLauncher
             var preference = DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_ROUND;
 
             DwmSetWindowAttribute(hWnd, attribute, ref preference, sizeof(uint)); //rounded corners
-
-            //MessageBox.Show(AppsPanel.Width + QuickMenu.Width.ToString());
 
             if (Position == "TOP")
             {
@@ -347,11 +334,6 @@ namespace SulfurLauncher
 
         private void UiWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            /*
-            this.Hide();
-            Config.MainWindow.Show();
-            Config.MainWindow.WindowState = WindowState.Normal;
-            */
         }
 
         private void ReturnBack_Click(object sender, RoutedEventArgs e)
@@ -411,9 +393,7 @@ namespace SulfurLauncher
         {
             DBReader reader = new DBReader();
             string AppName = FigureOutAppName((Wpf.Ui.Controls.CardAction)sender);
-            //MessageBox.Show(AppName);
             string AppID = reader.GetAppIDByName(AppName);
-            //MessageBox.Show(AppID);
             string AppPath = reader.GetAppExecutablePathByID(AppID);
             string AppLaunchArguments = reader.GetAppLaunchArgumentsByID(AppID);
 
@@ -425,7 +405,6 @@ namespace SulfurLauncher
             {
                 Process.Start(AppPath);
             }
-            //timer_tick(null, null);
         }
 
         private void TaskManagementCardClicked_Handler(object sender, RoutedEventArgs e)
@@ -438,7 +417,6 @@ namespace SulfurLauncher
                 string AppID = reader.GetAppIDByName(aName);
                 string AppName = System.IO.Path.GetFileNameWithoutExtension(reader.GetAppExecutablePathByID(AppID));
 
-                //thanks chatgpt
                 [DllImport("user32.dll")]
                 static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
                 [DllImport("user32.dll")]

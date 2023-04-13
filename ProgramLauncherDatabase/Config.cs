@@ -21,6 +21,8 @@ namespace SulfurLauncher
         //public static Frame GlobalFrame;
         public static Dialog BulkAddDialog;
         public static FluentWindow MainWindow;
+        public static Dialog DragNDropDialog;
+
         public static string NavHeaderText { get; set; }
 
         public static List<string> AllAppsIDsList = new List<string>();

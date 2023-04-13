@@ -28,6 +28,9 @@
             Grid.Row="1"
             TransitionType="FadeInWithSlide"
             
+            AllowDrop="True"
+            
+            
             IsPaneOpen="False"
             IsPaneToggleVisible="True"
             PaneClosed="MainWindowNavStore_PaneClosed"
@@ -87,7 +90,8 @@
                     Click="ThemeButtonNavigation_Click"/>
             </ui:NavigationView.FooterMenuItems>
             <ui:NavigationView.ContentOverlay>
-                <ui:Dialog x:Name="BulkAddDialog" Grid.ColumnSpan="2" Grid.RowSpan="9"
+                <StackPanel>
+                    <ui:Dialog x:Name="BulkAddDialog" Grid.ColumnSpan="2" Grid.RowSpan="9"
                    ButtonLeftAppearance="Primary"
                    ButtonLeftClick="BulkAddDialog_ButtonLeftClick"
                    ButtonLeftName="Add and restart"
@@ -96,10 +100,19 @@
                    ButtonRightClick="BulkAddDialog_ButtonRightClick"
                    ButtonRightName="Cancel"
                    >
-                    <StackPanel>
-                        <TextBlock Text="Bulk Add" FontWeight="DemiBold" FontSize="20"/>
-                    </StackPanel>
-                </ui:Dialog>
+                        <StackPanel>
+                            <TextBlock Text="Bulk Add" FontWeight="DemiBold" FontSize="20"/>
+                        </StackPanel>
+                    </ui:Dialog>
+                    <ui:Dialog x:Name="DragNDropPreviewDialog"
+                               AllowDrop="True"
+                               Drop="DragNDropPreviewDialog_Drop"
+                               >
+                        <StackPanel>
+                            <TextBlock FontWeight="Medium" FontSize="48" Text="Drop Here"/>
+                        </StackPanel>
+                    </ui:Dialog>
+                </StackPanel>
             </ui:NavigationView.ContentOverlay>
         </ui:NavigationView>
         <ui:TitleBar Title="SwiftLauncher" x:Name="MWindowTitleBar" Background="Transparent" Grid.Row="0" Icon="../icons/ic_launcher.png"  MinimizeToTray="False" ShowHelp="False" HelpClicked="TitleBar_HelpClicked" MinimizeClicked="TitleBar_MinimizeClicked" CloseClicked="MWindowTitleBar_CloseClicked">

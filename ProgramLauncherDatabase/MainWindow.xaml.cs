@@ -37,6 +37,7 @@ namespace SulfurLauncher
             //Config.GlobalFrame = RootFrame;
             Config.BulkAddDialog = BulkAddDialog;
             Config.MainWindow = this;
+            Config.DragNDropDialog = DragNDropPreviewDialog;
 
             Wpf.Ui.Appearance.Watcher.Watch(this);
 
@@ -167,6 +168,11 @@ namespace SulfurLauncher
         private void MainWindowNavStore_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void DragNDropPreviewDialog_Drop(object sender, DragEventArgs e)
+        {
+            MessageBox.Show("Dropped!");
         }
     }
 }

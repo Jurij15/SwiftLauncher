@@ -67,5 +67,10 @@ namespace SulfurLauncher.Pages
         {
             //Config.GlobalNavigation.NavigateBack();
         }
+
+        private void Border_Drop(object sender, DragEventArgs e)
+        {
+            //add the app
+        }
     }
 }

@@ -29,7 +29,14 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Add an application" FontWeight="DemiBold" FontSize="24" Grid.Row="1" Margin="8,8,8,8"/>
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="Add an application" FontWeight="DemiBold" FontSize="24" Margin="8,8,8,8"/>
+                <Border Margin="12,12,12,12" Background="#FF333333" AllowDrop="True" Drop="Border_Drop">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="Drag and drop here" Margin="12,12,12,12" FontSize="26"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
 
             <TextBlock Text="Application Name" FontSize="14" Grid.Row="2" Margin="8,8,8,4"/>
             <ui:TextBox PlaceholderEnabled="True" PlaceholderText="Name" Grid.Row="3" Margin="8,4,8,8" x:Name="AppNameBox"/>
