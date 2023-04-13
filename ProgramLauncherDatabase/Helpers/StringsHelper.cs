@@ -14,6 +14,8 @@ namespace SulfurLauncher.Helpers
             RetValue = RetValue.Replace(" ", "SPACE");
             RetValue = RetValue.Replace("-", "DASH");
             RetValue = RetValue.Replace("+", "PLUS");
+            RetValue = RetValue.Replace(".", "DOT");
+            RetValue = RetValue.Replace(",", "COMMA");
 
             return RetValue;
         }
@@ -24,6 +26,8 @@ namespace SulfurLauncher.Helpers
             RetValue = RetValue.Replace("SPACE", " ");
             RetValue = RetValue.Replace("DASH", "-");
             RetValue = RetValue.Replace("PLUS", "+");
+            RetValue = RetValue.Replace("DOT", ".");
+            RetValue = RetValue.Replace("COMMA", ",");
 
             return RetValue;
         }

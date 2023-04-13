@@ -32,13 +32,17 @@
         <ui:TitleBar x:Name="QuickTitleBar" Visibility="Collapsed" Title="TEst">
         </ui:TitleBar>
         <ScrollViewer Grid.Row="3" Grid.Column="0" VerticalScrollBarVisibility="Disabled">
-            <StackPanel x:Name="AppsPanel" HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="4" Grid.Column="0"/>
+            <StackPanel>
+                <StackPanel x:Name="AppsPanel" HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="4" Grid.Column="0"/>
+                <StackPanel Visibility="Collapsed" x:Name="AppsTaskManagerPanel" HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="4" Grid.Column="0"/>
+            </StackPanel>
         </ScrollViewer>
         <Menu Margin="4,4,4,4" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="1" x:Name="QuickMenu">
             <ui:MenuItem Margin="2,2,2,2" Click="MenuItem_Click" Foreground="White">
                 <MenuItem.Header>
                     <ui:SymbolIcon Symbol="MoreVertical28"/>
                 </MenuItem.Header>
+                <ui:MenuItem x:Name="ExpandBtn" Header="Enable Task Management" SymbolIcon="Open24" Click="ExpandBtn_Click"/>
                 <ui:MenuItem x:Name="ReturnBack" Header="Return to normal view" SymbolIcon="WindowNew20" Click="ReturnBack_Click"/>
                 <ui:MenuItem x:Name="ExitCompletely" Header="Quit" SymbolIcon="ArrowExit20" Click="ExitCompletely_Click"/>
             </ui:MenuItem>

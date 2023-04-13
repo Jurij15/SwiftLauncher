@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +13,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -24,12 +26,12 @@ namespace SulfurLauncher
     /// </summary>
     public partial class MainWindow : Wpf.Ui.Controls.Window.FluentWindow
     {
+
         public MainWindow()
         {
             InitializeComponent();
 
             //OnStartup();
-
             Config.InitDBConnection();
             Config.GlobalNavigation = MainWindowNavStore;
             //Config.GlobalFrame = RootFrame;
@@ -96,9 +98,11 @@ namespace SulfurLauncher
 
         private void UiWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            //MessageBox.Show(Config.bOnlyStartQuickLauncher.ToString());
             if (Config.bOnlyStartQuickLauncher)
             {
                 QuickLauncherWindow test = new QuickLauncherWindow(Settings.GetPosition());
+                this.WindowState = WindowState.Minimized;
                 Config.bIsQuickLauncherVisible = true;
                 this.Owner = null;
                 test.Owner = null;
@@ -127,6 +131,7 @@ namespace SulfurLauncher
             else
             {
                 Application.Current.Shutdown();
+                //Environment.Exit(0);
             }
         }
 
@@ -138,6 +143,20 @@ namespace SulfurLauncher
         private void FluentWindow_Loaded(object sender, RoutedEventArgs e)
         {
             MainWindowNavStore.Navigate(typeof(HomePage));
+            //MessageBox.Show(Config.bOnlyStartQuickLauncher.ToString());
+            if (Config.bOnlyStartQuickLauncher)
+            {
+                QuickLauncherWindow test = new QuickLauncherWindow(Settings.GetPosition());
+                this.WindowState = WindowState.Minimized;
+                Config.bIsQuickLauncherVisible = true;
+                this.Owner = null;
+                test.Owner = null;
+                test.ShowInTaskbar = false;
+                MWindowTitleBar.MinimizeToTray = true;
+                this.Hide();
+                //MessageBox.Show("showing");
+                test.Show();
+            }
         }
 
         private void MainWindowNavStore_PaneOpened(object sender, RoutedEventArgs e)

@@ -27,7 +27,7 @@ namespace SulfurLauncher.Pages
         {
             InitializeComponent();
 
-            AppVerBox.Text = Config.VersionDouble.ToString();
+            AppVerBox.Text = Config.VersionString.ToString();
 
             string QuickLauncherPOS = Settings.GetPosition();
             if (QuickLauncherPOS == "TOP")

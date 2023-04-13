@@ -4,6 +4,7 @@ using SulfurLauncher.Pages;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -18,6 +19,7 @@ using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace SulfurLauncher
 {
@@ -178,6 +180,90 @@ namespace SulfurLauncher
             //RootWrapPanel.Children.Add(NewCard);
             AppsPanel.Children.Add(NewCard);
         }
+
+        void CreateCardForTaskManager(string AccountName, string AppPath)
+        {
+            Wpf.Ui.Controls.CardAction NewCard = new Wpf.Ui.Controls.CardAction();
+            StackPanel cardHeaderPanel = new StackPanel();
+            TextBlock tb = new TextBlock();
+
+            System.Drawing.Icon icn = null;
+            Image img = new Image();
+            Ellipse AppOpenBadge = new Ellipse();
+
+            bool bShouldShowIcon = false;
+
+            if (!string.IsNullOrEmpty(AppPath)) { icn = System.Drawing.Icon.ExtractAssociatedIcon(AppPath); bShouldShowIcon = true; }
+
+            if (bShouldShowIcon)
+            {
+                img.Visibility = Visibility.Visible;
+                img.Source = Imaging.CreateBitmapSourceFromHIcon(icn.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+
+                img.Height = 30;
+                img.Width = 50;
+
+                RenderOptions.SetBitmapScalingMode(img, BitmapScalingMode.Fant);
+            }
+
+            bool bDetected = false;
+            foreach (Process exe in Process.GetProcesses())
+            {
+                if (exe.ProcessName == System.IO.Path.GetFileNameWithoutExtension(AppPath).ToString())
+                {
+                    bDetected = true; break;
+                }
+            }
+
+            AppOpenBadge.Margin = new Thickness(0,8,0,0);
+            AppOpenBadge.Visibility = Visibility.Visible;
+            AppOpenBadge.Width = 5;
+            AppOpenBadge.Height = 5;
+
+
+            if (bDetected)
+            {
+                AppOpenBadge.Visibility = Visibility.Visible;
+                AppOpenBadge.Fill = new SolidColorBrush(Colors.Green);
+                AppOpenBadge.Name = "ProcessRunning";
+            }
+            else
+            {
+                AppOpenBadge.Visibility = Visibility.Hidden;
+                //AppOpenBadge.Fill = new SolidColorBrush(Colors.Gray);
+                AppOpenBadge.Name = "ProcessStopped";
+            }
+
+            tb.Text = AccountName;
+            tb.FontWeight = FontWeights.SemiBold;
+            tb.Name = "AppNameBox";
+
+            //img.Visibility = Visibility.Collapsed;
+            tb.Visibility = Visibility.Collapsed;
+
+            cardHeaderPanel.Children.Add(img);
+            cardHeaderPanel.Children.Add(tb);
+            cardHeaderPanel.Children.Add(AppOpenBadge);
+
+            NewCard.Content = cardHeaderPanel;
+
+            NewCard.Click += TaskManagementCardClicked_Handler;
+            NewCard.MouseRightButtonDown += TaskManagementRightCardClicked_Handler;
+
+            NewCard.Margin = new Thickness(2, 2, 2, 2);
+            NewCard.IsChevronVisible = false;
+
+            //NewCard.Height = 120;
+            //NewCard.Width = 120;
+
+            //RootWrapPanel.Children.Add(NewCard);
+            AppsTaskManagerPanel.Children.Add(NewCard);
+        }
+
+        private void NewCard_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
         public QuickLauncherWindow(string Position)
         {
@@ -216,6 +302,32 @@ namespace SulfurLauncher
             CreateAppsForEveryApp();
         }
 
+        void StartTimer()
+        {
+            DispatcherTimer t = new DispatcherTimer();
+            t.Interval = TimeSpan.FromMilliseconds(500);
+            t.Tick += timer_tick;
+            t.Start();
+        }
+
+        void timer_tick(object sender, EventArgs e)
+        {
+            CreateTaskManagementCardsForEveryApp();
+        }
+
+        void CreateTaskManagementCardsForEveryApp()
+        {
+            AppsPanel.Visibility = Visibility.Collapsed;
+            AppsTaskManagerPanel.Visibility = Visibility.Visible;
+            AppsTaskManagerPanel.Children.Clear();
+            DBReader Reader = new DBReader();
+            foreach (var app in Settings.GetAllQuickLaunchAppIDS())
+            {
+                if (string.IsNullOrWhiteSpace(app)) { continue; }
+                CreateCardForTaskManager(Reader.GetAppNameByID(app), Reader.GetAppExecutablePathByID(app));
+            }
+        }
+
         void CreateAppsForEveryApp()
         {
             DBReader Reader = new DBReader();
@@ -246,6 +358,7 @@ namespace SulfurLauncher
         {
             this.Hide();
             Config.MainWindow.Show();
+            Config.bIsQuickLauncherVisible = false;
             Config.MainWindow.WindowState = WindowState.Normal;
         }
 
@@ -267,6 +380,28 @@ namespace SulfurLauncher
             return RetValue;
         }
 
+        bool FigureOutIfAppIsRunning(Wpf.Ui.Controls.CardAction UiElement)
+        {
+            bool RetVal = false;
+            StackPanel content = (StackPanel)UiElement.Content;
+            foreach (var item in content.Children)
+            {
+                if (item.GetType() == typeof(Ellipse))
+                {
+                    Ellipse badge = (Ellipse)item;
+                    if (badge.Name == "ProcessRunning")
+                    {
+                        RetVal = true;
+                    }
+                    else
+                    {
+                        RetVal = false;
+                    }
+                }
+            }
+            return RetVal;
+        }
+
         private void ExitCompletely_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -276,7 +411,9 @@ namespace SulfurLauncher
         {
             DBReader reader = new DBReader();
             string AppName = FigureOutAppName((Wpf.Ui.Controls.CardAction)sender);
+            //MessageBox.Show(AppName);
             string AppID = reader.GetAppIDByName(AppName);
+            //MessageBox.Show(AppID);
             string AppPath = reader.GetAppExecutablePathByID(AppID);
             string AppLaunchArguments = reader.GetAppLaunchArgumentsByID(AppID);
 
@@ -288,6 +425,46 @@ namespace SulfurLauncher
             {
                 Process.Start(AppPath);
             }
+            //timer_tick(null, null);
+        }
+
+        private void TaskManagementCardClicked_Handler(object sender, RoutedEventArgs e)
+        {
+            bool IsAppRunning = FigureOutIfAppIsRunning((Wpf.Ui.Controls.CardAction)sender);
+            if (IsAppRunning)
+            {
+                DBReader reader = new DBReader();
+                string aName = FigureOutAppName((Wpf.Ui.Controls.CardAction)sender);
+                string AppID = reader.GetAppIDByName(aName);
+                string AppName = System.IO.Path.GetFileNameWithoutExtension(reader.GetAppExecutablePathByID(AppID));
+
+                //thanks chatgpt
+                [DllImport("user32.dll")]
+                static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+                [DllImport("user32.dll")]
+                static extern bool IsIconic(IntPtr hWnd);
+
+                IntPtr hWnd = Process.GetProcessesByName(AppName)[0].MainWindowHandle;
+                bool isMinimized = IsIconic(hWnd);
+
+                if (!isMinimized)
+                {
+                    ShowWindow(hWnd, 6);
+                }
+                else
+                {
+                    ShowWindow(hWnd, 9);
+                }
+            }
+            else
+            {
+                CardClicked_Handler(sender, e);
+            }
+        }
+
+        private void TaskManagementRightCardClicked_Handler(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -298,6 +475,11 @@ namespace SulfurLauncher
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             EnableBlur();
+        }
+
+        private void ExpandBtn_Click(object sender, RoutedEventArgs e)
+        {
+            StartTimer();
         }
     }
 }

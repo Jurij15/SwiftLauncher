@@ -146,7 +146,7 @@ namespace SulfurLauncher.Pages
 
         private void AddAppCard_Click(object sender, RoutedEventArgs e)
         {
-            Config.GlobalNavigation.Navigate(typeof(AllAppsPage));
+            Config.GlobalNavigation.Navigate(typeof(AddAppPage));
         }
 
         private void CardClicked_Handler(object sender, RoutedEventArgs e)
