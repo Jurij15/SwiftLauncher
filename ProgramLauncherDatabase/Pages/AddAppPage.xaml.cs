@@ -109,7 +109,6 @@ namespace SulfurLauncher.Pages
                 }
                 else
                 {
-                    // handle dropped files
                     foreach (string file in files)
                     {
                         await DragNDropHelper.AddAppByDragAndDrop(file);

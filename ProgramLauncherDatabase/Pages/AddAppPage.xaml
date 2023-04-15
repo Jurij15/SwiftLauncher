@@ -29,12 +29,12 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="1">
-                <TextBlock Text="Add an application" FontWeight="DemiBold" FontSize="24" Margin="8,8,8,8"/>
-                <Border Margin="12,12,12,12" Background="#FF333333" AllowDrop="True" Drop="Border_Drop" DragOver="Border_DragOver" DragEnter="Border_DragEnter">
-                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-                        <TextBlock Text="Drag and drop here" Margin="12,12,12,12" FontSize="26"/>
-                        <CheckBox x:Name="DirectAddCheck" Content="Direct Add"/>
+            <StackPanel Grid.Row="1" Background="Transparent">
+                <TextBlock Text="Add an application" FontWeight="DemiBold" FontSize="24" Margin="8,8,8,8" Background="Transparent"/>
+                <Border Margin="12,12,12,12" AllowDrop="True" Drop="Border_Drop" DragOver="Border_DragOver" DragEnter="Border_DragEnter" Background="#72333333" CornerRadius="8,8,8,8">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent">
+                        <TextBlock Text="Drag and drop here" Margin="12,12,12,12" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <CheckBox x:Name="DirectAddCheck" Content="Direct Add" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Border>
             </StackPanel>
@@ -73,7 +73,7 @@
             <ui:Button Content="Add" Icon="Add24" Appearance="Primary" Grid.Row="12" Margin="4,4,4,4" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="AddAppBtn" Click="AddAppBtn_Click"/>
 
             <ui:Button Content="Cancel" Icon="ArrowLeft24" Appearance="Transparent" Grid.Row="12" Margin="4,4,4,4" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="backBtn" Click="backBtn_Click" />
-            
+
             <StackPanel x:Name="CreatingPanel" Orientation="Horizontal" Margin="8,8,8,8" Grid.Row="11" Visibility="Collapsed">
                 <ui:ProgressRing IsIndeterminate="True" HorizontalAlignment="Right"/>
                 <TextBlock Text="Adding App..." FontSize="20" VerticalAlignment="Center" Margin="2,2,2,2"/>
