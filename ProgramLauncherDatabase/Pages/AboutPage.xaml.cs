@@ -70,5 +70,10 @@ namespace SulfurLauncher.Pages
         {
             Settings.ChangePosition("BOTTOM");
         }
+
+        private void WhatsNewLink_Click(object sender, RoutedEventArgs e)
+        {
+            Config.WhatsNewDialog.ShowAndWaitAsync();
+        }
     }
 }

@@ -19,9 +19,8 @@ namespace SulfurLauncher
 
         public static NavigationView GlobalNavigation;
         //public static Frame GlobalFrame;
-        public static Dialog BulkAddDialog;
         public static FluentWindow MainWindow;
-        public static Dialog DragNDropDialog;
+        public static Dialog WhatsNewDialog;
 
         public static string NavHeaderText { get; set; }
 
@@ -40,7 +39,7 @@ namespace SulfurLauncher
         public static string CurrentID = string.Empty;
         public static bool bOnlyStartQuickLauncher = false;
 
-        public static string VersionString = "0.6.6";
+        public static string VersionString = "0.6.7";
 
         #region Funcs
         public static void InitDBConnection()

@@ -61,6 +61,7 @@
                 <TextBlock Text="App Version: " Grid.Row="6" HorizontalAlignment="Left" Margin="0,8,8,8" FontSize="16"/>
                 <TextBlock x:Name="AppVerBox" Grid.Row="6" Margin="0,8,8,8" FontSize="16" FontWeight="Bold"/>
             </StackPanel>
+            <ui:Hyperlink x:Name="WhatsNewLink" Margin="8,8,8,8" Content="What's New" Click="WhatsNewLink_Click"/>
         </StackPanel>
     </Grid>
 </Page>

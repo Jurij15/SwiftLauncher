@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using SulfurLauncher.Helpers;
+using SwiftLauncher.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
@@ -45,7 +46,7 @@ namespace SulfurLauncher
             if (Settings.bIsFirstTimeUse())
             {
                 await PutTaskDelayWelcomeFirstTime();
-                CommonAppsHelper.CheckForCommonAppsAndAddThemToDatabase();
+                StartMenuApps.AddAllStartMenuApps();
                 Settings.CreateSettings();
                 //RestartApp();
                 LScreen.EndInit();

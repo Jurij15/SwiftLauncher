@@ -35,9 +35,8 @@ namespace SulfurLauncher
             Config.InitDBConnection();
             Config.GlobalNavigation = MainWindowNavStore;
             //Config.GlobalFrame = RootFrame;
-            Config.BulkAddDialog = BulkAddDialog;
             Config.MainWindow = this;
-            Config.DragNDropDialog = DragNDropPreviewDialog;
+            Config.WhatsNewDialog = WhatsnewDialog;
 
             Wpf.Ui.Appearance.Watcher.Watch(this);
 
@@ -61,17 +60,6 @@ namespace SulfurLauncher
         private void UiWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        private void BulkAddDialog_ButtonLeftClick(object sender, RoutedEventArgs e)
-        {
-            //add all apps before restarting
-            Config.RestartApp();
-        }
-
-        private void BulkAddDialog_ButtonRightClick(object sender, RoutedEventArgs e)
-        {
-            BulkAddDialog.Hide();
         }
 
         private void UiWindow_Initialized(object sender, EventArgs e)
@@ -173,6 +161,11 @@ namespace SulfurLauncher
         private void DragNDropPreviewDialog_Drop(object sender, DragEventArgs e)
         {
             MessageBox.Show("Dropped!");
+        }
+
+        private void WhatsnewDialog_ButtonRightClick(object sender, RoutedEventArgs e)
+        {
+            WhatsnewDialog.Hide();
         }
     }
 }
