@@ -1,5 +1,6 @@
 ﻿using SulfurLauncher.Database;
 using SulfurLauncher.Helpers;
+using SwiftLauncher.Native;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -111,6 +112,13 @@ namespace SulfurLauncher.Pages
         {
             InitializeComponent();
             CreateAppsForEveryApp();
+
+            string WallpaperPath = Interop.GetDesktopWallpaperPath();
+            if (!string.IsNullOrEmpty(WallpaperPath))
+            {
+                BitmapImage bitmapImage = new BitmapImage(new Uri(WallpaperPath, UriKind.RelativeOrAbsolute));
+                BorderImageSource.ImageSource = bitmapImage;
+            }
         }
 
         void CreateAppsForEveryApp()

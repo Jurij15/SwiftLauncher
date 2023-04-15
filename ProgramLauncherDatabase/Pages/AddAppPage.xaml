@@ -31,9 +31,10 @@
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="1">
                 <TextBlock Text="Add an application" FontWeight="DemiBold" FontSize="24" Margin="8,8,8,8"/>
-                <Border Margin="12,12,12,12" Background="#FF333333" AllowDrop="True" Drop="Border_Drop">
-                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Border Margin="12,12,12,12" Background="#FF333333" AllowDrop="True" Drop="Border_Drop" DragOver="Border_DragOver" DragEnter="Border_DragEnter">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
                         <TextBlock Text="Drag and drop here" Margin="12,12,12,12" FontSize="26"/>
+                        <CheckBox x:Name="DirectAddCheck" Content="Direct Add"/>
                     </StackPanel>
                 </Border>
             </StackPanel>

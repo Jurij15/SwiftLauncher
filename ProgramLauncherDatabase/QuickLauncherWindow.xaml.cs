@@ -28,6 +28,7 @@ namespace SulfurLauncher
     /// </summary>
     public partial class QuickLauncherWindow : Window
     {
+        public List<string> AllIds = new List<string>();
         #region WindowBlur And Runded Corners
         [DllImport("user32.dll")]
         internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);

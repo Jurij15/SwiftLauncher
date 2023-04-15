@@ -26,10 +26,10 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Border Margin="8,8,8,8" CornerRadius="8" Grid.Row="0">
+            <Border Margin="8,8,8,8" CornerRadius="8" Grid.Row="0" x:Name="ImageBorder">
                 <Border.Background>
-                    <ImageBrush ImageSource="/Pages/image2.jpg"                     
-                                    RenderOptions.BitmapScalingMode="HighQuality"
+                    <ImageBrush ImageSource="/Pages/image2.jpg"  x:Name="BorderImageSource"
+                                    RenderOptions.BitmapScalingMode="Fant"
                     Stretch="UniformToFill" />
                 </Border.Background>
                 <Border CornerRadius="8">

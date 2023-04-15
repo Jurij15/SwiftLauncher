@@ -1,7 +1,9 @@
 ﻿using SulfurLauncher.Database;
 using SulfurLauncher.Helpers;
+using SwiftLauncher.Helpers;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,12 +67,72 @@ namespace SulfurLauncher.Pages
 
         private void backBtn_Click(object sender, RoutedEventArgs e)
         {
-            //Config.GlobalNavigation.NavigateBack();
+            Config.GlobalNavigation.GoBack();
         }
 
-        private void Border_Drop(object sender, DragEventArgs e)
+        private async void Border_Drop(object sender, DragEventArgs e)
         {
-            //add the app
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+                MessageBox.Show(files.Length.ToString());
+                if (files.Length == 1)
+                {
+                    if (DirectAddCheck.IsChecked == true)
+                    {
+                        foreach (string file in files)
+                        {
+                            await DragNDropHelper.AddAppByDragAndDrop(file);
+                        }
+                    }
+                    else
+                    {
+                        foreach (string file in files) //there is only 1 file
+                        {
+                            AppNameBox.Text = System.IO.Path.GetFileNameWithoutExtension(file);
+                            if (file.Contains("lnk"))
+                            {
+                                AppPathBox.Text = StringsHelper.GetLnkTarget(file);
+                            }
+                            else if (file.Contains("exe"))
+                            {
+                                AppPathBox.Text = file;
+                            }
+                            else
+                            {
+                                e.Handled = true;
+                                return;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    // handle dropped files
+                    foreach (string file in files)
+                    {
+                        await DragNDropHelper.AddAppByDragAndDrop(file);
+                    }
+                }
+            }
+        }
+
+        private void Border_DragOver(object sender, DragEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void Border_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effects = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effects = DragDropEffects.None;
+            }
         }
     }
 }

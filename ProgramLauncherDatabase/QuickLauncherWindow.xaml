@@ -42,7 +42,7 @@
                 <MenuItem.Header>
                     <ui:SymbolIcon Symbol="MoreVertical28"/>
                 </MenuItem.Header>
-                <ui:MenuItem x:Name="ExpandBtn" Header="Enable Task Management" SymbolIcon="Open24" Click="ExpandBtn_Click"/>
+                <ui:MenuItem x:Name="ExpandBtn" Header="Enable Task Management (TESTING)" SymbolIcon="Open24" Click="ExpandBtn_Click"/>
                 <ui:MenuItem x:Name="ReturnBack" Header="Return to normal view" SymbolIcon="WindowNew20" Click="ReturnBack_Click"/>
                 <ui:MenuItem x:Name="ExitCompletely" Header="Quit" SymbolIcon="ArrowExit20" Click="ExitCompletely_Click"/>
             </ui:MenuItem>

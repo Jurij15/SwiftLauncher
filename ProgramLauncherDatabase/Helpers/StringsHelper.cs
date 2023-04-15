@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IWshRuntimeLibrary;
 
 namespace SulfurLauncher.Helpers
 {
@@ -30,6 +31,13 @@ namespace SulfurLauncher.Helpers
             RetValue = RetValue.Replace("COMMA", ",");
 
             return RetValue;
+        }
+
+        public static string GetLnkTarget(string lnkPath)
+        {
+            WshShell shell = new WshShell();
+            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(lnkPath);
+            return shortcut.TargetPath;
         }
     }
 }
