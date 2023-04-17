@@ -15,7 +15,8 @@
              WindowStyle="None"
              MaxHeight="77"
         AllowsTransparency="True"
-        Title="QuickLauncherWindow" Height="Auto" Width="{Binding TotalWidth}" >
+        WindowStartupLocation="Manual"
+        Title="QuickLauncherWindow" Height="Auto" Width="{Binding TotalWidth, Mode=OneWayToSource}" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

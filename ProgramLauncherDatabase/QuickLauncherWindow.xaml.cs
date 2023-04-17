@@ -12,6 +12,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -303,6 +304,20 @@ namespace SulfurLauncher
             CreateAppsForEveryApp();
 
             this.SizeChanged += MainWindow_SizeChanged;
+
+            double totalWidth = 0;
+            foreach (UIElement item in AppsPanel.Children)
+            {
+                totalWidth += ((FrameworkElement)item).ActualWidth;
+            }
+
+            // Adjust the window width based on the total width of the items
+            double padding = 20; // Add some padding to the window width
+            totalWidth = totalWidth + padding;
+
+            MessageBox.Show(totalWidth.ToString());
+
+            this.Width = totalWidth;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
