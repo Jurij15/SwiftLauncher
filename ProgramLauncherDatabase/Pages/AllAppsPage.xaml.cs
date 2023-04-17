@@ -183,7 +183,7 @@ namespace SulfurLauncher.Pages
 
         private void AddAppCard_Click(object sender, RoutedEventArgs e)
         {
-            Config.GlobalNavigation.Navigate(typeof(AddAppPage));
+            Config.GlobalNavigation.GoBack();
         }
 
         public void DrawBulkAddUI()

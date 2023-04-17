@@ -101,7 +101,7 @@ namespace SulfurLauncher.Pages
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
-            Config.GlobalNavigation.Navigate(typeof(AllAppsPage));
+            Config.GlobalNavigation.GoBack();
         }
 
         private void ExploreBtn_Click(object sender, RoutedEventArgs e)
@@ -118,7 +118,7 @@ namespace SulfurLauncher.Pages
         {
             DBUpdater updater = new DBUpdater();
             updater.UpdateApp(AppIDBlock.Text, AppNameBoxEdit.Text, AppPathBoxEdit.Text, AppCategoryBoxEdit.Text, AppNotesBoxEdit.Text, LaunchArgumentsBoxEdit.Text);
-            Config.GlobalNavigation.Navigate(typeof(AllAppsPage));
+            Config.GlobalNavigation.GoBack();
         }
 
         private void LaunchAppBtn_Click(object sender, RoutedEventArgs e)
@@ -137,7 +137,7 @@ namespace SulfurLauncher.Pages
         private void RemoveAppBtn_Click(object sender, RoutedEventArgs e)
         {
             DBRemover.RemoveAppFromDatabaseByID(AppIDBlock.Text);
-            Config.GlobalNavigation.Navigate(typeof(AllAppsPage));
+            Config.GlobalNavigation.GoBack();
         }
 
         private void UiPage_Unloaded(object sender, RoutedEventArgs e)

@@ -15,7 +15,7 @@
              WindowStyle="None"
              MaxHeight="77"
         AllowsTransparency="True"
-        Title="QuickLauncherWindow" Height="75" MaxWidth="750" >
+        Title="QuickLauncherWindow" Height="Auto" Width="{Binding TotalWidth}" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -31,12 +31,12 @@
 
         <ui:TitleBar x:Name="QuickTitleBar" Visibility="Collapsed" Title="TEst">
         </ui:TitleBar>
-        <ScrollViewer Grid.Row="3" Grid.Column="0" VerticalScrollBarVisibility="Disabled">
+        <ui:DynamicScrollViewer Grid.Row="3" Grid.Column="0" VerticalScrollBarVisibility="Disabled">
             <StackPanel>
                 <StackPanel x:Name="AppsPanel" HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="4" Grid.Column="0"/>
                 <StackPanel Visibility="Collapsed" x:Name="AppsTaskManagerPanel" HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="4" Grid.Column="0"/>
             </StackPanel>
-        </ScrollViewer>
+        </ui:DynamicScrollViewer>
         <Menu Margin="4,4,4,4" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="1" x:Name="QuickMenu">
             <ui:MenuItem Margin="2,2,2,2" Click="MenuItem_Click" Foreground="White">
                 <MenuItem.Header>

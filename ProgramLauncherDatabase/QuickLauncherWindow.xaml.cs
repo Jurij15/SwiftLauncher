@@ -3,9 +3,12 @@ using SulfurLauncher.Helpers;
 using SulfurLauncher.Pages;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,8 +29,16 @@ namespace SulfurLauncher
     /// <summary>
     /// Interaction logic for QuickLauncherWindow.xaml
     /// </summary>
-    public partial class QuickLauncherWindow : Window
+    public partial class QuickLauncherWindow : Window, INotifyPropertyChanged
     {
+        private double totalWidth;
+        public double TotalWidth
+        {
+            get { return totalWidth; }
+            set { totalWidth = value; NotifyPropertyChanged(); }
+        }
+
+        string QuickLauncherPosition = string.Empty;
         public List<string> AllIds = new List<string>();
         #region WindowBlur And Runded Corners
         [DllImport("user32.dll")]
@@ -286,8 +297,46 @@ namespace SulfurLauncher
                 this.Top = 10;
             }
 
+            QuickLauncherPosition = Position;
+
             QuickTitleBar.MinimizeToTray = true;
             CreateAppsForEveryApp();
+
+            this.SizeChanged += MainWindow_SizeChanged;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            // Set the window position to the bottom center of the screen when the window size changes
+            if (QuickLauncherPosition == "TOP")
+            {
+                this.Left = (SystemParameters.PrimaryScreenWidth - this.Width) / 2;
+
+                this.Top = 10;
+            }
+            else if (QuickLauncherPosition == "BOTTOM")
+            {
+                this.Left = (SystemParameters.PrimaryScreenWidth - this.Width) / 2;
+
+                this.Top = SystemParameters.PrimaryScreenHeight - this.Height - 60;
+            }
+            else
+            {
+                this.Left = (SystemParameters.PrimaryScreenWidth - this.Width) / 2;
+
+                this.Top = 10;
+            }
+
+            NotifyPropertyChanged();
         }
 
         void StartTimer()
@@ -324,6 +373,8 @@ namespace SulfurLauncher
                 if (string.IsNullOrWhiteSpace(app)) {  continue; }
                 CreateCard(Reader.GetAppNameByID(app), Reader.GetAppExecutablePathByID(app));
             }
+
+            NotifyPropertyChanged();
         }
 
         private void TaskBarIcon_LeftClick(Wpf.Ui.Controls.NotifyIcon sender, RoutedEventArgs e)

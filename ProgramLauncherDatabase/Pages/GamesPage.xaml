@@ -26,6 +26,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <WrapPanel x:Name="RootWrapPanel" Grid.Row="5" Margin="8,2,8,2"/>
+        <ui:InfoBar Title="Work in progress" Message="This page is being remade. Bugs are expected" Severity="Informational" Grid.Row="1" IsOpen="True" IsClosable="False" Margin="4,4,4,4"/>
         <ui:AutoSuggestBox PlaceholderEnabled="True" PlaceholderText="Search" Margin="8,8,8,4" Grid.Row="2"/>
         <ui:CardExpander x:Name="OptionsExpander" Margin="8,4,8,4" Grid.Row="3">
             <ui:CardExpander.Header>
