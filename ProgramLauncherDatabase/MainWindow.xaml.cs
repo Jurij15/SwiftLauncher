@@ -1,6 +1,6 @@
-﻿using SulfurLauncher.Database;
-using SulfurLauncher.Helpers;
-using SulfurLauncher.Pages;
+﻿using SwiftLauncher.Database;
+using SwiftLauncher.Helpers;
+using SwiftLauncher.Pages;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -19,7 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SulfurLauncher
+namespace SwiftLauncher
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

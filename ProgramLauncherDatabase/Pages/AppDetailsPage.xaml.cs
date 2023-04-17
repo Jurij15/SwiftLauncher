@@ -1,4 +1,4 @@
-﻿using SulfurLauncher.Database;
+﻿using SwiftLauncher.Database;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
@@ -18,9 +18,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Diagnostics;
-using SulfurLauncher.Helpers;
+using SwiftLauncher.Helpers;
 
-namespace SulfurLauncher.Pages
+namespace SwiftLauncher.Pages
 {
     /// <summary>
     /// Interaction logic for AppDetailsPage.xaml

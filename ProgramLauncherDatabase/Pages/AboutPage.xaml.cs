@@ -1,4 +1,4 @@
-﻿using SulfurLauncher.Helpers;
+﻿using SwiftLauncher.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wpf.Ui.Appearance;
 
-namespace SulfurLauncher.Pages
+namespace SwiftLauncher.Pages
 {
     /// <summary>
     /// Interaction logic for AboutPage.xaml

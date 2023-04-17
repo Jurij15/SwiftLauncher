@@ -1,6 +1,6 @@
-﻿using SulfurLauncher.Database;
-using SulfurLauncher.Helpers;
-using SulfurLauncher.Pages;
+﻿using SwiftLauncher.Database;
+using SwiftLauncher.Helpers;
+using SwiftLauncher.Pages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,7 +25,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace SulfurLauncher
+namespace SwiftLauncher
 {
     /// <summary>
     /// Interaction logic for QuickLauncherWindow.xaml

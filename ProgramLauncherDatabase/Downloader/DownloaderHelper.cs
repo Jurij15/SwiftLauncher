@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using Microsoft.WindowsAPICodePack.Shell.Interop;
 using System.Windows;
+using System.Text.RegularExpressions;
 
 namespace SwiftLauncher.Downloader
 {
@@ -44,6 +45,32 @@ namespace SwiftLauncher.Downloader
             }
 
             return RetVal;
+        }
+
+        public static string SearchForAppIDs(string Query)
+        {
+            string RetVal = null;
+
+            return RetVal;
+        }
+
+        public static string ListAllInstalledPackages()
+        {
+            bool RetVal = false;
+
+            ProcessStartInfo processInfo = new ProcessStartInfo("winget", "list")
+            {
+                CreateNoWindow = true,
+                RedirectStandardOutput = true,
+                UseShellExecute = false
+            };
+
+            Process process = new Process { StartInfo = processInfo };
+            process.Start();
+            string output = process.StandardOutput.ReadToEnd();
+            process.WaitForExit();
+
+            return output;
         }
     }
 }

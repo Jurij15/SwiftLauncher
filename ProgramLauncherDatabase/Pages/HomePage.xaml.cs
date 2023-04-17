@@ -1,5 +1,5 @@
-﻿using SulfurLauncher.Database;
-using SulfurLauncher.Helpers;
+﻿using SwiftLauncher.Database;
+using SwiftLauncher.Helpers;
 using SwiftLauncher.Native;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SulfurLauncher.Pages
+namespace SwiftLauncher.Pages
 {
     /// <summary>
     /// Interaction logic for HomePage.xaml
@@ -61,6 +61,8 @@ namespace SulfurLauncher.Pages
             cardHeaderPanel.Children.Add(tb);
 
             NewCard.Content = cardHeaderPanel;
+
+            NewCard.ToolTip = "Launch "+AccountName;
 
             NewCard.Click += CardClicked_Handler;
 

@@ -1,5 +1,5 @@
-﻿using SulfurLauncher.Database;
-using SulfurLauncher.Helpers;
+﻿using SwiftLauncher.Database;
+using SwiftLauncher.Helpers;
 using SwiftLauncher.Helpers;
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SulfurLauncher.Pages
+namespace SwiftLauncher.Pages
 {
     /// <summary>
     /// Interaction logic for AddAppPage.xaml

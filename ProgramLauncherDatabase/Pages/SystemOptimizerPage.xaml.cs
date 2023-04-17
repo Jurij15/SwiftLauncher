@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SulfurLauncher.Pages
+namespace SwiftLauncher.Pages
 {
     /// <summary>
     /// Interaction logic for SystemOptimizerPage.xaml

@@ -1,5 +1,5 @@
-﻿using SulfurLauncher.Database;
-using SulfurLauncher.Helpers;
+﻿using SwiftLauncher.Database;
+using SwiftLauncher.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -22,7 +22,7 @@ using System.IO;
 using System.Net;
 using SwiftLauncher.Helpers;
 
-namespace SulfurLauncher.Pages
+namespace SwiftLauncher.Pages
 {
     /// <summary>
     /// Interaction logic for AllAppsPage.xaml
@@ -95,6 +95,7 @@ namespace SulfurLauncher.Pages
             DirectLaunchBtn.HorizontalAlignment = HorizontalAlignment.Center;
             DirectLaunchBtn.Click += DirectLaunch_Click;
             DirectLaunchBtn.Margin = new Thickness(2,2,2, 0);
+            DirectLaunchBtn.ToolTip = "Launch " + AccountName;
 
             OptionsBtn.Appearance = Wpf.Ui.Controls.ControlAppearance.Secondary;
             OptionsBtn.Icon = Wpf.Ui.Common.SymbolRegular.MoreVertical16;
@@ -120,6 +121,8 @@ namespace SulfurLauncher.Pages
             //change these over h=200 w=180 if showing options button!
             NewCard.Height = 170; 
             NewCard.Width = 150;
+
+            NewCard.ToolTip = "View details about " + AccountName;
 
             NewCard.Margin = new Thickness(4, 4, 4, 4);
             NewCard.IsChevronVisible = false;
@@ -153,10 +156,22 @@ namespace SulfurLauncher.Pages
         void AddCardsForEveryApp()
         {
             RootWrapPanel.Children.Clear();
-            foreach (var id in Config.AllAppsIDsList)
+            if (SortAsc.IsSelected || SortDesc.IsSelected)
             {
-                DBReader reader = new DBReader();
-                CreateCard(reader.GetAppNameByID(id), reader.GetAppCategotyByID(id), reader.GetAppExecutablePathByID(id));
+                foreach (var name in Config.AllAppsNamesList)
+                {
+                    DBReader reader = new DBReader();
+                    string id = reader.GetAppIDByName(name);
+                    CreateCard(reader.GetAppNameByID(id), reader.GetAppCategotyByID(id), reader.GetAppExecutablePathByID(id));
+                }
+            }
+            else
+            {
+                foreach (var id in Config.AllAppsIDsList)
+                {
+                    DBReader reader = new DBReader();
+                    CreateCard(reader.GetAppNameByID(id), reader.GetAppCategotyByID(id), reader.GetAppExecutablePathByID(id));
+                }
             }
         }
 
@@ -177,7 +192,18 @@ namespace SulfurLauncher.Pages
             DBReader reader = new DBReader();
             FreeArrays();
             reader.AddAllAppIDsToArray();
-            reader.AddAllAppNamesToArray();
+            if (SortAsc.IsSelected)
+            {
+                reader.AddAllAppNamesToArrayAndSort(Enums.SortBy.Ascending);
+            }
+            else if (SortDesc.IsSelected)
+            {
+                reader.AddAllAppNamesToArrayAndSort(Enums.SortBy.Descending);
+            }
+            else
+            {
+                reader.AddAllAppNamesToArray();
+            }
             AddCardsForEveryApp();
         }
 
@@ -309,6 +335,16 @@ namespace SulfurLauncher.Pages
             Config.WhatsNewDialog.Hide();
 
             RefreshPage();
+        }
+
+        private void SortByComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            RefreshPage();
+        }
+
+        private void ClearSort_Selected(object sender, RoutedEventArgs e)
+        {
+            SortByComboBox.SelectedItem = null;
         }
     }
 }

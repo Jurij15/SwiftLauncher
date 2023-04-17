@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IWshRuntimeLibrary;
 
-namespace SulfurLauncher.Helpers
+namespace SwiftLauncher.Helpers
 {
     public class StringsHelper
     {

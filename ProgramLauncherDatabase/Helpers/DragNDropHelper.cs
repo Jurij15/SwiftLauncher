@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.WindowsAPICodePack.Shell;
-using SulfurLauncher.Database;
-using SulfurLauncher.Helpers;
+using SwiftLauncher.Database;
+using SwiftLauncher.Helpers;
 
 namespace SwiftLauncher.Helpers
 {

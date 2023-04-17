@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
-using SulfurLauncher;
-using SulfurLauncher.Database;
-using SulfurLauncher.Helpers;
+using SwiftLauncher;
+using SwiftLauncher.Database;
+using SwiftLauncher.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;

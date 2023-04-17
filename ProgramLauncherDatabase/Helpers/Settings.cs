@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms.VisualStyles;
 
-namespace SulfurLauncher.Helpers
+namespace SwiftLauncher.Helpers
 {
     public class Settings
     {

@@ -1,4 +1,5 @@
-﻿using SulfurLauncher.Helpers;
+﻿using SwiftLauncher.Enums;
+using SwiftLauncher.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -7,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace SulfurLauncher.Database
+namespace SwiftLauncher.Database
 {
     public class DBReader
     {
@@ -26,6 +27,25 @@ namespace SulfurLauncher.Database
         public void AddAllAppNamesToArray()
         {
             string Command = "SELECT AppName FROM App";
+            SQLiteCommand SelectCommand = new SQLiteCommand(Command, Config.ESQLiteConnection);
+            SQLiteDataReader reader = SelectCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                Config.AllAppsNamesList.Add(Convert.ToString(reader["AppName"]));
+            }
+        }
+
+        public void AddAllAppNamesToArrayAndSort(SortBy Sort)
+        {
+            string Command = string.Empty;
+            if (Sort == SortBy.Ascending)
+            {
+                Command = "SELECT AppName FROM App ORDER BY AppName ASC";
+            }
+            else
+            {
+                Command = "SELECT AppName FROM App ORDER BY AppName DESC";
+            }
             SQLiteCommand SelectCommand = new SQLiteCommand(Command, Config.ESQLiteConnection);
             SQLiteDataReader reader = SelectCommand.ExecuteReader();
             while (reader.Read())

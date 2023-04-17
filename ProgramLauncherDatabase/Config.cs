@@ -9,7 +9,7 @@ using Wpf.Ui.Controls;
 using Wpf.Ui.Controls.Navigation;
 using Wpf.Ui.Controls.Window;
 
-namespace SulfurLauncher
+namespace SwiftLauncher
 {
     public class Config
     {

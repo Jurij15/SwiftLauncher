@@ -1,4 +1,4 @@
-﻿using SulfurLauncher.Database;
+﻿using SwiftLauncher.Database;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 
-namespace SulfurLauncher.Helpers
+namespace SwiftLauncher.Helpers
 {
     public class DatabaseHelper
     {

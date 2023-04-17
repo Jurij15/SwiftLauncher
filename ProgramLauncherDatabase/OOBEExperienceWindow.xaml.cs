@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualBasic;
-using SulfurLauncher.Helpers;
+using SwiftLauncher.Helpers;
 using SwiftLauncher.Helpers;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SulfurLauncher
+namespace SwiftLauncher
 {
     /// <summary>
     /// Interaction logic for OOBEExperienceWindow.xaml
