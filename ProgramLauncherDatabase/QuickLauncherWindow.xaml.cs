@@ -314,10 +314,6 @@ namespace SulfurLauncher
             // Adjust the window width based on the total width of the items
             double padding = 20; // Add some padding to the window width
             totalWidth = totalWidth + padding;
-
-            MessageBox.Show(totalWidth.ToString());
-
-            this.Width = totalWidth;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -390,6 +386,7 @@ namespace SulfurLauncher
             }
 
             NotifyPropertyChanged();
+
         }
 
         private void TaskBarIcon_LeftClick(Wpf.Ui.Controls.NotifyIcon sender, RoutedEventArgs e)
@@ -515,6 +512,9 @@ namespace SulfurLauncher
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             EnableBlur();
+            //MessageBox.Show(AppsPanel.ActualWidth.ToString(), this.ActualWidth.ToString());
+            this.Width = AppsPanel.ActualWidth + 50;
+            this.Height = AppsPanel.ActualHeight;
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -525,6 +525,11 @@ namespace SulfurLauncher
         private void ExpandBtn_Click(object sender, RoutedEventArgs e)
         {
             StartTimer();
+        }
+
+        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

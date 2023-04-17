@@ -32,7 +32,7 @@
 
         <ui:TitleBar x:Name="QuickTitleBar" Visibility="Collapsed" Title="TEst">
         </ui:TitleBar>
-        <ui:DynamicScrollViewer Grid.Row="3" Grid.Column="0" VerticalScrollBarVisibility="Disabled">
+        <ui:DynamicScrollViewer Grid.Row="3" Grid.Column="0" VerticalScrollBarVisibility="Disabled" x:Name="AppsPanelScroller">
             <StackPanel>
                 <StackPanel x:Name="AppsPanel" HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="4" Grid.Column="0"/>
                 <StackPanel Visibility="Collapsed" x:Name="AppsTaskManagerPanel" HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="4" Grid.Column="0"/>

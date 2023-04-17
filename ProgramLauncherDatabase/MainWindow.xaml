@@ -64,6 +64,11 @@
                         <ui:SymbolIcon Symbol="Games24"/>
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
+                <ui:NavigationViewItem Content="Get More" TargetPageType="{x:Type page:DownloadMoreAppsPage}">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:SymbolIcon Symbol="AppsAddIn24"/>
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
                 <ui:NavigationViewItem Visibility="Collapsed"
                     Content="System Optimizer"
                     TargetPageType="{x:Type page:SystemOptimizerPage}"/>
