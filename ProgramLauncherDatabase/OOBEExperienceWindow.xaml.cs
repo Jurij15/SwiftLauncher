@@ -46,7 +46,8 @@ namespace SulfurLauncher
             if (Settings.bIsFirstTimeUse())
             {
                 await PutTaskDelayWelcomeFirstTime();
-                StartMenuApps.AddAllStartMenuApps();
+                //StartMenuApps.AddAllStartMenuApps();
+                await CommonAppsHelper.CheckForCommonAppsAndAddThemToDatabase();
                 Settings.CreateSettings();
                 //RestartApp();
                 LScreen.EndInit();

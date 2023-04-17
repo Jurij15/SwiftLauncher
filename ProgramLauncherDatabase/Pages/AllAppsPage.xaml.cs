@@ -20,6 +20,7 @@ using System.Windows.Shapes;
 using System.Xml.Serialization;
 using System.IO;
 using System.Net;
+using SwiftLauncher.Helpers;
 
 namespace SulfurLauncher.Pages
 {
@@ -168,6 +169,11 @@ namespace SulfurLauncher.Pages
         public AllAppsPage()
         {
             InitializeComponent();
+            RefreshPage();
+        }
+
+        void RefreshPage()
+        {
             DBReader reader = new DBReader();
             FreeArrays();
             reader.AddAllAppIDsToArray();
@@ -178,6 +184,37 @@ namespace SulfurLauncher.Pages
         private void AddAppCard_Click(object sender, RoutedEventArgs e)
         {
             Config.GlobalNavigation.Navigate(typeof(AddAppPage));
+        }
+
+        public void DrawBulkAddUI()
+        {
+            StackPanel panel = new StackPanel();
+            ListView listBox = new ListView();
+
+            listBox.SelectionMode = SelectionMode.Multiple;
+
+            foreach (var app in StartMenuApps.GetAllApps())
+            {
+                listBox.Items.Add(System.IO.Path.GetFileNameWithoutExtension(app));
+            }
+
+            listBox.Margin = new Thickness(2, 2, 2, 2);
+
+            Config.WhatsNewDialog.Content = listBox;
+            Config.WhatsNewDialog.Title = "Select apps to add";
+            //Config.WhatsNewDialog.Message = "These apps are installed on your computer";
+
+            Config.WhatsNewDialog.ButtonLeftAppearance = Wpf.Ui.Controls.ControlAppearance.Primary;
+            Config.WhatsNewDialog.ButtonLeftVisibility = Visibility.Visible;
+            Config.WhatsNewDialog.ButtonLeftName = "Add";
+            Config.WhatsNewDialog.ButtonLeftClick += BulkAddAppsDialog_ButtonLeftClick;
+
+            Config.WhatsNewDialog.ButtonRightAppearance = Wpf.Ui.Controls.ControlAppearance.Secondary;
+            Config.WhatsNewDialog.ButtonRightName = "Close";
+            Config.WhatsNewDialog.ButtonRightClick += BulkAddAppsDialog_ButtonRightClick;
+
+            Config.WhatsNewDialog.DialogHeight = 450;
+            Config.WhatsNewDialog.ShowAndWaitAsync();
         }
 
         private void CardClicked_Handler(object sender, RoutedEventArgs e)
@@ -224,6 +261,7 @@ namespace SulfurLauncher.Pages
 
         private void BulkAddApps_Click(object sender, RoutedEventArgs e)
         {
+            DrawBulkAddUI();
         }
 
         private void RootWrapPanel_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -241,12 +279,36 @@ namespace SulfurLauncher.Pages
             //user started typing
             if (string.IsNullOrEmpty(SearchBox.Text))
             {
+                RefreshPage();
+            }
+            else
+            {
                 DBReader reader = new DBReader();
                 FreeArrays();
-                reader.AddAllAppIDsToArray();
-                reader.AddAllAppNamesToArray();
+                reader.FillAppIDsArrayByIfNameContains(SearchBox.Text);
                 AddCardsForEveryApp();
             }
+        }
+
+        private void BulkAddAppsDialog_ButtonRightClick(object sender, RoutedEventArgs e)
+        {
+            Config.WhatsNewDialog.Hide();
+        }
+
+        private void BulkAddAppsDialog_ButtonLeftClick(object sender, RoutedEventArgs e)
+        {
+            //do not hide the dialog before all apps are added
+            //MessageBox.Show(Config.WhatsNewDialog.Content.GetType().ToString());
+            ListView listView = (ListView)Config.WhatsNewDialog.Content;
+
+            foreach (var item in listView.SelectedItems)
+            {
+                StartMenuApps.AddAppToDBByName(item.ToString());
+            }
+
+            Config.WhatsNewDialog.Hide();
+
+            RefreshPage();
         }
     }
 }

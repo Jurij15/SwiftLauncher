@@ -145,6 +145,16 @@ namespace SulfurLauncher.Database
             return ReturnValue;
         }
 
-
+        public void FillAppIDsArrayByIfNameContains(string Contains)
+        {
+            string ReturnValue = "";
+            string Command = "SELECT ID FROM App WHERE AppName LIKE '%" + Contains + "%';";
+            SQLiteCommand SelectCommand = new SQLiteCommand(Command, Config.ESQLiteConnection);
+            SQLiteDataReader reader = SelectCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                Config.AllAppsIDsList.Add(Convert.ToString(reader["ID"]));
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,7 +29,7 @@ namespace SwiftLauncher.Helpers
             }
 
             startMenuPath = Environment.GetFolderPath(Environment.SpecialFolder.StartMenu);
-            CommonAppsHelper.CheckForCommonAppsAndAddThemToDatabase();
+            //CommonAppsHelper.CheckForCommonAppsAndAddThemToDatabase();
             Config.InitDBConnection();
             string[] files = Directory.GetFiles(startMenuPath, "*", SearchOption.AllDirectories);
             //MessageBox.Show(files.Length.ToString());
@@ -66,6 +67,53 @@ namespace SwiftLauncher.Helpers
             }
 
             Config.DisconnectFromDB();
+        }
+
+        public static string[] GetAllApps()
+        {
+            List<string> RetVal = new List<string>();
+            List<string> ToRemoveApps = new List<string>();
+            string startMenuPath = @"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs";
+
+            foreach (var appPath in Directory.GetFiles(startMenuPath, "*", SearchOption.AllDirectories))
+            {
+                if (!appPath.Contains("lnk")) continue;
+                RetVal.Add(appPath);
+            }
+
+            foreach (var app in RetVal)
+            {
+                if (!StringsHelper.GetLnkTarget(app).Contains("exe"))
+                {
+                    ToRemoveApps.Add(app);
+                }
+            }
+
+            foreach (var item in ToRemoveApps)
+            {
+                RetVal.Remove(item);
+            }
+
+            ToRemoveApps.Clear();
+
+            return RetVal.ToArray();
+        }
+
+        public static async Task AddAppToDBByName(string Name)
+        {
+            List<string> Apps = GetAllApps().ToList();
+
+            foreach (var item in Apps)
+            {
+                if (Path.GetFileNameWithoutExtension(item) == Name)
+                {
+                    string AppPatn = StringsHelper.GetLnkTarget(item);
+                    string AppName = Path.GetFileNameWithoutExtension(item);
+
+                    DBCreator dBCreator = new DBCreator();
+                    await dBCreator.CreateAppAsync(AppName, AppPatn);
+                }
+            }
         }
     }
 }

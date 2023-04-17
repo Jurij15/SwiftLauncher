@@ -67,7 +67,7 @@ namespace SulfurLauncher.Pages
 
         private void backBtn_Click(object sender, RoutedEventArgs e)
         {
-            Config.GlobalNavigation.GoBack();
+            Config.GlobalNavigation.Navigate(typeof(AllAppsPage));
         }
 
         private async void Border_Drop(object sender, DragEventArgs e)

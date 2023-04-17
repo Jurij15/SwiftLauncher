@@ -90,14 +90,16 @@
                     Click="ThemeButtonNavigation_Click"/>
             </ui:NavigationView.FooterMenuItems>
             <ui:NavigationView.ContentOverlay>
-                <ui:Dialog x:Name="WhatsnewDialog" DialogHeight="350" ButtonLeftVisibility="Collapsed" ButtonRightAppearance="Primary" ButtonRightClick="WhatsnewDialog_ButtonRightClick" ButtonRightName="Close">
-                    <StackPanel>
-                        <TextBlock Text="What's new in update 0.6.7" FontWeight="Medium" FontSize="20" Margin="4,4,4,4" Foreground="White"/>
-                        <TextBlock x:Name="Content" TextWrapping="WrapWithOverflow" FontSize="16" Foreground="WhiteSmoke">
+                <DockPanel LastChildFill="True">
+                    <ui:Dialog x:Name="WhatsnewDialog" DialogHeight="350" ButtonLeftVisibility="Collapsed" ButtonRightAppearance="Primary" ButtonRightClick="WhatsnewDialog_ButtonRightClick" ButtonRightName="Close">
+                        <StackPanel>
+                            <TextBlock Text="What's new in update 0.6.7" FontWeight="Medium" FontSize="20" Margin="4,4,4,4" Foreground="White"/>
+                            <TextBlock x:Name="Content" TextWrapping="WrapWithOverflow" FontSize="16" Foreground="WhiteSmoke">
                             -Redesigned apps page <LineBreak/> -Remade automatic app adition (more apps should be added now)
-                        </TextBlock>
-                    </StackPanel>
-                </ui:Dialog>
+                            </TextBlock>
+                        </StackPanel>
+                    </ui:Dialog>
+                </DockPanel>
             </ui:NavigationView.ContentOverlay>
         </ui:NavigationView>
         <ui:TitleBar Title="SwiftLauncher" x:Name="MWindowTitleBar" Background="Transparent" Grid.Row="0" Icon="../icons/ic_launcher.png"  MinimizeToTray="False" ShowHelp="False" HelpClicked="TitleBar_HelpClicked" MinimizeClicked="TitleBar_MinimizeClicked" CloseClicked="MWindowTitleBar_CloseClicked">
