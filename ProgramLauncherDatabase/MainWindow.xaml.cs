@@ -43,6 +43,15 @@ namespace SwiftLauncher
             Settings.FilterLaunchArguments();
 
             MWindowTitleBar.MinimizeToTray = true;
+
+            if (Config.bShowDownloadTestPage)
+            {
+                DownloadAppsPage.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                DownloadAppsPage.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void ThemeButtonNavigation_Click(object sender, RoutedEventArgs e)

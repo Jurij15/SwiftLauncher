@@ -64,17 +64,18 @@
                         </StackPanel>
                     </ui:CardAction>
                 </StackPanel>
-                
+
             </ui:CardExpander>
             <Border Grid.Row="6" Margin="8,8,8,8">
-                <Grid>
+                <StackPanel Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center" x:Name="AppsCountBlock" Text="All Apps: " FontSize="14" Margin="2,2,2,2"/>
-                    <ComboBox SelectionChanged="SortByComboBox_SelectionChanged" x:Name="SortByComboBox" Text="Sort" Margin="2,2,2,2" HorizontalAlignment="Right">
+                    <TextBlock Text="Sort" HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Center" />
+                    <ComboBox SelectionChanged="SortByComboBox_SelectionChanged" x:Name="SortByComboBox" Text="Sort" Margin="2,2,2,2" HorizontalAlignment="Right" VerticalAlignment="Center">
                         <ComboBoxItem Content="Ascending" x:Name="SortAsc"/>
                         <ComboBoxItem Content="Descending" x:Name="SortDesc"/>
                         <ComboBoxItem Content="Clear" x:Name="ClearSort" Selected="ClearSort_Selected"/>
                     </ComboBox>
-                </Grid>
+                </StackPanel>
             </Border>
 
         </Grid>

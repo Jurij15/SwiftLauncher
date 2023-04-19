@@ -39,7 +39,11 @@ namespace SwiftLauncher.Helpers
             {
                 if (arg == "-DoShowQuickLauncherOnly")
                 {
-                   Config.bOnlyStartQuickLauncher = true;
+                    Config.bOnlyStartQuickLauncher = true;
+                }
+                else if (arg == "-DoShowDownloadTest")
+                {
+
                 }
             }
         }

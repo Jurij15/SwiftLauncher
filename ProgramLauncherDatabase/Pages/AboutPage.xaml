@@ -48,12 +48,22 @@
             </ui:Card>
         </StackPanel>
 
+        <ui:InfoBar Message="This is a development build. Issues are expected." Title="Development Build" Grid.Row="5" IsOpen="True" IsClosable="False" Margin="8,8,8,0"/>
+
         <!--About Stuff-->
-        <ui:CardExpander Grid.Row="5" Margin="8,8,8,8" IsExpanded="True">
+        <ui:CardExpander Grid.Row="8" Margin="8,8,8,8" IsExpanded="True">
             <ui:CardExpander.Header>
-                <StackPanel>
-                    <TextBlock Text="About SwiftLauncher" FontWeight="Medium"/>
-                </StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="/Pages/1024.png" MaxHeight="25" MaxWidth="25" Margin="2,2,6,2" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <TextBlock Text="About SwiftLauncher" FontWeight="Medium"/>
+                        <TextBlock Text="by Jurij15" Foreground="LightGray"/>
+                    </StackPanel>
+                </Grid>
             </ui:CardExpander.Header>
             <StackPanel Grid.Row="5" VerticalAlignment="Top" Grid.Column="1">
 

@@ -39,7 +39,9 @@ namespace SwiftLauncher
         public static string CurrentID = string.Empty;
         public static bool bOnlyStartQuickLauncher = false;
 
-        public static string VersionString = "0.6.7";
+        public static bool bShowDownloadTestPage = false;
+
+        public static string VersionString = "0.6.8";
 
         #region Funcs
         public static void InitDBConnection()

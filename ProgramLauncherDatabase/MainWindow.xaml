@@ -64,7 +64,7 @@
                         <ui:SymbolIcon Symbol="Games24"/>
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
-                <ui:NavigationViewItem Content="Get More" TargetPageType="{x:Type page:DownloadMoreAppsPage}">
+                <ui:NavigationViewItem Content="Get More" TargetPageType="{x:Type page:DownloadMoreAppsPage}" x:Name="DownloadAppsPage">
                     <ui:NavigationViewItem.Icon>
                         <ui:SymbolIcon Symbol="AppsAddIn24"/>
                     </ui:NavigationViewItem.Icon>
@@ -98,9 +98,9 @@
                 <DockPanel LastChildFill="True">
                     <ui:Dialog x:Name="WhatsnewDialog" DialogHeight="350" ButtonLeftVisibility="Collapsed" ButtonRightAppearance="Primary" ButtonRightClick="WhatsnewDialog_ButtonRightClick" ButtonRightName="Close">
                         <StackPanel>
-                            <TextBlock Text="What's new in update 0.6.7" FontWeight="Medium" FontSize="20" Margin="4,4,4,4" Foreground="White"/>
+                            <TextBlock Text="What's new in version 0.6.8" FontWeight="Medium" FontSize="20" Margin="4,4,4,4" Foreground="White"/>
                             <TextBlock x:Name="Content" TextWrapping="WrapWithOverflow" FontSize="16" Foreground="WhiteSmoke">
-                            -Redesigned apps page <LineBreak/> -Remade automatic app adition (more apps should be added now)
+                            -Added sorting and basic searching to Apps Page <LineBreak/> -Updated the quick launcher <LineBreak/>  -Minimal changes to about page <LineBreak/> -Many features are still in development, and might not work properly
                             </TextBlock>
                         </StackPanel>
                     </ui:Dialog>

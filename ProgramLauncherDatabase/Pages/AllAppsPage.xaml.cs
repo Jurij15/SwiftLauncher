@@ -21,6 +21,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Net;
 using SwiftLauncher.Helpers;
+using System.Windows.Automation.Peers;
 
 namespace SwiftLauncher.Pages
 {
@@ -94,7 +95,7 @@ namespace SwiftLauncher.Pages
             DirectLaunchBtn.VerticalAlignment = VerticalAlignment.Bottom;
             DirectLaunchBtn.HorizontalAlignment = HorizontalAlignment.Center;
             DirectLaunchBtn.Click += DirectLaunch_Click;
-            DirectLaunchBtn.Margin = new Thickness(2,2,2, 0);
+            DirectLaunchBtn.Margin = new Thickness(2,4,2, 0);
             DirectLaunchBtn.ToolTip = "Launch " + AccountName;
 
             OptionsBtn.Appearance = Wpf.Ui.Controls.ControlAppearance.Secondary;
@@ -103,8 +104,10 @@ namespace SwiftLauncher.Pages
             OptionsBtn.HorizontalAlignment = HorizontalAlignment.Right;
             OptionsBtn.Height = 40;
             OptionsBtn.Width = 30;
+            OptionsBtn.Margin = new Thickness(-15, -20, -12, -10);
+            OptionsBtn.Click += OptionsBtn_Click;
 
-            //cardHeaderPanel.Children.Add(OptionsBtn);
+            cardHeaderPanel.Children.Add(OptionsBtn);
             cardHeaderPanel.Children.Add(img);
             cardHeaderPanel.Children.Add(icon);
             cardHeaderPanel.Children.Add(tb);
@@ -119,6 +122,7 @@ namespace SwiftLauncher.Pages
             NewCard.MaxWidth = 230;
 
             //change these over h=200 w=180 if showing options button!
+            //default h=170 w=150
             NewCard.Height = 170; 
             NewCard.Width = 150;
 
@@ -132,6 +136,23 @@ namespace SwiftLauncher.Pages
 
             //RootWrapPanel.Children.Add(NewCard);
             RootWrapPanel.Children.Add(NewCard);
+        }
+
+        private void OptionsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            bShowAppDetails = false;
+            ContextMenu ctx = new ContextMenu();
+
+            Wpf.Ui.Controls.MenuItem DeleteAppMenuItem = new Wpf.Ui.Controls.MenuItem();
+            DeleteAppMenuItem.Header = "Remove App";
+            DeleteAppMenuItem.SymbolIcon = Wpf.Ui.Common.SymbolRegular.Delete24;
+
+
+            ctx.Items.Add(DeleteAppMenuItem);
+
+            ctx.IsOpen = true;
+
+            ((Wpf.Ui.Controls.Button)sender).ContextMenu = ctx;
         }
         #endregion
 
