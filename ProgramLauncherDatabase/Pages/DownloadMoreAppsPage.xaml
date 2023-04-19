@@ -28,49 +28,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <ui:AutoSuggestBox x:Name="SearchBox" Grid.Row="2" Margin="4,4,4,4" PlaceholderText="Search" HorizontalAlignment="Center" VerticalAlignment="Top" MinWidth="400" MaxWidth="400" KeyDown="SearchBox_KeyDown"/>
-        <ui:CardControl x:Name="WinGetInstalledCard" Grid.Row="3" Margin="4,4,4,4" Visibility="Visible" Icon="Checkmark24" IconFilled="True" IconForeground="WhiteSmoke" Background="{ui:ThemeResource SystemFillColorSuccessBackgroundBrush}">
-            <ui:CardControl.Header>
-                <StackPanel>
-                    <TextBlock Text="WinGet is installed" FontSize="20" FontWeight="Medium"/>
-                    <TextBlock Text="WinGet is installed and ready to be used"/>
-                </StackPanel>
-            </ui:CardControl.Header>
-            <StackPanel>
-                <ui:Button x:Name="ClosePopupBtn" ToolTip="Close" Click="ClosePopupBtn_Click" Icon="Dismiss24" Appearance="Secondary"/>
-            </StackPanel>
-        </ui:CardControl>
-        <ui:CardControl x:Name="WinGetNotInstalledCard" Grid.Row="3" Margin="4,4,4,4" Visibility="Collapsed" Icon="ErrorCircle24" IconFilled="True" IconForeground="Red" Background="{ui:ThemeResource SystemFillColorCriticalBackgroundBrush}"
-                        >
-            <ui:CardControl.Header>
-                <StackPanel>
-                    <TextBlock Text="WinGet is not installed" FontSize="20" FontWeight="Medium"/>
-                    <TextBlock Text="To use this, WinGet must be installed"/>
-                </StackPanel>
-            </ui:CardControl.Header>
-            <StackPanel>
-                <ui:Button Appearance="Primary" Content="Install" x:Name="WinGetInstallBtn" Click="WinGetInstallBtn_Click" ToolTip="You might be prompted to allow administrator privileges"/>
-            </StackPanel>
-        </ui:CardControl>
-        <ui:DynamicScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Hidden" Grid.Row="8">
-                <WrapPanel x:Name="RootWrapPanel" Margin="8,2,8,2" SizeChanged="RootWrapPanel_SizeChanged" Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ScrollViewer}}, Path=ActualWidth}"/>
-        </ui:DynamicScrollViewer>
-        <ui:DynamicScrollViewer Grid.Row="7">
-        <StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <ui:Button Content="List all installed packages" Margin="0,0,0,0" x:Name="ListInstalledPackages" Click="ListInstalledPackages_Click"/>
-            </StackPanel>
-                <ui:CardControl Margin="4,4,4,4" Header="Install a package">
-                    <StackPanel Orientation="Horizontal">
-                        <ui:AutoSuggestBox PlaceholderText="Package ID" x:Name="packageIDBox" Margin="2,2,2,2"/>
-                        <ui:Button Appearance="Primary" Content="Install" x:Name="InstallPackageBtn" Click="InstallPackageBtn_Click" Margin="2,2,2,2"/>
-                    </StackPanel>
-                </ui:CardControl>
-        </StackPanel>
-        </ui:DynamicScrollViewer>
-        <ui:DynamicScrollViewer Grid.Row="9" Margin="4,4,4,4">
-            <TextBlock x:Name="OutputBox">
-                
-            </TextBlock>
-        </ui:DynamicScrollViewer>
+        
     </Grid>
 </Page>

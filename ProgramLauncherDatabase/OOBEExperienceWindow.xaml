@@ -14,7 +14,7 @@
              
         Title="OOBEExperienceWindow" Height="450" Width="800">
     <Grid>
-        <ui:LoadingScreen Background="Transparent" x:Name="LScreen">
+        <ui:LoadingScreen x:Name="LScreen">
             <StackPanel>
                 <TextBlock Text="Sulfur Launcher" FontSize="36" AllowDrop="True" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="DemiBold"/>
                 <TextBlock Text="Preparing for first-time use..." FontSize="14" Foreground="LightGray" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>

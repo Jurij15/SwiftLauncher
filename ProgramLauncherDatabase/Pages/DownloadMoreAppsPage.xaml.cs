@@ -24,17 +24,6 @@ namespace SwiftLauncher.Pages
         public DownloadMoreAppsPage()
         {
             InitializeComponent();
-
-            if (DownloaderHelper.bIsWinGetInstalled())
-            {
-                WinGetInstalledCard.Visibility = Visibility.Visible;
-                WinGetNotInstalledCard.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                WinGetInstalledCard.Visibility=Visibility.Collapsed;
-                WinGetNotInstalledCard.Visibility =Visibility.Visible;
-            }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -42,34 +31,9 @@ namespace SwiftLauncher.Pages
             SearchBox.Width = this.Width /2;
         }
 
-        private void RootWrapPanel_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            
-        }
-
-        private void WinGetInstallBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ClosePopupBtn_Click(object sender, RoutedEventArgs e)
-        {
-            WinGetInstalledCard.Visibility = Visibility.Collapsed ;
-        }
-
         private void SearchBox_KeyDown(object sender, KeyEventArgs e)
         {
 
-        }
-
-        private void InstallPackageBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ListInstalledPackages_Click(object sender, RoutedEventArgs e)
-        {
-            OutputBox.Text = DownloaderHelper.ListAllInstalledPackages();
         }
     }
 }
