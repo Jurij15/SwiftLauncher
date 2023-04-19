@@ -1,4 +1,2 @@
 # ProgramLauncherDatabase
-A simple Program Launcher using SQlite for saving settings
-
-## This app is still under development
+This branch was a backup before i changed to the in-development version of wpf-ui
