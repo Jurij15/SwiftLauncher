@@ -5,6 +5,7 @@ A simple Program Launcher with a quick launcher feature
 
 ## Current Bugs
 - Naviagation is buggy when opening app details and going back (fix: click the all apps from navigation directly)
+- Windows 10 has some issues with themes
 
 ## Upcoming Features
 - Grouping in QuickLauncher
