@@ -110,8 +110,6 @@ namespace SwiftLauncher
                 //MessageBox.Show("showing");
                 test.Show();
             }
-
-
         }
 
         private void MainWindowNavStore_PaneClosed(object sender, RoutedEventArgs e)

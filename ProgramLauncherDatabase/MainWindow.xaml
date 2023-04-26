@@ -107,7 +107,7 @@
                 </DockPanel>
             </ui:NavigationView.ContentOverlay>
         </ui:NavigationView>
-        <ui:TitleBar Title="SwiftLauncher" x:Name="MWindowTitleBar" Background="Transparent" Grid.Row="0" Icon="../icons/ic_launcher.png"  MinimizeToTray="False" ShowHelp="False" HelpClicked="TitleBar_HelpClicked" MinimizeClicked="TitleBar_MinimizeClicked" CloseClicked="MWindowTitleBar_CloseClicked">
+        <ui:TitleBar Title="SwiftLauncher" x:Name="MWindowTitleBar" Background="Transparent" Grid.Row="0" Icon="../icons/ic_launcher.png"  MinimizeToTray="True" ShowHelp="False" HelpClicked="TitleBar_HelpClicked" MinimizeClicked="TitleBar_MinimizeClicked" CloseClicked="MWindowTitleBar_CloseClicked">
             <ui:TitleBar.Tray>
                 <ui:NotifyIcon x:Name="TaskBarIcon" FocusOnLeftClick="False" MenuOnRightClick="True">
                     <ui:NotifyIcon.Menu>
