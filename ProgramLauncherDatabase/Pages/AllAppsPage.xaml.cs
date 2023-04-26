@@ -22,6 +22,9 @@ using System.IO;
 using System.Net;
 using SwiftLauncher.Helpers;
 using System.Windows.Automation.Peers;
+using System.Data.Entity;
+using System.IO.Packaging;
+using SwiftLauncher.Classes;
 
 namespace SwiftLauncher.Pages
 {
@@ -32,7 +35,6 @@ namespace SwiftLauncher.Pages
     {
         bool bShowAppDetails = true;
         #region Cards and rows, columns
-        //this is my solution for adding in cards dynammically 
         void CreateCard(string AccountName, string AppCategory, string AppPath)
         {
             Wpf.Ui.Controls.CardAction NewCard = new Wpf.Ui.Controls.CardAction();
@@ -206,6 +208,18 @@ namespace SwiftLauncher.Pages
         {
             InitializeComponent();
             RefreshPage();
+
+            RootWrapPanel.Children.Clear();
+
+            foreach (var item in Config.AllAppsNamesList)
+            {
+                DBReader dBReader = new DBReader();
+                string id = dBReader.GetAppIDByName(item);
+
+                AppCardActionClass cardClass = new AppCardActionClass(id);
+
+                RootWrapPanel.Children.Add(cardClass.CreateStandardCard(Enums.CardDisplayMode.Expanded, DirectLaunch_Click, OptionsBtn_Click, CardClicked_Handler));
+            }
         }
 
         void RefreshPage()
@@ -366,6 +380,11 @@ namespace SwiftLauncher.Pages
         private void ClearSort_Selected(object sender, RoutedEventArgs e)
         {
             SortByComboBox.SelectedItem = null;
+        }
+
+        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            //RefreshPage();
         }
     }
 }

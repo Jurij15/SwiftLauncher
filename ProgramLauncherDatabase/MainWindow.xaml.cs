@@ -176,5 +176,10 @@ namespace SwiftLauncher
         {
             WhatsnewDialog.Hide();
         }
+
+        private void FluentWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            //MessageBox.Show(this.Width.ToString());
+        }
     }
 }
