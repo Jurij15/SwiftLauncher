@@ -141,7 +141,6 @@ namespace SwiftLauncher.Classes
             NewCard.IsChevronVisible = false;
 
             //this is going to be a little stupid, but the above code is already as bad as it is and i do not want to repair or break it any further
-
             switch (DisplayMode)
             {
                 case CardDisplayMode.Small:
@@ -155,6 +154,7 @@ namespace SwiftLauncher.Classes
                     break;
 
                 case CardDisplayMode.Normal:
+                    return NewCard;
                     break;
 
                 case CardDisplayMode.Large:
@@ -208,7 +208,7 @@ namespace SwiftLauncher.Classes
 
             //NewCard.Height = 120;
             //NewCard.Width = 120;
-
+            //MessageBox.Show("here");
             //RootWrapPanel.Children.Add(NewCard);
             return NewCard;
         }

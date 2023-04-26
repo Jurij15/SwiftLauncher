@@ -33,6 +33,7 @@ namespace SwiftLauncher.Pages
     /// </summary>
     public partial class AllAppsPage : Page
     {
+        bool bPageLoaded = false;
         bool bShowAppDetails = true;
         #region Cards and rows, columns
         void CreateCard(string AccountName, string AppCategory, string AppPath)
@@ -185,7 +186,20 @@ namespace SwiftLauncher.Pages
                 {
                     DBReader reader = new DBReader();
                     string id = reader.GetAppIDByName(name);
-                    CreateCard(reader.GetAppNameByID(id), reader.GetAppCategotyByID(id), reader.GetAppExecutablePathByID(id));
+
+                    AppCardActionClass appCardActionClass = new AppCardActionClass(id);
+                    if (ViewComboBox.SelectedItem == ViewNormal)
+                    {
+                        RootWrapPanel.Children.Add(appCardActionClass.CreateStandardCard(Enums.CardDisplayMode.Normal, DirectLaunch_Click, OptionsBtn_Click, CardClicked_Handler));
+                    }
+                    else if (ViewComboBox.SelectedItem == ViewExpanded)
+                    {
+                        RootWrapPanel.Children.Add(appCardActionClass.CreateStandardCard(Enums.CardDisplayMode.Expanded, DirectLaunch_Click, OptionsBtn_Click, CardClicked_Handler));
+                    }
+                    else if (ViewComboBox.SelectedItem == ViewMax)
+                    {
+                        RootWrapPanel.Children.Add(appCardActionClass.CreateStandardCard(Enums.CardDisplayMode.Max, DirectLaunch_Click, OptionsBtn_Click, CardClicked_Handler));
+                    }
                 }
             }
             else
@@ -193,7 +207,19 @@ namespace SwiftLauncher.Pages
                 foreach (var id in Config.AllAppsIDsList)
                 {
                     DBReader reader = new DBReader();
-                    CreateCard(reader.GetAppNameByID(id), reader.GetAppCategotyByID(id), reader.GetAppExecutablePathByID(id));
+                    AppCardActionClass appCardActionClass = new AppCardActionClass(id);
+                    if (ViewComboBox.SelectedItem == ViewNormal)
+                    {
+                        RootWrapPanel.Children.Add(appCardActionClass.CreateStandardCard(Enums.CardDisplayMode.Normal, DirectLaunch_Click, OptionsBtn_Click, CardClicked_Handler));
+                    }
+                    else if (ViewComboBox.SelectedItem == ViewExpanded)
+                    {
+                        RootWrapPanel.Children.Add(appCardActionClass.CreateStandardCard(Enums.CardDisplayMode.Expanded, DirectLaunch_Click, OptionsBtn_Click, CardClicked_Handler));
+                    }
+                    else if (ViewComboBox.SelectedItem == ViewMax)
+                    {
+                        RootWrapPanel.Children.Add(appCardActionClass.CreateStandardCard(Enums.CardDisplayMode.Max, DirectLaunch_Click, OptionsBtn_Click, CardClicked_Handler));
+                    }
                 }
             }
         }
@@ -207,19 +233,8 @@ namespace SwiftLauncher.Pages
         public AllAppsPage()
         {
             InitializeComponent();
-            RefreshPage();
-
-            RootWrapPanel.Children.Clear();
-
-            foreach (var item in Config.AllAppsNamesList)
-            {
-                DBReader dBReader = new DBReader();
-                string id = dBReader.GetAppIDByName(item);
-
-                AppCardActionClass cardClass = new AppCardActionClass(id);
-
-                RootWrapPanel.Children.Add(cardClass.CreateStandardCard(Enums.CardDisplayMode.Expanded, DirectLaunch_Click, OptionsBtn_Click, CardClicked_Handler));
-            }
+            //set views (by user saved settings TODO)
+            ViewComboBox.SelectedItem = ViewNormal;
         }
 
         void RefreshPage()
@@ -374,6 +389,10 @@ namespace SwiftLauncher.Pages
 
         private void SortByComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (!bPageLoaded)
+            {
+                return;
+            }
             RefreshPage();
         }
 
@@ -384,7 +403,26 @@ namespace SwiftLauncher.Pages
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            //RefreshPage();
+            if (!bPageLoaded)
+            {
+                return;
+            }
+            else
+            {
+                RefreshPage();
+            }
+        }
+
+        private void ViewComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            RefreshPage();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshPage();
+
+            bPageLoaded = true;
         }
     }
 }
