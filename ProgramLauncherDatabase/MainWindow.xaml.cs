@@ -31,12 +31,10 @@ namespace SwiftLauncher
         {
             InitializeComponent();
 
-            //OnStartup();
             Config.InitDBConnection();
-            Config.GlobalNavigation = MainWindowNavStore;
-            //Config.GlobalFrame = RootFrame;
             Config.MainWindow = this;
             Config.WhatsNewDialog = WhatsnewDialog;
+            Config.GlobalNavigation = MainWindowNavStore;
 
             Wpf.Ui.Appearance.Watcher.Watch(this);
 

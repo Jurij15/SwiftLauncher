@@ -19,6 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="1024.ico" />
+    <None Remove="1024.png" />
     <None Remove="icons\ic_launcher.png" />
     <None Remove="icons\image2.jpg" />
     <None Remove="icons\image3.jpg" />
@@ -45,10 +47,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="1024.ico" />
+    <Resource Include="1024.png" />
     <Resource Include="icons\image3.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.117" />
     <PackageReference Include="WindowsAPICodePack" Version="7.0.4" />
   </ItemGroup>

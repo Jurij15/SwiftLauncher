@@ -109,6 +109,29 @@ namespace SwiftLauncher
             Marshal.FreeHGlobal(accentPtr);
         }
 
+        internal void EnableTrayBlur()
+        {
+            var windowHelper = new WindowInteropHelper(this);
+
+            var accent = new AccentPolicy();
+            accent.AccentState = AccentState.ACCENT_ENABLE_ACRYLICBLURBEHIND;
+            accent.GradientColor = (_blurOpacity << 24) | (_blurBackgroundColor & 0xFFFFFF);
+
+            var accentStructSize = Marshal.SizeOf(accent);
+
+            var accentPtr = Marshal.AllocHGlobal(accentStructSize);
+            Marshal.StructureToPtr(accent, accentPtr, false);
+
+            var data = new WindowCompositionAttributeData();
+            data.Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY;
+            data.SizeOfData = accentStructSize;
+            data.Data = accentPtr;
+
+            SetWindowCompositionAttribute(windowHelper.Handle, ref data);
+
+            Marshal.FreeHGlobal(accentPtr);
+        }
+
         public enum DWMWINDOWATTRIBUTE
 
         {
@@ -358,6 +381,24 @@ namespace SwiftLauncher
             t.Start();
         }
 
+        private void PositionWindowAtBottomRight()
+        {
+            double screenWidth = SystemParameters.PrimaryScreenWidth;
+            double screenHeight = SystemParameters.PrimaryScreenHeight;
+            double windowWidth = Width;
+            double windowHeight = Height;
+
+            Left = screenWidth - windowWidth;
+            Top = screenHeight - windowHeight;
+
+            // Check Taskbar position and adjust window position accordingly
+            var taskbar = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea;
+            if (taskbar.Bottom < screenHeight)
+            {
+                Top -= (screenHeight - taskbar.Bottom);
+            }
+        }
+
         void timer_tick(object sender, EventArgs e)
         {
             CreateTaskManagementCardsForEveryApp();
@@ -402,10 +443,12 @@ namespace SwiftLauncher
 
         private void ReturnBack_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.Close();
             Config.MainWindow.Show();
             Config.bIsQuickLauncherVisible = false;
             Config.MainWindow.WindowState = WindowState.Normal;
+
+            NotifyIcon.Dispose();
         }
 
         string FigureOutAppName(Wpf.Ui.Controls.CardAction UiElement)
@@ -530,6 +573,32 @@ namespace SwiftLauncher
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void EnableTrayLauncher_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EnableTrayLauncher_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NotifyIcon_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+        }
+
+        private void NotifyIcon_TrayLeftMouseDown(object sender, RoutedEventArgs e)
+        {
+            //we will re-render the whole ui here, this will be hard to make
+            PositionWindowAtBottomRight();
+            EnableTrayBlur();
+
+            //this.Height = 1000;
+            //this.Width = 500;
+
+            PositionWindowAtBottomRight();
         }
     }
 }

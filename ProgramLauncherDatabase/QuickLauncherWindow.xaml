@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SwiftLauncher"
         mc:Ignorable="d"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
         Loaded="Window_Loaded"
         WindowState="Normal"
         Background="#01000000"
@@ -24,13 +25,21 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <ui:TitleBar x:Name="QuickTitleBar" Visibility="Collapsed" Title="TEst">
+        <tb:TaskbarIcon x:Name="NotifyIcon" Visibility="Visible" IconSource="/1024.ico" MouseLeftButtonDown="NotifyIcon_MouseLeftButtonDown" TrayLeftMouseDown="NotifyIcon_TrayLeftMouseDown">
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu x:Name="TrayPopUpContextMenu">
+                    <ui:MenuItem Header="Show TrayLauncher" SymbolIcon="ResizeSmall20" x:Name="ShowTrayLauncherMenuItem"/>
+                    <ui:MenuItem Header="Show MainWindow" SymbolIcon="ResizeLarge20" x:Name="ShowMainWindowMenuItem"/>
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
+
+        <ui:TitleBar x:Name="QuickTitleBar" Visibility="Collapsed" Title="TEst" MinimizeToTray="False">
         </ui:TitleBar>
         <ui:DynamicScrollViewer Grid.Row="3" Grid.Column="0" VerticalScrollBarVisibility="Disabled" x:Name="AppsPanelScroller">
             <StackPanel>
@@ -45,6 +54,7 @@
                 </MenuItem.Header>
                 <ui:MenuItem x:Name="ExpandBtn" Header="Enable Task Management (TESTING)" SymbolIcon="Open24" Click="ExpandBtn_Click"/>
                 <ui:MenuItem x:Name="ReturnBack" Header="Return to normal view" SymbolIcon="WindowNew20" Click="ReturnBack_Click"/>
+                <CheckBox x:Name="EnableTrayLauncher" Content="Enable tray launcher" Checked="EnableTrayLauncher_Checked" Unchecked="EnableTrayLauncher_Unchecked"/>
                 <ui:MenuItem x:Name="ExitCompletely" Header="Quit" SymbolIcon="ArrowExit20" Click="ExitCompletely_Click"/>
             </ui:MenuItem>
         </Menu>

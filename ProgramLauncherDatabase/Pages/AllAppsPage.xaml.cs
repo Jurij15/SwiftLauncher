@@ -162,17 +162,52 @@ namespace SwiftLauncher.Pages
         string FigureOutAppName(Wpf.Ui.Controls.CardAction UiElement)
         {
             string RetValue = string.Empty;
-            StackPanel content = (StackPanel)UiElement.Content;
-            foreach (var item in content.Children)
+            if (ViewComboBox.SelectedItem == ViewNormal)
             {
-                if (item.GetType() == typeof(TextBlock))
+                StackPanel content = (StackPanel)UiElement.Content;
+                foreach (var item in content.Children)
                 {
-                    TextBlock textBlock = (TextBlock)item;
-                    if (textBlock.Name == "AppNameBox")
+                    if (item.GetType() == typeof(TextBlock))
                     {
-                        RetValue = textBlock.Text;
+                        TextBlock textBlock = (TextBlock)item;
+                        if (textBlock.Name == "AppNameBox")
+                        {
+                            RetValue = textBlock.Text;
+                        }
                     }
                 }
+            }
+            else if (ViewComboBox.SelectedItem == ViewExpanded)
+            {
+                StackPanel content = (StackPanel)UiElement.Content;
+                foreach (var item in content.Children)
+                {
+                    if (item.GetType() == typeof(Grid))
+                    {
+                        Grid grid = (Grid)item;
+                        foreach (var iitem in grid.Children)
+                        {
+                            if (iitem.GetType() == typeof(StackPanel))
+                            {
+                                foreach (var iiitem in ((StackPanel)iitem).Children)
+                                {
+                                    if (iiitem.GetType() == typeof(TextBlock))
+                                    {
+                                        TextBlock textBlock = (TextBlock)iiitem;
+                                        if (textBlock.Name == "AppNameBox")
+                                        {
+                                            RetValue = textBlock.Text;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if (ViewComboBox.SelectedItem == ViewMax)
+            {
+
             }
             return RetValue;
         }
