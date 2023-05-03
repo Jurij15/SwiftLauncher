@@ -39,7 +39,7 @@
             
             PaneDisplayMode="LeftFluent"
             AlwaysShowHeader="False"
-            SelectionChanged="MainWindowNavStore_SelectionChanged"
+            SelectionChanged="MainWindowNavStore_SelectionChanged" IsBackButtonVisible="Visible"
             >
             <ui:NavigationView.MenuItems>
                 <ui:NavigationViewItem

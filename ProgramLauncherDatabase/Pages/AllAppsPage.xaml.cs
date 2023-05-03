@@ -346,8 +346,8 @@ namespace SwiftLauncher.Pages
             CurrentAppDefinitions.AppNotes = reader.GetAppNotesByID(AppID);
             CurrentAppDefinitions.AppCategory = reader.GetAppCategotyByID(AppID);
             CurrentAppDefinitions.AppLaunchArguents = reader.GetAppLaunchArgumentsByID(AppID);
-
             Config.GlobalNavigation.Navigate(typeof(AppDetailsPage));
+            MessageBox.Show("it should be navigated now");
         }
 
         private void DirectLaunch_Click(object sender, RoutedEventArgs e)
